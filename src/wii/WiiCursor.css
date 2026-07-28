@@ -11,6 +11,10 @@
   will-change: transform;
 }
 
+/* The open hand and the fist are the same hand with different fingers, so
+   they keep the pointer's offset: closing over the globe curls the fingers
+   in place instead of shifting the hand. */
+
 /* Hide the OS cursor everywhere; the hand replaces it. */
 @media (hover: hover) and (pointer: fine) {
   html.wii-has-cursor,

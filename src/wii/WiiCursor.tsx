@@ -1,14 +1,17 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
+import { getCursorMode, subscribeCursor } from "./cursor";
 import "./WiiCursor.css";
 
 /**
- * A Wii-Remote-style pointer hand that follows the mouse and
- * tilts based on horizontal velocity (the classic wobble).
- * Renders nothing on touch devices.
+ * A Wii-Remote-style hand that follows the mouse and tilts based on
+ * horizontal velocity (the classic wobble). Three shapes — pointing,
+ * open and fist — chosen by the `cursor` store. Renders nothing on
+ * touch devices.
  */
 export function WiiCursor() {
   const ref = useRef<HTMLDivElement>(null);
   const last = useRef({ x: 0, t: 0, rot: 0 });
+  const mode = useSyncExternalStore(subscribeCursor, getCursorMode, getCursorMode);
 
   useEffect(() => {
     const el = ref.current;
@@ -39,12 +42,16 @@ export function WiiCursor() {
     };
   }, []);
 
+  const shape =
+    mode === "open" ? "#wiiHandOpen" : mode === "grab" ? "#wiiHandGrab" : "#wiiHandPoint";
+
   return (
-    <div ref={ref} className="wii-cursor" aria-hidden>
-      {/* Wii-Remote pointer: index finger up, three curled fingers, a rounded
-          palm and a wrist band. Drawn as overlapping parts painted twice —
-          once black+stroked for the outline, once filled — so the seams
-          between parts read as the classic thick creases. */}
+    <div ref={ref} className={`wii-cursor is-${mode}`} aria-hidden>
+      {/* Every hand is built from overlapping parts painted twice — once
+          black+stroked for the outline, once filled — so the seams between
+          fingers read as the classic thick creases. The three modes are one
+          hand: same palm, same wrist, only the fingers change, so switching
+          curls the fingers instead of swapping in a different hand. */}
       <svg width="44" height="66" viewBox="0 0 128 192">
         <defs>
           <linearGradient
@@ -61,28 +68,49 @@ export function WiiCursor() {
           <filter id="wiiHandShadow" x="-30%" y="-25%" width="170%" height="160%">
             <feDropShadow dx="0" dy="4" stdDeviation="4" floodColor="rgba(0,40,80,0.35)" />
           </filter>
-          <g id="wiiHandParts">
-            {/* index */}
-            <rect x="29.5" y="17" width="22.6" height="100" rx="11.3" />
-            {/* curled middle / ring / pinky */}
-            <rect x="57.4" y="68" width="14.6" height="49" rx="7.3" />
-            <rect x="77.6" y="74" width="16.1" height="44" rx="8" />
-            <rect x="99.7" y="80" width="16.3" height="40" rx="8.1" />
-            {/* palm */}
+
+          {/* palm and wrist — shared by all three, so only the fingers move */}
+          <g id="wiiHandBody">
             <path
               d="M30 90 H110 C114 90 116 94 116 100
                  V134 C116 148 111 157 102 157
                  H42 C30 157 14 150 13 137
                  V114 C13 102 20 94 30 90 Z"
             />
-            {/* wrist */}
             <rect x="40.6" y="150" width="60.6" height="25" rx="9.5" />
+          </g>
+
+          {/* pointing — index up, the other three curled */}
+          <g id="wiiHandPoint">
+            <rect x="29.5" y="17" width="22.6" height="100" rx="11.3" />
+            <rect x="57.4" y="68" width="14.6" height="49" rx="7.3" />
+            <rect x="77.6" y="74" width="16.1" height="44" rx="8" />
+            <rect x="99.7" y="80" width="16.3" height="40" rx="8.1" />
+            <use href="#wiiHandBody" />
+          </g>
+
+          {/* open — the same hand with every finger up */}
+          <g id="wiiHandOpen">
+            <rect x="29.5" y="17" width="22.6" height="100" rx="11.3" />
+            <rect x="57.4" y="12" width="14.6" height="105" rx="7.3" />
+            <rect x="77.6" y="20" width="16.1" height="98" rx="8" />
+            <rect x="99.7" y="34" width="16.3" height="86" rx="8.1" />
+            <use href="#wiiHandBody" />
+          </g>
+
+          {/* fist — the same hand with the index curled down too */}
+          <g id="wiiHandGrab">
+            <rect x="29.5" y="62" width="22.6" height="55" rx="11.3" />
+            <rect x="57.4" y="68" width="14.6" height="49" rx="7.3" />
+            <rect x="77.6" y="74" width="16.1" height="44" rx="8" />
+            <rect x="99.7" y="80" width="16.3" height="40" rx="8.1" />
+            <use href="#wiiHandBody" />
           </g>
         </defs>
 
         <g filter="url(#wiiHandShadow)">
-          <use href="#wiiHandParts" fill="#000" stroke="#000" strokeWidth="12" strokeLinejoin="round" />
-          <use href="#wiiHandParts" fill="url(#wiiHandFill)" />
+          <use href={shape} fill="#000" stroke="#000" strokeWidth="12" strokeLinejoin="round" />
+          <use href={shape} fill="url(#wiiHandFill)" />
           {/* the index finger's inner edge continues across the palm */}
           <path d="M26.5 88 V108" fill="none" stroke="#000" strokeWidth="6" strokeLinecap="round" />
         </g>
