@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { getWebPhotos, PHOTO_SOURCES, type SourceId, type WebPhoto } from "./PhotoSources";
 import { Sound } from "../wii/sound";
 import "./PhotoScreensaver.css";
@@ -11,6 +11,21 @@ import "./PhotoScreensaver.css";
    Slow Ken Burns drift, crossfade between slides, and a caption
    card crediting the photo. Controls fade away while it plays
    and come back on mouse move. Esc or the ✕ exits.
+
+   It runs ENDLESSLY, fed by a pump that keeps a few verified
+   pictures ahead of wherever you are:
+
+     fetch a round → verify each image loads → append to `photos`
+
+   Verifying BEFORE a photo joins the queue is what keeps the
+   position honest. Sources hand back plenty of records whose
+   image 404s or gets refused (the Art Institute's IIIF server
+   rate-limits browsers, for one), and if those reached the
+   queue every failure would skip a slot — so the counter would
+   jump by 2 or 3 and the queue length would drift. Here every
+   entry in `photos` is known-good, so ← / → always move by
+   exactly one. Verification also warms the browser cache, so
+   the picture is already decoded when its turn comes.
    ============================================================ */
 
 const SLIDE_MS = 7000;
@@ -18,6 +33,44 @@ const SLIDE_MS = 7000;
 const IDLE_MS = 2600;
 /** Ken Burns variants — cycled so consecutive slides don't drift alike. */
 const KB_VARIANTS = 4;
+/** Keep at least this many verified pictures queued ahead of the viewer. */
+const LOOKAHEAD = 5;
+/** Give a single image this long to prove itself before moving on. */
+const VERIFY_MS = 8000;
+/** Images verified at once — enough to stay ahead, few enough not to get throttled. */
+const VERIFY_CONCURRENCY = 4;
+/**
+ * If a source fails this many times without a single success, treat it as down
+ * for the rest of the run and stop spending time on it. Whole sources really do
+ * go dark — the Art Institute's IIIF server starts refusing browser requests
+ * once it has seen a burst of them.
+ */
+const SOURCE_STRIKES = 5;
+/** Consecutive rounds yielding nothing new before we accept the well is dry. */
+const EMPTY_ROUND_LIMIT = 3;
+
+/**
+ * Resolve true only if the bitmap genuinely decodes.
+ *
+ * This reports the image's real fate and nothing else. It deliberately knows
+ * nothing about cancellation: folding "we gave up on this run" into "the image
+ * is broken" would let a torn-down pump (React StrictMode remounts every effect
+ * in dev) record perfectly good photos as failures and blacklist their source.
+ */
+function verifyImage(src: string): Promise<boolean> {
+  return new Promise((resolve) => {
+    const img = new Image();
+    const settle = (ok: boolean) => {
+      window.clearTimeout(timer);
+      img.onload = img.onerror = null;
+      resolve(ok);
+    };
+    const timer = window.setTimeout(() => settle(false), VERIFY_MS);
+    img.onload = () => settle(img.naturalWidth > 0);
+    img.onerror = () => settle(false);
+    img.src = src;
+  });
+}
 
 interface Props {
   /** Which sources to pull from — chosen on the channel's home screen. */
@@ -26,93 +79,234 @@ interface Props {
 }
 
 export function PhotoScreensaver({ sources, onExit }: Props) {
+  /** Verified and displayable. Append-only, so indices never shift. */
   const [photos, setPhotos] = useState<WebPhoto[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [index, setIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState<number | null>(null);
   const [playing, setPlaying] = useState(true);
   const [uiVisible, setUiVisible] = useState(true);
-
-  const idleTimer = useRef<number | undefined>(undefined);
-  const imgRef = useRef<HTMLImageElement | null>(null);
-  /** Slides whose image 404'd or was blocked — skipped on sight. */
-  const [broken, setBroken] = useState<Set<string>>(() => new Set());
+  /** True once the sources stop yielding anything new — the queue then loops. */
+  const [exhausted, setExhausted] = useState(false);
   /**
-   * Id of the slide whose bitmap has actually decoded. The caption and the
-   * crossfade are gated on this so the credit can never describe a photo the
-   * viewer isn't looking at yet — the previous layer stays up until the new
-   * image is genuinely on screen.
+   * Id of the slide whose bitmap is on screen. The caption is gated on this so
+   * the credit can never describe a photo the viewer isn't looking at yet.
    */
   const [readyId, setReadyId] = useState<string | null>(null);
 
-  const live = useMemo(() => photos.filter((p) => !broken.has(p.id)), [photos, broken]);
+  const idleTimer = useRef<number | undefined>(undefined);
+  const imgRef = useRef<HTMLImageElement | null>(null);
 
-  /* ---------- Load ----------
-     Keyed on the joined ids, not the array itself, so a fresh array literal
-     from the parent doesn't re-trigger the fetch. */
+  /* Pump bookkeeping. Refs, because the pump loop needs values that are
+     current *within* one async run, not whatever a render closed over. */
+  const verifiedRef = useRef<WebPhoto[]>([]);
+  const pendingRef = useRef<WebPhoto[]>([]);
+  const seenRef = useRef<Set<string>>(new Set());
+  const roundRef = useRef(0);
+  const doneRef = useRef(false);
+  const emptyRoundsRef = useRef(0);
+  /** Consecutive verification failures per source, and the ones written off. */
+  const strikesRef = useRef<Map<SourceId, number>>(new Map());
+  const deadRef = useRef<Set<SourceId>>(new Set());
+  const indexRef = useRef(0);
+  indexRef.current = index;
+  /** Mirror of `exhausted` for `step`, which reads it from a stable callback. */
+  const exhaustedRef = useRef(false);
+  exhaustedRef.current = exhausted;
+
   const sourceKey = sources.join(",");
+
+  /* ---------- Reset everything when the chosen sources change ---------- */
   useEffect(() => {
-    const ctrl = new AbortController();
-    getWebPhotos(sourceKey.split(",") as SourceId[], false, ctrl.signal)
-      .then((list) => {
-        setPhotos(list);
-        setError(null);
-      })
-      .catch((e: unknown) => {
-        if (ctrl.signal.aborted) return;
-        setError(e instanceof Error ? e.message : "Could not reach the photo sources");
-      });
-    return () => ctrl.abort();
+    verifiedRef.current = [];
+    pendingRef.current = [];
+    seenRef.current = new Set();
+    roundRef.current = 0;
+    doneRef.current = false;
+    emptyRoundsRef.current = 0;
+    strikesRef.current = new Map();
+    deadRef.current = new Set();
+    setPhotos([]);
+    setIndex(0);
+    setPrevIndex(null);
+    setReadyId(null);
+    setError(null);
+    setExhausted(false);
   }, [sourceKey]);
+
+  /* ---------- The pump ----------
+     Tops the queue up to LOOKAHEAD past the current position, fetching
+     another round whenever the pending pile runs dry. */
+  const pump = useCallback(
+    async (cancelled: () => boolean) => {
+      {
+        while (!cancelled() && verifiedRef.current.length < indexRef.current + LOOKAHEAD) {
+          if (!pendingRef.current.length) {
+            if (doneRef.current) break;
+            // Don't keep fetching from sources we've already written off.
+            const live = (sourceKey.split(",") as SourceId[]).filter((id) => !deadRef.current.has(id));
+            if (!live.length) {
+              doneRef.current = true;
+              break;
+            }
+            // Claim the round number BEFORE awaiting. React StrictMode mounts
+            // effects twice in dev, so a second pump can start while this one
+            // is in flight; if both read the same round they both fetch the
+            // same batch, and the loser sees every photo as already-seen and
+            // wrongly concludes the sources are spent.
+            const myRound = roundRef.current;
+            roundRef.current += 1;
+
+            let batch: WebPhoto[] = [];
+            try {
+              batch = await getWebPhotos(live, myRound);
+            } catch {
+              // Rate limited, offline, or past the end of the archive. Stop
+              // asking and let the queue loop over what we already have.
+              if (!cancelled()) doneRef.current = true;
+              break;
+            }
+            // Torn down while fetching — leave the shared refs untouched.
+            if (cancelled()) return;
+
+            const fresh = batch.filter((p) => !seenRef.current.has(p.id));
+            fresh.forEach((p) => seenRef.current.add(p.id));
+            if (!fresh.length) {
+              // One barren round isn't proof we're finished — a source can
+              // legitimately repeat itself. Only give up after a few in a row.
+              emptyRoundsRef.current += 1;
+              if (emptyRoundsRef.current >= EMPTY_ROUND_LIMIT) {
+                doneRef.current = true;
+                break;
+              }
+              continue;
+            }
+            emptyRoundsRef.current = 0;
+            pendingRef.current.push(...fresh);
+          }
+
+          // Drop anything from a source that has already proved to be down.
+          if (deadRef.current.size) {
+            pendingRef.current = pendingRef.current.filter((p) => !deadRef.current.has(p.sourceId));
+            if (!pendingRef.current.length) continue;
+          }
+
+          // A small batch: enough to stay ahead of a dead source, few enough
+          // that we don't look like the burst that gets clients throttled.
+          const batch = pendingRef.current.splice(0, VERIFY_CONCURRENCY);
+          const results = await Promise.all(
+            batch.map((p) => verifyImage(p.src).then((ok) => ({ p, ok })))
+          );
+
+          // Torn down mid-batch: put the work back and record nothing. Counting
+          // an abandoned run's results would blacklist healthy sources.
+          if (cancelled()) {
+            pendingRef.current.unshift(...batch);
+            return;
+          }
+
+          const good: WebPhoto[] = [];
+          for (const { p, ok } of results) {
+            const tally = strikesRef.current.get(p.sourceId) ?? 0;
+            if (ok) {
+              good.push(p);
+              strikesRef.current.set(p.sourceId, 0);
+            } else if (tally + 1 >= SOURCE_STRIKES) {
+              deadRef.current.add(p.sourceId);
+            } else {
+              strikesRef.current.set(p.sourceId, tally + 1);
+            }
+          }
+
+          if (good.length) {
+            verifiedRef.current = [...verifiedRef.current, ...good];
+            setPhotos(verifiedRef.current);
+          }
+        }
+      }
+      if (!cancelled()) setExhausted(doneRef.current && !pendingRef.current.length);
+    },
+    [sourceKey]
+  );
+
+  /* ---------- Pump driver ----------
+     ONE long-lived loop per source selection. It must not be torn down when
+     the queue grows: cancelling mid-flight would discard the verification in
+     progress, and the re-entry guard would make the restart a no-op — the
+     slideshow would stall after its first batch. So the loop owns its own
+     idling instead of being re-triggered by effect dependencies. */
+  useEffect(() => {
+    let cancelled = false;
+    const isCancelled = () => cancelled;
+    const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+    (async () => {
+      while (!isCancelled()) {
+        // `doneRef` only means "stop asking for new rounds" — there may still
+        // be a pending pile to verify, so it must not halt the pump on its own.
+        const wantsMore =
+          verifiedRef.current.length < indexRef.current + LOOKAHEAD &&
+          (pendingRef.current.length > 0 || !doneRef.current);
+        if (wantsMore) await pump(isCancelled);
+        else await sleep(300);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [pump]);
+
+  /* Nothing survived verification and there's no more to try. */
+  useEffect(() => {
+    if (exhausted && !photos.length && !error) {
+      setError("Every picture the sources offered failed to load.");
+    }
+  }, [exhausted, photos.length, error]);
 
   const exit = useCallback(() => {
     Sound.back();
     onExit();
   }, [onExit]);
 
-  const step = useCallback(
-    (dir: 1 | -1) => {
-      setIndex((cur) => {
-        if (live.length === 0) return cur;
-        setPrevIndex(cur);
-        return (cur + dir + live.length) % live.length;
-      });
-    },
-    [live.length]
-  );
+  /** Every entry is verified, so this is a plain ±1 walk. */
+  const step = useCallback((dir: 1 | -1) => {
+    setIndex((cur) => {
+      const n = verifiedRef.current.length;
+      if (n < 2) return cur;
+      let next = cur + dir;
+      if (next >= n) {
+        // At the tip of the queue. Hold here unless there is genuinely nothing
+        // more coming — wrapping round to #1 while pictures are still being
+        // verified is precisely the "position jumps around" problem.
+        if (!exhaustedRef.current) return cur;
+        next = 0;
+      } else if (next < 0) {
+        next = n - 1;
+      }
+      if (next === cur) return cur;
+      setPrevIndex(cur);
+      return next;
+    });
+  }, []);
 
   /* ---------- Auto-advance ----------
      Keyed on readyId so each slide gets its full SLIDE_MS *on screen*;
      a slow image eats loading time, not display time. */
   useEffect(() => {
-    if (!playing || live.length < 2 || !readyId) return;
+    if (!playing || photos.length < 2 || !readyId) return;
     const t = window.setTimeout(() => step(1), SLIDE_MS);
     return () => window.clearTimeout(t);
-  }, [playing, live.length, step, readyId]);
+  }, [playing, photos.length, step, readyId]);
 
   /* ---------- Catch images that were already cached ----------
-     A cached bitmap can finish decoding before React attaches onLoad, so that
-     event never fires and the slide would sit invisible forever. */
+     Verification warms the cache, so the bitmap is usually complete before
+     React can attach onLoad — without this the slide would never show. */
   useEffect(() => {
     const node = imgRef.current;
-    const id = live[index]?.id;
+    const id = photos[index]?.id;
     if (id && node?.complete && node.naturalWidth > 0) setReadyId(id);
-  }, [index, live]);
-
-  /* ---------- Preload the next image so crossfades never stall ---------- */
-  useEffect(() => {
-    if (live.length < 2) return;
-    const next = live[(index + 1) % live.length];
-    if (next) new Image().src = next.src;
-  }, [index, live]);
-
-  /* ---------- Keep the index in range as broken slides drop out ---------- */
-  useEffect(() => {
-    if (live.length && index >= live.length) {
-      setIndex(0);
-      setPrevIndex(null);
-    }
-  }, [live.length, index]);
+  }, [index, photos]);
 
   /* ---------- Keyboard ---------- */
   useEffect(() => {
@@ -141,26 +335,16 @@ export function PhotoScreensaver({ sources, onExit }: Props) {
     return () => window.clearTimeout(idleTimer.current);
   }, [wake]);
 
-  const markBroken = useCallback((id: string) => {
-    setBroken((prev) => {
-      if (prev.has(id)) return prev;
-      const next = new Set(prev);
-      next.add(id);
-      return next;
-    });
-  }, []);
-
-  const current = live[index];
-  const previous = prevIndex !== null && prevIndex !== index ? live[prevIndex] : null;
+  const current = photos[index];
+  const previous = prevIndex !== null && prevIndex !== index ? photos[prevIndex] : null;
   const shown = Boolean(current) && readyId === current.id;
 
   /**
    * The slide whose pixels are actually on screen. While a slow image is still
-   * downloading that's still the *previous* one, so the caption keeps crediting
+   * painting that's still the *previous* one, so the caption keeps crediting
    * what the viewer can see instead of blanking out and popping back.
    */
-  const displayedIndex = live.findIndex((p) => p.id === readyId);
-  const displayed = displayedIndex >= 0 ? live[displayedIndex] : null;
+  const displayed = shown ? current : previous;
 
   return (
     <div
@@ -218,11 +402,9 @@ export function PhotoScreensaver({ sources, onExit }: Props) {
             aria-hidden={!isCurrent}
             draggable={false}
             ref={isCurrent ? imgRef : undefined}
-            onLoad={() => setReadyId(photo.id)}
-            onError={() => {
-              markBroken(photo.id);
-              if (isCurrent) step(1);
-            }}
+            /* Only the current layer may set readyId — letting the outgoing
+               layer fire it would drag the caption backwards. */
+            onLoad={isCurrent ? () => setReadyId(photo.id) : undefined}
           />
         ))}
 
@@ -273,8 +455,10 @@ export function PhotoScreensaver({ sources, onExit }: Props) {
             <button className="saver__ctrl" onMouseEnter={() => Sound.hover()} onClick={() => step(1)} aria-label="Next">
               ›
             </button>
+            {/* Position only — there is no "remaining" in an endless slideshow. */}
             <span className="saver__count">
-              {displayedIndex + 1} / {live.length}
+              #{index + 1}
+              {!exhausted && <span className="saver__count-more">＋</span>}
             </span>
           </div>
         </>

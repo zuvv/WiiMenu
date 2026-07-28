@@ -285,6 +285,14 @@
   color: rgba(255, 255, 255, 0.72);
 }
 
+/* Quiet marker that more pictures are still on their way. */
+.saver__count-more {
+  margin-left: 3px;
+  font-size: 9px;
+  vertical-align: 2px;
+  color: var(--wii-blue-glow);
+}
+
 .saver__close {
   position: absolute;
   top: 26px;

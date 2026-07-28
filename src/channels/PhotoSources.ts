@@ -42,7 +42,11 @@ export interface PhotoSourceDef {
   blurb: string;
   /** Accent colour for the picker card. */
   tint: string;
-  fetch: (signal?: AbortSignal) => Promise<WebPhoto[]>;
+  /**
+   * `round` climbs each time the screensaver refills, so a source can hand
+   * back a *different* batch instead of the same one forever.
+   */
+  fetch: (signal: AbortSignal | undefined, round: number) => Promise<WebPhoto[]>;
 }
 
 const NASA_KEY = (import.meta.env.VITE_NASA_KEY as string | undefined) || "DEMO_KEY";
@@ -114,11 +118,14 @@ function shuffle<T>(items: T[]): T[] {
 
 /* ---------------- Wikimedia Commons: Picture of the Day ---------------- */
 
-async function fetchWikimedia(signal?: AbortSignal): Promise<WebPhoto[]> {
+async function fetchWikimedia(signal: AbortSignal | undefined, round: number): Promise<WebPhoto[]> {
   // Template:Potd/YYYY-MM-DD holds that day's featured image. Ask for a
   // batch of days in one round-trip; missing days simply yield nothing.
+  // Each round walks a further POTD_DAYS back through the archive, so the
+  // slideshow keeps finding pictures it hasn't shown yet.
   const titles: string[] = [];
   const day = new Date();
+  day.setDate(day.getDate() - round * POTD_DAYS);
   for (let i = 0; i < POTD_DAYS; i++) {
     titles.push(`Template:Potd/${day.toISOString().slice(0, 10)}`);
     day.setDate(day.getDate() - 1);
@@ -168,7 +175,8 @@ async function fetchWikimedia(signal?: AbortSignal): Promise<WebPhoto[]> {
 
 /* ---------------- NASA: Astronomy Picture of the Day ---------------- */
 
-async function fetchNasa(signal?: AbortSignal): Promise<WebPhoto[]> {
+async function fetchNasa(signal: AbortSignal | undefined, _round: number): Promise<WebPhoto[]> {
+  // APOD's `count` picks random dates, so every call is already a new batch.
   const url = `https://api.nasa.gov/planetary/apod?api_key=${NASA_KEY}&count=12&thumbs=true`;
   const res = await fetch(url, { signal });
   if (!res.ok) throw new Error(`NASA APOD error ${res.status}`);
@@ -191,9 +199,10 @@ async function fetchNasa(signal?: AbortSignal): Promise<WebPhoto[]> {
 
 /* ---------------- Art Institute of Chicago ---------------- */
 
-async function fetchArtic(signal?: AbortSignal): Promise<WebPhoto[]> {
-  // ~130k public-domain works, so jump to a random page for variety.
-  const page = 1 + Math.floor(Math.random() * 60);
+async function fetchArtic(signal: AbortSignal | undefined, round: number): Promise<WebPhoto[]> {
+  // ~130k public-domain works. Start somewhere random for variety, then walk
+  // forward with each round so refills land on pages we haven't seen.
+  const page = 1 + round * 3 + Math.floor(Math.random() * 3);
   const params = new URLSearchParams({
     "query[term][is_public_domain]": "true",
     fields: "id,title,image_id,artist_title,date_display",
@@ -276,10 +285,14 @@ export function saveSelection(ids: SourceId[]) {
  * Collect screensaver photos from the chosen sources. Sources are queried in
  * parallel and failures are tolerated — one dead API shouldn't blank the
  * slideshow. Throws only if every chosen source fails.
+ *
+ * `round` 0 is the opening batch: it may be served from cache, and it seeds
+ * the cache. Later rounds are refills — always fetched fresh and never cached,
+ * so the opening batch stays instant while the slideshow runs on indefinitely.
  */
 export async function getWebPhotos(
   ids: SourceId[],
-  force = false,
+  round = 0,
   signal?: AbortSignal
 ): Promise<WebPhoto[]> {
   const chosen = PHOTO_SOURCES.filter((s) => ids.includes(s.id));
@@ -287,12 +300,12 @@ export async function getWebPhotos(
 
   const settled = await Promise.allSettled(
     chosen.map(async (source) => {
-      if (!force) {
+      if (round === 0) {
         const cached = readCache(source.id);
         if (cached) return cached;
       }
-      const photos = (await source.fetch(signal)).filter((p) => p.src);
-      if (photos.length) writeCache(source.id, photos);
+      const photos = (await source.fetch(signal, round)).filter((p) => p.src);
+      if (photos.length && round === 0) writeCache(source.id, photos);
       return photos;
     })
   );
