@@ -39,6 +39,16 @@
   gap: 18px;
 }
 
+/* The scroller's blocks keep their natural height. Without this they shrink on
+   short viewports and the hero clips its own metrics row (and squashes the
+   temperature) instead of letting .forecast-scroll scroll. */
+.forecast-topbar,
+.forecast-hero,
+.forecast-section-label,
+.forecast-days {
+  flex-shrink: 0;
+}
+
 /* ---------- Top bar ---------- */
 .forecast-topbar {
   display: flex;

@@ -248,23 +248,10 @@
   box-shadow: 0 0 8px rgba(166, 232, 138, 0.9);
 }
 
-/* --- Narrow screens: stack the figure above the copy --- */
-@media (max-width: 860px) {
-  .news-ss-stage {
-    flex-direction: column;
-    gap: 20px;
-    width: 90%;
-  }
-  .news-ss-figure {
-    flex: 0 0 auto;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-  }
-  .news-ss-desc {
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-  }
-}
+/* No narrow-screen breakpoint here any more. The channel is authored at a
+   fixed 1280×720 and scaled to fit (.wii-overlay__stage), so the slideshow
+   always has the full design width to lay out in — a viewport media query
+   would restack a stage that is not actually narrow. */
 
 @media (prefers-reduced-motion: reduce) {
   .news-slideshow,

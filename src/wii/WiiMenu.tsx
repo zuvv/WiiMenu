@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Channel as ChannelDef } from "./types";
 import { channels } from "./channels";
 import { ChannelGrid } from "./ChannelGrid";
@@ -95,6 +95,13 @@ function ChannelOverlay({
   children: React.ReactNode;
 }) {
   const [shown, setShown] = useState(false);
+  // Channels are authored at the same fixed 16:9 screen as the menu and scaled
+  // to fit, rather than reflowing. One continuous scale instead of breakpoints:
+  // the layout is identical at every window size, so nothing rewraps or
+  // collides on the way down.
+  const contentRef = useRef<HTMLDivElement>(null);
+  const fit = useFitScale(DESIGN_W, DESIGN_H, contentRef);
+
   useEffect(() => {
     const id = requestAnimationFrame(() => setShown(true));
     return () => cancelAnimationFrame(id);
@@ -112,7 +119,18 @@ function ChannelOverlay({
       <button className="wii-overlay__back" onClick={onExit}>
         ‹ Wii Menu
       </button>
-      <div className="wii-overlay__content">{children}</div>
+      <div className="wii-overlay__content" ref={contentRef}>
+        <div
+          className="wii-overlay__stage"
+          style={{
+            width: DESIGN_W,
+            height: DESIGN_H,
+            transform: `translate(${fit.x}px, ${fit.y}px) scale(${fit.scale})`,
+          }}
+        >
+          {children}
+        </div>
+      </div>
     </div>
   );
 }

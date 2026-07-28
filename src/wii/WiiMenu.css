@@ -68,5 +68,17 @@
 .wii-overlay__content {
   flex: 1;
   min-height: 0;
-  overflow: auto;
+  /* Containing block for the scaled stage. Hidden, not auto: the stage is
+     absolutely positioned and translated, which would otherwise provoke
+     scrollbars even though nothing overflows visually. */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Same treatment as .wii-stage — fixed design size, scaled and centred. */
+.wii-overlay__stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: top left;
 }
