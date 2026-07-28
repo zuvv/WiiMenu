@@ -33,6 +33,17 @@ export function NewsSlideshow({
   const count = stories.length;
   const story = stories[index];
 
+  /* Publishers' image URLs go dead or refuse hotlinking, which left a broken
+     image frame sitting in the middle of the slide. Remember which ones failed
+     — the slideshow loops, so without this the same slide re-breaks on every
+     pass — and fall back to a text-only slide, which the flex row handles by
+     giving the copy the full width. */
+  const [failedImages, setFailedImages] = useState<ReadonlySet<string>>(() => new Set());
+  const markImageFailed = useCallback((url: string) => {
+    setFailedImages((prev) => (prev.has(url) ? prev : new Set(prev).add(url)));
+  }, []);
+  const image = story?.image && !failedImages.has(story.image) ? story.image : undefined;
+
   /* Indices of the dots to draw: all of them when the run is short, otherwise
      a window that keeps the current dot centred until you reach either end. */
   const dotRange = (() => {
@@ -109,14 +120,26 @@ export function NewsSlideshow({
       {/* Backdrop: the story image, blown up and blurred, so every slide fills
           the frame regardless of the source image's aspect ratio. */}
       <div className="news-ss-backdrop" key={`bg-${index}`}>
-        {story.image && <img src={story.image} alt="" aria-hidden="true" />}
+        {image && (
+          <img
+            src={image}
+            alt=""
+            aria-hidden="true"
+            onError={() => markImageFailed(image)}
+          />
+        )}
       </div>
 
       {/* Keyed by index so image and copy re-run their entry animation on every change. */}
       <div className="news-ss-stage" key={`slide-${index}`}>
-        {story.image && (
+        {image && (
           <div className="news-ss-figure">
-            <img src={story.image} alt="" draggable={false} />
+            <img
+              src={image}
+              alt=""
+              draggable={false}
+              onError={() => markImageFailed(image)}
+            />
           </div>
         )}
         <div className="news-ss-copy">

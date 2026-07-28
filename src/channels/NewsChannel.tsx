@@ -107,14 +107,24 @@ export function NewsIcon({ active }: ChannelIconProps) {
 /* ---------- Card ---------- */
 
 function StoryCard({ story, rank }: { story: Story; rank: number }) {
+  // Dead or hotlink-blocked publisher images otherwise leave a broken frame on
+  // the card; drop the thumbnail and let the headline take the space.
+  const [imageOk, setImageOk] = useState(true);
   const open = () => {
     Sound.select();
     window.open(story.url, "_blank", "noopener");
   };
   return (
     <button className="news-card" onClick={open} onMouseEnter={() => Sound.hover()}>
-      {story.image && (
-        <img className="news-card-img" src={story.image} alt="" loading="lazy" draggable={false} />
+      {story.image && imageOk && (
+        <img
+          className="news-card-img"
+          src={story.image}
+          alt=""
+          loading="lazy"
+          draggable={false}
+          onError={() => setImageOk(false)}
+        />
       )}
       <div className="news-card-top">
         <span className="news-rank">{rank}</span>
