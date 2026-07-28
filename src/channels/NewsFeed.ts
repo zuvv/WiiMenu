@@ -122,3 +122,33 @@ export async function getNews(
   }
   return { stories: entry.stories, fetchedAt: entry.fetchedAt || feed.fetchedAt || 0 };
 }
+
+/**
+ * Every story in the feed — what the slideshow plays, so it runs the whole
+ * paper rather than whichever tab happened to be open.
+ *
+ * Sections are round-robined rather than concatenated: a viewer should get
+ * national, then world, then sport, and come back around, instead of sitting
+ * through twenty national stories before anything changes.
+ *
+ * Costs nothing — the whole feed is already in memory by the time the
+ * slideshow button is reachable.
+ */
+export async function getAllNews(signal?: AbortSignal): Promise<NewsResult> {
+  const feed = await withSignal(loadFeed(), signal);
+  const lists = CATEGORIES.map((c) => feed.categories?.[c.id]?.stories ?? []).filter(
+    (l) => l.length
+  );
+
+  const merged: Story[] = [];
+  for (let i = 0; lists.some((l) => i < l.length); i++) {
+    for (const l of lists) if (i < l.length) merged.push(l[i]);
+  }
+
+  // Sections overlap — a big story lands in both National and Business.
+  const seen = new Set<string>();
+  const stories = merged.filter((s) => s.url && !seen.has(s.url) && seen.add(s.url));
+  if (!stories.length) throw new Error("No headlines available yet.");
+
+  return { stories, fetchedAt: feed.fetchedAt || 0 };
+}

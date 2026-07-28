@@ -3,7 +3,7 @@ import type { ChannelAppProps, ChannelIconProps } from "../wii/types";
 import { Sound } from "../wii/sound";
 import { NewsMusic } from "./NewsMusic";
 import { NewsSlideshow } from "./NewsSlideshow";
-import { CATEGORIES, DEFAULT_CATEGORY, getNews, type Story } from "./NewsFeed";
+import { CATEGORIES, DEFAULT_CATEGORY, getAllNews, getNews, type Story } from "./NewsFeed";
 import "./NewsChannel.css";
 
 /* ============================================================
@@ -155,6 +155,9 @@ export function NewsApp(_props: ChannelAppProps) {
   const [fetchedAt, setFetchedAt] = useState(0);
   const [slideshow, setSlideshow] = useState(false);
   const [category, setCategory] = useState(DEFAULT_CATEGORY);
+  // Every section's stories, for the slideshow. Read from the same in-memory
+  // feed as the tabs, so this is a merge rather than a second request.
+  const [allStories, setAllStories] = useState<Story[]>([]);
   const abortRef = useRef<AbortController | null>(null);
 
   const load = useCallback(async (cat: string) => {
@@ -183,12 +186,28 @@ export function NewsApp(_props: ChannelAppProps) {
     return () => abortRef.current?.abort();
   }, [load, category]);
 
+  // A failure here only costs the slideshow its extra sections — the tab the
+  // viewer is looking at has its own error handling, so stay quiet.
+  useEffect(() => {
+    let live = true;
+    getAllNews()
+      .then((r) => live && setAllStories(r.stories))
+      .catch(() => {});
+    return () => {
+      live = false;
+    };
+  }, []);
+
   const today = new Date().toLocaleDateString(undefined, {
     weekday: "long",
     month: "long",
     day: "numeric",
     year: "numeric",
   });
+
+  /* The slideshow plays the whole paper. Until every section has arrived it
+     falls back to the open tab, so the button works on the first frame. */
+  const slideshowStories = allStories.length > 0 ? allStories : stories;
 
   const tickerText =
     stories.length > 0
@@ -240,7 +259,12 @@ export function NewsApp(_props: ChannelAppProps) {
             setSlideshow(true);
           }}
           onMouseEnter={() => Sound.hover()}
-          disabled={stories.length === 0}
+          disabled={slideshowStories.length === 0}
+          title={
+            slideshowStories.length
+              ? `Play all ${slideshowStories.length} stories from every section`
+              : undefined
+          }
         >
           <span aria-hidden="true">▶</span> Slideshow
         </button>
@@ -296,8 +320,8 @@ export function NewsApp(_props: ChannelAppProps) {
         </div>
       )}
 
-      {slideshow && stories.length > 0 && (
-        <NewsSlideshow stories={stories} onClose={() => setSlideshow(false)} />
+      {slideshow && slideshowStories.length > 0 && (
+        <NewsSlideshow stories={slideshowStories} onClose={() => setSlideshow(false)} />
       )}
     </div>
   );

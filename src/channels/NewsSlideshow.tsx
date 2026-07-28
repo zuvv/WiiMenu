@@ -13,6 +13,7 @@ import "./NewsSlideshow.css";
 
 const SLIDE_MS = 8000;
 const TICK_MS = 50; // progress-bar resolution
+const DOT_WINDOW = 25; // most dots to draw before the strip starts sliding
 
 export function NewsSlideshow({
   stories,
@@ -31,6 +32,15 @@ export function NewsSlideshow({
 
   const count = stories.length;
   const story = stories[index];
+
+  /* Indices of the dots to draw: all of them when the run is short, otherwise
+     a window that keeps the current dot centred until you reach either end. */
+  const dotRange = (() => {
+    if (count <= DOT_WINDOW) return Array.from({ length: count }, (_, i) => i);
+    const half = Math.floor(DOT_WINDOW / 2);
+    const start = Math.min(Math.max(index - half, 0), count - DOT_WINDOW);
+    return Array.from({ length: DOT_WINDOW }, (_, i) => start + i);
+  })();
 
   const go = useCallback(
     (delta: number) => {
@@ -151,9 +161,13 @@ export function NewsSlideshow({
         ✕ Close
       </button>
 
+      {/* One dot per story overflows the screen once the slideshow covers every
+          section (110 stories ≈ 1500px of dots), so past DOT_WINDOW the strip
+          becomes a window that slides with you. The "n / count" readout above
+          is what actually tells you where you are. */}
       <div className="news-ss-dots" aria-hidden="true">
-        {stories.map((s, i) => (
-          <span key={s.id} className={`news-ss-dot${i === index ? " is-on" : ""}`} />
+        {dotRange.map((i) => (
+          <span key={stories[i].id} className={`news-ss-dot${i === index ? " is-on" : ""}`} />
         ))}
       </div>
     </div>
