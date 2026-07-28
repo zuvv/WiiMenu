@@ -1,0 +1,72 @@
+.wii-root {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  font-family: var(--wii-font);
+  /* Fills the letterbox area around the scaled stage */
+  background: linear-gradient(to bottom, var(--wii-bg-top), var(--wii-bg-bot));
+}
+
+/* Fixed-size "screen" scaled to fit the viewport (see useFitScale).
+   Anchored top-left and positioned by an explicit translate, because an
+   element larger than its container does not centre reliably via auto
+   margins / flex / grid — those park it off-screen. */
+.wii-stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: top left;
+}
+
+/* The light-blue desktop with a soft vignette */
+.wii-desktop {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 60%),
+    linear-gradient(to bottom, var(--wii-bg-top) 0%, var(--wii-bg-mid) 55%, var(--wii-bg-bot) 100%);
+}
+
+/* Full-screen channel experience */
+.wii-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  opacity: 0;
+  transform: scale(0.08);
+  transition: transform 0.45s var(--wii-ease), opacity 0.3s ease;
+}
+.wii-overlay.is-shown {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.wii-overlay__back {
+  flex: 0 0 auto;
+  align-self: flex-start;
+  margin: 14px;
+  padding: 8px 18px;
+  font-family: var(--wii-font);
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(to bottom, var(--wii-blue), var(--wii-blue-deep));
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  border-radius: 22px;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(20, 120, 170, 0.35);
+}
+.wii-overlay__back:hover {
+  filter: brightness(1.06);
+}
+
+.wii-overlay__content {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}

@@ -1,0 +1,67 @@
+/* ============================================================
+   Wii Menu — Design Tokens
+   The single source of truth for colors, gradients, spacing,
+   and reusable "glossy" surfaces. Channels should style
+   themselves using these variables so the whole menu reads
+   as one cohesive system.
+   ============================================================ */
+
+:root {
+  /* --- Background (the light-blue Wii desktop) --- */
+  --wii-bg-top: #eef7fa;
+  --wii-bg-mid: #dcecf3;
+  --wii-bg-bot: #c9e2ec;
+
+  /* --- Channel tile surfaces --- */
+  --tile-radius: 14px;
+  --tile-bg-top: #ffffff;
+  --tile-bg-bot: #eef1f3;
+  --tile-border: #c4ccd1;
+  --tile-empty-bg: #e3e9ed;
+  --tile-empty-border: #ccd4d9;
+
+  /* --- The signature Wii blue --- */
+  --wii-blue: #35b4e5;
+  --wii-blue-deep: #189fd6;
+  --wii-blue-glow: #4fd0ff;
+  --wii-blue-dark: #0b6a9c;
+
+  /* --- Accents --- */
+  --wii-green: #6bbf3a;
+  --wii-gray-text: #8a969c;
+  --wii-line: #bcd7e2;
+
+  /* --- Bottom bar --- */
+  --bar-bg-top: #fbfdff;
+  --bar-bg-bot: #e6eef2;
+  --bar-height: 92px;
+
+  /* --- Typography --- */
+  --wii-font: "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+
+  /* --- Motion --- */
+  --wii-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Reusable glossy tile surface — channels build on top of this */
+.wii-gloss {
+  background: linear-gradient(to bottom, var(--tile-bg-top) 0%, #f6f8f9 55%, var(--tile-bg-bot) 100%);
+  border: 1px solid var(--tile-border);
+  border-radius: var(--tile-radius);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.04),
+    0 2px 4px rgba(70, 100, 120, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top-of-tile specular highlight — add as a ::before on any glossy element */
+.wii-gloss::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 42%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}

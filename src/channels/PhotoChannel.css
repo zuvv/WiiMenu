@@ -1,0 +1,239 @@
+/* ============================================================
+   Photo Channel — warm orange/yellow screensaver source picker.
+   Owns everything under the .photo-* namespace.
+   (The running slideshow lives in PhotoScreensaver.css/.saver-*)
+   ============================================================ */
+
+.photo-app {
+  --photo-orange: #ff9e2c;
+  --photo-orange-deep: #f2820c;
+  --photo-amber: #ffc85a;
+  --photo-cream: #fff6e6;
+
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--wii-font);
+  color: #5a4a34;
+  background:
+    radial-gradient(120% 70% at 50% -10%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0) 55%),
+    linear-gradient(to bottom, #fffdf8 0%, #fff2dd 60%, #ffe6bf 100%);
+  overflow: hidden;
+}
+
+/* ---------- Header ---------- */
+.photo-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 22px;
+  border-bottom: 1px solid rgba(242, 130, 12, 0.18);
+}
+
+.photo-header__mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--photo-amber), var(--photo-orange-deep));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 2px 5px rgba(210, 110, 10, 0.35);
+}
+
+.photo-title {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: #4a3a22;
+}
+.photo-subtitle {
+  margin: 2px 0 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: #a8895a;
+}
+
+.photo-header__spacer {
+  flex: 1;
+}
+
+/* ---------- Start button ---------- */
+.photo-btn {
+  font-family: var(--wii-font);
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(to bottom, var(--photo-amber), var(--photo-orange-deep));
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  border-radius: 22px;
+  padding: 9px 20px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 3px 8px rgba(210, 110, 10, 0.3);
+  transition: transform 0.2s var(--wii-ease), filter 0.2s var(--wii-ease);
+}
+.photo-btn:hover:not(:disabled) {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+.photo-btn:active:not(:disabled) {
+  transform: translateY(0);
+  filter: brightness(0.97);
+}
+.photo-btn:disabled {
+  cursor: default;
+  opacity: 0.45;
+  box-shadow: none;
+  filter: saturate(0.4);
+}
+
+/* ---------- Body ---------- */
+.photo-body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 22px;
+}
+
+.photo-lead {
+  margin: 0 0 18px;
+  max-width: 62ch;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #8a7150;
+}
+
+/* ---------- Source cards ---------- */
+.photo-sources {
+  display: grid;
+  gap: 14px;
+}
+
+.photo-source {
+  --tint: var(--photo-orange-deep);
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 12px 16px 12px 12px;
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
+  background: linear-gradient(to bottom, #ffffff, #fffaf0);
+  border: 2px solid rgba(242, 130, 12, 0.18);
+  border-radius: 18px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(210, 110, 10, 0.1);
+  transition: transform 0.18s var(--wii-ease), box-shadow 0.18s var(--wii-ease),
+    border-color 0.18s var(--wii-ease);
+}
+
+.photo-source:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(210, 110, 10, 0.18);
+}
+
+.photo-source.is-on {
+  border-color: var(--tint);
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--tint) 32%, transparent);
+}
+
+/* Dim the ones that won't be included, so the mix reads at a glance. */
+.photo-source:not(.is-on) .photo-source__thumb,
+.photo-source:not(.is-on) .photo-source__text {
+  opacity: 0.5;
+  filter: saturate(0.35);
+}
+
+.photo-source__thumb {
+  flex: 0 0 auto;
+  width: 104px;
+  height: 74px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--tint) 70%, white), var(--tint));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transition: opacity 0.18s ease, filter 0.18s ease;
+}
+
+.photo-source__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-source__thumb-empty {
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.photo-source__text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: opacity 0.18s ease, filter 0.18s ease;
+}
+
+.photo-source__label {
+  font-size: 16px;
+  font-weight: 700;
+  color: #4a3a22;
+}
+
+.photo-source__blurb {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #a08760;
+}
+
+.photo-source__check {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 2px solid rgba(242, 130, 12, 0.3);
+  background: #fff;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+.photo-source.is-on .photo-source__check {
+  background: var(--tint);
+  border-color: var(--tint);
+}
+
+/* ---------- Footer hint ---------- */
+.photo-hint {
+  margin: 20px 0 0;
+  font-size: 12.5px;
+  color: #b09872;
+}
+
+.photo-hint strong {
+  color: #8a7150;
+  font-weight: 700;
+}
+
+/* ---------- Wider viewports: two columns ---------- */
+@media (min-width: 860px) {
+  .photo-sources {
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  }
+}

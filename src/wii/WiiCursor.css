@@ -1,0 +1,20 @@
+.wii-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  /* the hand's fingertip is the hotspot — offset so it points where you aim */
+  margin: -4px 0 0 -14px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  will-change: transform;
+}
+
+/* Hide the OS cursor everywhere; the hand replaces it. */
+@media (hover: hover) and (pointer: fine) {
+  html.wii-has-cursor,
+  html.wii-has-cursor * {
+    cursor: none !important;
+  }
+}

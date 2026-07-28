@@ -1,0 +1,81 @@
+# Builds the Wii Menu and publishes it to GitHub Pages, and on a schedule
+# refreshes the News Channel's cached headlines first.
+#
+# Refresh and deploy live in ONE workflow on purpose. A commit pushed with the
+# default GITHUB_TOKEN does not trigger other workflows, so a separate
+# "deploy on push" workflow would never fire after a news commit and the site
+# would serve stale JSON until someone pushed code by hand.
+
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Every 4 hours. One run costs 12 GNews requests, so 6 runs = 72/day,
+    # leaving headroom under the free tier's 100/day cap.
+    - cron: "0 */4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write # commit the refreshed feed.json
+  pages: write
+  id-token: write
+
+# Never let two runs deploy at once, but let a scheduled refresh finish rather
+# than cancelling it — a half-run would leave feed.json partly updated.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Only on a schedule or a manual run — an ordinary code push should
+      # deploy the headlines already committed rather than spend requests.
+      - name: Refresh news
+        if: github.event_name != 'push'
+        env:
+          GNEWS_KEY: ${{ secrets.GNEWS_KEY }}
+        run: node scripts/fetch-news.mjs
+
+      - name: Commit refreshed headlines
+        if: github.event_name != 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/news/feed.json
+          # No diff means the upstream headlines had not moved — not an error.
+          if git diff --staged --quiet; then
+            echo "Headlines unchanged; nothing to commit."
+          else
+            git commit -m "news: refresh cached headlines"
+            git push
+          fi
+
+      - run: npm run build
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

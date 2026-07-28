@@ -1,0 +1,405 @@
+/* ============================================================
+   Photo Channel screensaver — full-screen slideshow.
+   Owns everything under the .saver-* namespace.
+   ============================================================ */
+
+.saver {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  overflow: hidden;
+  background: #05070a;
+  font-family: var(--wii-font);
+  color: #fff;
+  animation: saver-open 420ms var(--wii-ease) both;
+}
+
+@keyframes saver-open {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.saver__backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+
+/* ---------- Image layers ---------- */
+.saver__layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  will-change: transform, opacity;
+  transform-origin: center;
+}
+
+/* A layer stays transparent until its bitmap has decoded (JS adds --shown on
+   load), so the incoming slide crossfades in over the outgoing one instead of
+   flashing an empty frame. The drift is paused for the same reason — a slow
+   image would otherwise arrive already halfway through its pan. */
+.saver__layer {
+  opacity: 0;
+  transition: opacity 1100ms ease-out;
+  animation-duration: 9000ms;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  animation-play-state: paused;
+}
+
+.saver__layer--shown {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+/* Ken Burns drift — four variants, cycled by slide index. */
+.saver__layer--kb0 {
+  animation-name: saver-kb0;
+}
+.saver__layer--kb1 {
+  animation-name: saver-kb1;
+}
+.saver__layer--kb2 {
+  animation-name: saver-kb2;
+}
+.saver__layer--kb3 {
+  animation-name: saver-kb3;
+}
+
+@keyframes saver-kb0 {
+  from {
+    transform: scale(1.02) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.13) translate3d(-1.6%, -1.2%, 0);
+  }
+}
+@keyframes saver-kb1 {
+  from {
+    transform: scale(1.14) translate3d(1.4%, 1%, 0);
+  }
+  to {
+    transform: scale(1.02) translate3d(0, 0, 0);
+  }
+}
+@keyframes saver-kb2 {
+  from {
+    transform: scale(1.05) translate3d(-1.8%, 0.8%, 0);
+  }
+  to {
+    transform: scale(1.14) translate3d(1.4%, -0.9%, 0);
+  }
+}
+@keyframes saver-kb3 {
+  from {
+    transform: scale(1.12) translate3d(0, -1.4%, 0);
+  }
+  to {
+    transform: scale(1.03) translate3d(1.2%, 1.4%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .saver__layer {
+    animation-name: none !important;
+    transform: none !important;
+    transition-duration: 300ms;
+  }
+}
+
+/* ---------- Caption card ---------- */
+.saver__caption {
+  position: absolute;
+  left: 46px;
+  bottom: 62px;
+  max-width: min(560px, 46vw);
+  padding: 18px 22px 20px;
+  border-radius: 16px;
+  background: linear-gradient(to bottom, rgba(8, 12, 18, 0.62), rgba(8, 12, 18, 0.78));
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  animation: saver-caption-in 900ms 350ms var(--wii-ease) both;
+  pointer-events: auto;
+}
+
+@keyframes saver-caption-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.saver__badge {
+  display: inline-block;
+  margin-bottom: 9px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #cfefff;
+  background: rgba(53, 180, 229, 0.24);
+  border: 1px solid rgba(79, 208, 255, 0.42);
+}
+
+.saver__title {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+.saver__credit {
+  margin: 7px 0 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.saver__detail {
+  margin: 8px 0 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.saver__link {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--wii-blue-glow);
+  text-decoration: none;
+}
+.saver__link:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Progress bar ---------- */
+.saver__progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.saver__progress-fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(to right, var(--wii-blue), var(--wii-blue-glow));
+  box-shadow: 0 0 10px rgba(79, 208, 255, 0.7);
+}
+
+.saver__progress-fill.is-running {
+  animation: saver-progress linear forwards;
+}
+
+@keyframes saver-progress {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* ---------- Controls (fade with pointer idle) ---------- */
+.saver__controls,
+.saver__close,
+.saver__hint {
+  opacity: 0;
+  transition: opacity 500ms ease;
+  pointer-events: none;
+}
+
+.saver.is-awake .saver__controls,
+.saver.is-awake .saver__close,
+.saver.is-awake .saver__hint {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.saver__controls {
+  position: absolute;
+  right: 46px;
+  bottom: 62px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(8, 12, 18, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.saver__ctrl {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 19px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 160ms ease, transform 160ms var(--wii-ease);
+}
+.saver__ctrl:hover {
+  background: rgba(79, 208, 255, 0.28);
+  transform: scale(1.08);
+}
+.saver__ctrl--play {
+  font-size: 14px;
+}
+
+.saver__count {
+  margin-left: 4px;
+  padding-right: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.saver__close {
+  position: absolute;
+  top: 26px;
+  right: 30px;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  background: rgba(8, 12, 18, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 160ms ease, transform 160ms var(--wii-ease);
+}
+.saver__close:hover {
+  background: rgba(231, 93, 122, 0.6);
+  transform: scale(1.08);
+}
+
+.saver__hint {
+  position: absolute;
+  top: 34px;
+  left: 46px;
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.62);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* ---------- Loading / error ---------- */
+.saver__status {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 32px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.saver__status h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.saver__status p {
+  margin: 0;
+  max-width: 460px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.saver__status-detail {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px !important;
+  color: rgba(255, 160, 160, 0.8) !important;
+}
+
+.saver__spinner {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  border-top-color: var(--wii-blue-glow);
+  animation: saver-spin 800ms linear infinite;
+}
+
+@keyframes saver-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.saver__btn {
+  margin-top: 10px;
+  padding: 10px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.saver__btn:hover {
+  background: rgba(79, 208, 255, 0.28);
+}
+
+/* ---------- Narrow screens ---------- */
+@media (max-width: 720px) {
+  .saver__caption {
+    left: 18px;
+    right: 18px;
+    bottom: 84px;
+    max-width: none;
+  }
+  .saver__controls {
+    right: 50%;
+    transform: translateX(50%);
+    bottom: 18px;
+  }
+  .saver__hint {
+    display: none;
+  }
+}

@@ -1,0 +1,275 @@
+/* ============================================================
+   News Channel slideshow — the full-bleed, lean-back view.
+   Sits over the channel grid; keeps the green signature accent.
+   ============================================================ */
+
+.news-slideshow {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--wii-font);
+  background: #0d1a12;
+  animation: news-ss-in 260ms var(--wii-ease) both;
+}
+@keyframes news-ss-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* --- Backdrop: the story image, blown up and blurred --- */
+.news-ss-backdrop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.news-ss-backdrop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(26px) saturate(1.25) brightness(0.5);
+  transform: scale(1.18);
+  animation: news-ss-drift 9s linear both;
+}
+/* Slow push keeps a static image from feeling frozen. */
+@keyframes news-ss-drift {
+  from { transform: scale(1.14); }
+  to   { transform: scale(1.26); }
+}
+.news-ss-backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 90% at 50% 40%, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0.6) 100%),
+    linear-gradient(to top, rgba(10, 26, 16, 0.9) 0%, rgba(10, 26, 16, 0) 55%);
+}
+
+/* --- Stage --- */
+.news-ss-stage {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 42px;
+  width: min(1140px, 88%);
+  padding-bottom: 56px;
+  animation: news-ss-slide 420ms var(--wii-ease) both;
+}
+@keyframes news-ss-slide {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.news-ss-figure {
+  flex: 0 0 46%;
+  aspect-ratio: 16 / 10;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+.news-ss-figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.news-ss-copy {
+  flex: 1 1 auto;
+  min-width: 0;
+  color: #fff;
+}
+
+.news-ss-kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.news-ss-source {
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: linear-gradient(to bottom, #4fae3f, #2c8b39);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 2px 6px rgba(0, 0, 0, 0.35);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.news-ss-count {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.06em;
+}
+
+.news-ss-title {
+  margin: 0 0 14px;
+  font-size: clamp(26px, 3.4vw, 44px);
+  line-height: 1.14;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
+}
+
+.news-ss-desc {
+  margin: 0 0 22px;
+  font-size: clamp(14px, 1.25vw, 17px);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+  /* Long summaries must not push the read button off-stage. */
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-ss-read {
+  appearance: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1f6b2a;
+  padding: 11px 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: linear-gradient(to bottom, #ffffff, #dff0da);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 4px 12px rgba(0, 0, 0, 0.35);
+  transition: transform 120ms var(--wii-ease), box-shadow 120ms var(--wii-ease);
+}
+.news-ss-read:hover {
+  transform: translateY(-1px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 7px 18px rgba(0, 0, 0, 0.42);
+}
+.news-ss-read:active {
+  transform: translateY(1px);
+}
+
+/* --- Progress bar --- */
+.news-ss-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.16);
+  z-index: 2;
+}
+.news-ss-progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, #6bbf3a, #a6e88a);
+  box-shadow: 0 0 10px rgba(107, 191, 58, 0.8);
+  /* Matches the 50ms tick — smooths the bar without lagging the slide. */
+  transition: width 50ms linear;
+}
+
+/* --- Controls --- */
+.news-ss-controls {
+  position: absolute;
+  bottom: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  gap: 10px;
+}
+.news-ss-controls button {
+  appearance: none;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 15px;
+  font-family: inherit;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: background 140ms var(--wii-ease), transform 120ms var(--wii-ease);
+}
+.news-ss-controls button:hover {
+  background: rgba(255, 255, 255, 0.26);
+  transform: translateY(-2px);
+}
+.news-ss-controls button:active {
+  transform: translateY(0);
+}
+
+.news-ss-close {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  z-index: 2;
+  appearance: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  background: rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(8px);
+  transition: background 140ms var(--wii-ease);
+}
+.news-ss-close:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* --- Dots --- */
+.news-ss-dots {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  gap: 7px;
+}
+.news-ss-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: background 200ms var(--wii-ease), transform 200ms var(--wii-ease);
+}
+.news-ss-dot.is-on {
+  background: #a6e88a;
+  transform: scale(1.4);
+  box-shadow: 0 0 8px rgba(166, 232, 138, 0.9);
+}
+
+/* --- Narrow screens: stack the figure above the copy --- */
+@media (max-width: 860px) {
+  .news-ss-stage {
+    flex-direction: column;
+    gap: 20px;
+    width: 90%;
+  }
+  .news-ss-figure {
+    flex: 0 0 auto;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+  .news-ss-desc {
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news-slideshow,
+  .news-ss-stage,
+  .news-ss-backdrop img {
+    animation: none;
+  }
+}

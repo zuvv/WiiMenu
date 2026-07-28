@@ -1,0 +1,62 @@
+.wii-grid-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 30px 20px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* The stage is a fixed 1280×720, so the authentic 4×3 grid always fits —
+   no reflow needed. Rows are sized by the tiles' own 4:3 aspect ratio so a
+   tile can never overflow its column. */
+.wii-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  /* `flex: 1` here would win over this width (flex-basis: 0 makes the grid
+     grow to the full wrap), inflating the 4:3 rows until they overflow. */
+  flex: 0 1 auto;
+  width: min(100%, 900px);
+  align-content: center;
+  min-width: 0;
+}
+
+/* Page navigation arrows — just the floating Wii arrow, no button pill */
+.wii-page-arrow {
+  flex: 0 0 auto;
+  width: 52px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.15s var(--wii-ease), filter 0.15s var(--wii-ease);
+}
+.wii-arrow-img {
+  width: 100%;
+  height: auto;
+  max-height: 70%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 3px rgba(10, 60, 110, 0.25));
+}
+
+.wii-page-arrow:not(:disabled):hover {
+  transform: scale(1.12);
+  filter: brightness(1.08);
+}
+
+.wii-page-arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* A single page of channels needs no arrows — reclaim the space entirely */
+.wii-page-arrow.is-hidden {
+  display: none;
+}

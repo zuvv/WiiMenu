@@ -1,0 +1,273 @@
+/* ============================================================
+   Wii Shop Channel — glossy blue-and-white storefront
+   Owns only classes prefixed with `wiishop-`.
+   Built on the shared design tokens from theme.css.
+   ============================================================ */
+
+.wiishop {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--wii-font);
+  color: #2b3b43;
+  background:
+    radial-gradient(120% 80% at 50% -10%, #eafaff 0%, rgba(234, 250, 255, 0) 60%),
+    linear-gradient(to bottom, #d6f0fb 0%, #bfe6f6 45%, #a9dbf1 100%);
+  overflow: hidden;
+}
+
+/* ---------- Top storefront bar ---------- */
+.wiishop-bar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 22px;
+  background: linear-gradient(to bottom, var(--wii-blue) 0%, var(--wii-blue-deep) 55%, var(--wii-blue-dark) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -3px 10px rgba(0, 0, 0, 0.18),
+    0 3px 10px rgba(11, 106, 156, 0.35);
+  position: relative;
+  z-index: 2;
+}
+.wiishop-bar::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 50%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+.wiishop-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.wiishop-logo svg {
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.25));
+}
+.wiishop-wordmark {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.wiishop-wordmark b {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+.wiishop-wordmark span {
+  font-size: 11px;
+  font-weight: 600;
+  opacity: 0.85;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+/* Search box lives in the bar */
+.wiishop-search {
+  flex: 1 1 auto;
+  max-width: 340px;
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    inset 0 2px 4px rgba(11, 106, 156, 0.18),
+    0 1px 0 rgba(255, 255, 255, 0.4);
+}
+.wiishop-search svg {
+  flex: 0 0 auto;
+  opacity: 0.55;
+}
+.wiishop-search input {
+  flex: 1 1 auto;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--wii-font);
+  font-size: 15px;
+  color: #2b3b43;
+  min-width: 0;
+}
+.wiishop-search input::placeholder {
+  color: var(--wii-gray-text);
+}
+
+/* Wii Points balance chip */
+.wiishop-points {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  padding: 6px 16px;
+  border-radius: 14px;
+  background: linear-gradient(to bottom, #ffffff, #eaf6fc);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 2px 5px rgba(11, 106, 156, 0.28);
+}
+.wiishop-points b {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--wii-blue-dark);
+}
+.wiishop-points span {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--wii-gray-text);
+}
+
+/* ---------- Scrollable storefront body ---------- */
+.wiishop-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 24px 26px 34px;
+}
+
+.wiishop-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 0 0 18px;
+}
+.wiishop-heading h2 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--wii-blue-dark);
+  font-style: italic;
+}
+.wiishop-heading small {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--wii-gray-text);
+}
+
+.wiishop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 18px;
+}
+
+/* ---------- Storefront cards ---------- */
+.wiishop-card {
+  --accent: var(--wii-blue);
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 0;
+  border: 1px solid #cdd8de;
+  border-radius: var(--tile-radius);
+  background: linear-gradient(to bottom, #ffffff 0%, #f6fbfd 55%, #eef4f7 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 3px 8px rgba(70, 100, 120, 0.16);
+  cursor: pointer;
+  overflow: hidden;
+  font-family: var(--wii-font);
+  transition: transform 0.28s var(--wii-ease), box-shadow 0.28s var(--wii-ease);
+}
+.wiishop-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 10px 22px rgba(30, 143, 196, 0.28);
+}
+.wiishop-card:focus-visible {
+  outline: 3px solid var(--wii-blue-glow);
+  outline-offset: 2px;
+}
+
+.wiishop-thumb {
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 46px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 82%, #fff) 0%, var(--accent) 100%);
+  position: relative;
+  box-shadow: inset 0 -3px 8px rgba(0, 0, 0, 0.12);
+}
+.wiishop-thumb::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 55%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+.wiishop-thumb span {
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.25));
+}
+
+.wiishop-cardbody {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 13px 15px 15px;
+  flex: 1 1 auto;
+}
+.wiishop-cardbody h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  color: #223038;
+}
+.wiishop-cardbody p {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--wii-gray-text);
+  flex: 1 1 auto;
+}
+
+.wiishop-launch {
+  margin-top: 10px;
+  align-self: flex-start;
+  padding: 8px 20px;
+  font-family: var(--wii-font);
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(to bottom, var(--wii-blue), var(--wii-blue-deep));
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(20, 120, 170, 0.35);
+  transition: filter 0.2s var(--wii-ease), transform 0.1s var(--wii-ease);
+}
+.wiishop-launch:hover {
+  filter: brightness(1.08);
+}
+.wiishop-launch:active {
+  transform: translateY(1px);
+}
+
+/* ---------- Empty state ---------- */
+.wiishop-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--wii-gray-text);
+}
+.wiishop-empty b {
+  display: block;
+  font-size: 18px;
+  color: var(--wii-blue-dark);
+  margin-bottom: 6px;
+}

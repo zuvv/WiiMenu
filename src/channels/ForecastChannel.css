@@ -1,0 +1,472 @@
+/* ============================================================
+   Forecast Channel — styles & animations
+   Scoped under .forecast-root so nothing leaks into the shell.
+   ============================================================ */
+
+.forecast-root {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--wii-font);
+  color: #2f4650;
+  background: linear-gradient(to bottom, #eaf6fd 0%, #cfe8f7 48%, #b6dcf0 100%);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Soft drifting cloud texture behind everything */
+.forecast-root::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 45% at 20% 12%, rgba(255, 255, 255, 0.55), transparent 70%),
+    radial-gradient(50% 40% at 82% 20%, rgba(255, 255, 255, 0.4), transparent 70%),
+    radial-gradient(70% 50% at 50% 100%, rgba(255, 255, 255, 0.35), transparent 70%);
+  pointer-events: none;
+}
+
+.forecast-scroll {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 18px 26px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ---------- Top bar ---------- */
+.forecast-topbar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.forecast-place {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.forecast-place h1 {
+  margin: 0;
+  font-size: clamp(20px, 3.2vw, 30px);
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  color: #1d3b49;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.forecast-place .sub {
+  font-size: 13px;
+  color: var(--wii-gray-text);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.forecast-spacer {
+  flex: 1;
+  min-width: 20px;
+}
+
+/* ---------- Search ---------- */
+.forecast-search {
+  position: relative;
+  width: min(280px, 46vw);
+}
+
+.forecast-search input {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  color: #234;
+  padding: 10px 14px 10px 36px;
+  border-radius: 22px;
+  border: 1px solid var(--tile-border);
+  background:
+    linear-gradient(to bottom, #ffffff, #eef4f7);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 1px 3px rgba(60, 100, 120, 0.15);
+  outline: none;
+  transition: box-shadow 0.25s var(--wii-ease), border-color 0.25s var(--wii-ease);
+}
+
+.forecast-search input:focus {
+  border-color: var(--wii-blue);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 0 0 3px rgba(79, 208, 255, 0.35);
+}
+
+.forecast-search .glass {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.forecast-results {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid var(--tile-border);
+  border-radius: 14px;
+  box-shadow: 0 10px 26px rgba(30, 70, 95, 0.28);
+  overflow: hidden;
+  animation: fc-pop 0.2s var(--wii-ease);
+}
+
+.forecast-results button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  padding: 10px 14px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2f4650;
+  cursor: pointer;
+  border-bottom: 1px solid #eef2f4;
+  transition: background 0.15s ease;
+}
+
+.forecast-results button:last-child {
+  border-bottom: none;
+}
+
+.forecast-results button:hover {
+  background: linear-gradient(to right, rgba(79, 208, 255, 0.16), rgba(79, 208, 255, 0.05));
+}
+
+.forecast-results .muted {
+  color: var(--wii-gray-text);
+  font-weight: 600;
+  font-size: 12px;
+  padding: 12px 14px;
+}
+
+/* ---------- Unit toggle ---------- */
+.forecast-unit {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: 22px;
+  background: linear-gradient(to bottom, #dceaf1, #c7dbe6);
+  box-shadow: inset 0 1px 3px rgba(40, 80, 100, 0.25);
+}
+
+.forecast-unit button {
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 14px;
+  color: #5c7480;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.28s var(--wii-ease);
+}
+
+.forecast-unit button.on {
+  color: #fff;
+  background: linear-gradient(to bottom, var(--wii-blue-glow), var(--wii-blue-deep));
+  box-shadow: 0 2px 5px rgba(11, 106, 156, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* ---------- Hero ---------- */
+.forecast-hero {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 3vw, 40px);
+  padding: clamp(18px, 3vw, 30px) clamp(20px, 4vw, 40px);
+  border-radius: 22px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 22px rgba(30, 70, 100, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  animation: fc-rise 0.5s var(--wii-ease);
+}
+
+.forecast-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 46%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+.forecast-hero .hero-icon {
+  flex: 0 0 auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.18));
+  z-index: 1;
+}
+
+.forecast-hero .hero-main {
+  z-index: 1;
+  min-width: 0;
+}
+
+.forecast-temp {
+  font-size: clamp(52px, 11vw, 96px);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -2px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+
+.forecast-temp .deg {
+  font-size: 0.5em;
+  vertical-align: super;
+  font-weight: 700;
+  margin-left: 2px;
+}
+
+.forecast-cond {
+  font-size: clamp(18px, 3vw, 26px);
+  font-weight: 700;
+  margin-top: 4px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.forecast-metrics {
+  display: flex;
+  gap: 22px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.forecast-metric {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.16);
+  padding: 7px 13px;
+  border-radius: 14px;
+  backdrop-filter: blur(2px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.forecast-metric .label {
+  opacity: 0.82;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* Rotating globe flourish in the hero corner */
+.forecast-globe {
+  position: absolute;
+  right: -34px;
+  bottom: -34px;
+  width: 150px;
+  height: 150px;
+  opacity: 0.22;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.forecast-globe .globe-spin {
+  transform-origin: 60px 60px;
+  animation: fc-spin 26s linear infinite;
+}
+
+/* ---------- Forecast strip ---------- */
+.forecast-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.forecast-day {
+  border-radius: var(--tile-radius);
+  padding: 12px 6px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  animation: fc-rise 0.5s var(--wii-ease) both;
+}
+
+.forecast-day .dow {
+  font-weight: 800;
+  font-size: 14px;
+  color: #24606a;
+}
+
+.forecast-day.is-today {
+  outline: 2px solid var(--wii-blue);
+  outline-offset: -2px;
+}
+
+.forecast-day .hi {
+  font-weight: 800;
+  font-size: 17px;
+  color: #1d3b49;
+}
+
+.forecast-day .lo {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--wii-gray-text);
+}
+
+.forecast-day .range {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+}
+
+/* ---------- States ---------- */
+.forecast-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
+  color: #3a5560;
+  padding: 24px;
+}
+
+.forecast-center h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.forecast-center p {
+  margin: 0;
+  color: var(--wii-gray-text);
+  font-weight: 600;
+  max-width: 340px;
+}
+
+.forecast-retry {
+  border: none;
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 15px;
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 22px;
+  cursor: pointer;
+  background: linear-gradient(to bottom, var(--wii-blue-glow), var(--wii-blue-deep));
+  box-shadow: 0 3px 8px rgba(11, 106, 156, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transition: transform 0.2s var(--wii-ease);
+}
+
+.forecast-retry:hover {
+  transform: translateY(-2px);
+}
+
+.forecast-spinner {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 6px solid rgba(53, 180, 229, 0.25);
+  border-top-color: var(--wii-blue);
+  animation: fc-spin 0.9s linear infinite;
+}
+
+.forecast-section-label {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #4a7a8a;
+  margin: 2px 2px -4px;
+}
+
+/* ---------- Weather icon animations ---------- */
+.wi-sun-rays {
+  transform-origin: center;
+  animation: fc-spin 18s linear infinite;
+}
+
+.wi-cloud {
+  animation: fc-drift 5s ease-in-out infinite;
+}
+
+.wi-cloud.slow {
+  animation-duration: 7s;
+}
+
+.wi-drop {
+  animation: fc-fall 1.1s linear infinite;
+}
+
+.wi-flake {
+  animation: fc-flake 2.4s linear infinite;
+  transform-origin: center;
+}
+
+.wi-bolt {
+  animation: fc-flash 2s ease-in-out infinite;
+}
+
+@keyframes fc-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fc-drift {
+  0%, 100% { transform: translateX(-3px); }
+  50% { transform: translateX(3px); }
+}
+
+@keyframes fc-fall {
+  0% { transform: translateY(-6px); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(14px); opacity: 0; }
+}
+
+@keyframes fc-flake {
+  0% { transform: translateY(-4px) rotate(0deg); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(16px) rotate(180deg); opacity: 0; }
+}
+
+@keyframes fc-flash {
+  0%, 45%, 55%, 100% { opacity: 1; }
+  48%, 52% { opacity: 0.35; }
+}
+
+@keyframes fc-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fc-pop {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 640px) {
+  .forecast-days {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .forecast-hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  .forecast-metrics {
+    justify-content: center;
+  }
+}

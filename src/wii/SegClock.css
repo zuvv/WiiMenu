@@ -1,0 +1,34 @@
+.seg-clock {
+  display: flex;
+  align-items: center;
+  gap: 0.08em;
+  font-size: 56px;
+  line-height: 1;
+}
+
+/* Each glyph is a gray-tinted mask of the real Wii digit texture */
+.seg {
+  display: inline-block;
+  height: 1em;
+  background: var(--wii-gray-text);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  transition: opacity 0.12s linear;
+}
+
+.seg.is-off {
+  opacity: 0.2;
+}
+
+/* AM/PM sits small, up near the top like the real clock */
+.seg.ampm {
+  height: 0.32em;
+  width: calc(1.8 * 0.32em) !important;
+  align-self: flex-start;
+  margin-top: 0.32em;
+  margin-left: 0.16em;
+}
