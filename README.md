@@ -89,7 +89,10 @@ Source** to **GitHub Actions**.
 
 ## Notes
 
-- Sounds are **synthesized** with the Web Audio API (no copyrighted Wii audio
-  ships with this project). Audio starts after your first click, per browser
+- Sound effects and the News Channel music are **original Wii audio**, played
+  through the Web Audio API for low-latency overlapping playback. Only the ten
+  files the app actually references are committed. They belong to Nintendo and
+  are here for a personal, non-commercial recreation — if you fork this, that
+  is your call to make. Audio starts after your first click, per browser
   autoplay rules.
 - The Forecast channel uses Open-Meteo, a free API that needs no key.
