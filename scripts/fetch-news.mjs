@@ -23,6 +23,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { locateAll } from "./geocode.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = resolve(ROOT, "public/news/feed.json");
@@ -128,7 +129,14 @@ async function fetchCategory(cat) {
   let clean = merged.filter((s) => s.title && s.url && !seen.has(s.url) && seen.add(s.url));
   if (cat.limit) clean = clean.slice(0, cat.limit);
   if (!clean.length) throw new Error("No stories returned.");
-  return clean;
+
+  /* Tag whatever we can with a location, which is what the globe view
+     plots. GNews sends no coordinates, so this is a gazetteer scan over
+     the headline text — see geocode.mjs. Roughly half of stories match;
+     the rest just don't get a pin. Doing it here rather than in the
+     browser keeps the 170KB place list out of the bundle. */
+  const placed = locateAll(clean);
+  return { stories: clean, placed };
 }
 
 /* Previous run's output. A category that fails today keeps yesterday's
@@ -149,10 +157,10 @@ const failures = [];
 
 for (const cat of CATEGORIES) {
   try {
-    const stories = await fetchCategory(cat);
+    const { stories, placed } = await fetchCategory(cat);
     categories[cat.id] = { stories, fetchedAt: Date.now() };
     fresh++;
-    console.log(`✓ ${cat.id}: ${stories.length} stories`);
+    console.log(`✓ ${cat.id}: ${stories.length} stories, ${placed} on the map`);
   } catch (err) {
     const kept = previous?.categories?.[cat.id];
     failures.push(`${cat.id}: ${err.message}`);
@@ -182,7 +190,12 @@ await mkdir(dirname(OUT), { recursive: true });
 await writeFile(OUT, JSON.stringify(feed, null, 2) + "\n");
 
 const total = Object.values(categories).reduce((n, c) => n + c.stories.length, 0);
+const placed = Object.values(categories).reduce(
+  (n, c) => n + c.stories.filter((s) => s.place).length,
+  0
+);
 console.log(
   `\nWrote ${OUT}\n${total} stories across ${Object.keys(categories).length} categories` +
-    ` (${fresh} refreshed, ${failures.length} kept from cache)`
+    ` (${fresh} refreshed, ${failures.length} kept from cache)\n` +
+    `${placed} carry a location for the globe`
 );

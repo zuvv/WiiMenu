@@ -23,6 +23,25 @@
    two share only these `id` strings, so keep them in step.
    ============================================================ */
 
+/**
+ * Where a story happened, if we could work it out.
+ *
+ * GNews sends no coordinates, so this is inferred from the headline text
+ * by scripts/geocode.mjs at build time and baked into feed.json. Roughly
+ * half of stories get one; the rest are simply absent from the globe.
+ * The client never sees the gazetteer — only the answer.
+ */
+export interface Place {
+  /** Stable key. Stories sharing it stack onto one pin. */
+  id: string;
+  name: string;
+  kind: "city" | "region" | "country";
+  /** Containing country, for the panel's "Lyon, France". Empty for countries. */
+  country: string;
+  lat: number;
+  lon: number;
+}
+
 export interface Story {
   id: string;
   title: string;
@@ -31,6 +50,7 @@ export interface Story {
   image?: string;
   publishedAt?: string;
   description?: string;
+  place?: Place;
 }
 
 /** A tab in the channel. */
@@ -151,4 +171,33 @@ export async function getAllNews(signal?: AbortSignal): Promise<NewsResult> {
   if (!stories.length) throw new Error("No headlines available yet.");
 
   return { stories, fetchedAt: feed.fetchedAt || 0 };
+}
+
+/* ------------------------------------------------------------
+   Presentation helpers shared by the card grid, the globe's
+   story panel, and the slideshow.
+   ------------------------------------------------------------ */
+
+/** "nytimes.com" — the fallback when a story carries no source name. */
+export function domainOf(url: string | undefined): string {
+  if (!url) return "";
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return "";
+  }
+}
+
+/** "3h ago". Empty string for a missing or unparseable timestamp. */
+export function relativeTime(iso: string | undefined): string {
+  if (!iso) return "";
+  const then = new Date(iso).getTime();
+  if (Number.isNaN(then)) return "";
+  const diff = Math.max(0, Math.floor((Date.now() - then) / 1000));
+  if (diff < 60) return "just now";
+  const mins = Math.floor(diff / 60);
+  if (mins < 60) return `${mins}m ago`;
+  const hours = Math.floor(mins / 60);
+  if (hours < 24) return `${hours}h ago`;
+  return `${Math.floor(hours / 24)}d ago`;
 }

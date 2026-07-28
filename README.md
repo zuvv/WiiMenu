@@ -39,6 +39,8 @@ src/
   channels/            One file per channel (each self-contained)
     DiscChannel.tsx  MiiChannel.tsx  PhotoChannel.tsx
     ForecastChannel.tsx  NewsChannel.tsx  WiiShopChannel.tsx
+    NewsGlobe.tsx      The spinnable globe view (pins, drill-down panel)
+    globe.ts           Its projection maths and pixel renderer — no React
 ```
 
 ## Adding your own app to the menu
@@ -91,6 +93,66 @@ npm run fetch:news
 Setting up a fork: add your key as a repo secret named `GNEWS_KEY` under
 **Settings → Secrets and variables → Actions**, then set **Settings → Pages →
 Source** to **GitHub Actions**.
+
+## The News Globe
+
+The channel opens on a globe you can grab and spin, with every story pinned
+where it happened. Stories from the same place stack onto one pin — click it and
+you get the list, then a preview, then the article.
+
+GNews sends no coordinates, so the location is inferred from the words in the
+headline. `scripts/geocode.mjs` scans the title and description against
+`scripts/gazetteer.json` (177 countries with their demonyms, US states, ~640
+world cities) and scores the candidates: a city beats a region, a region beats a
+country, and a hit in the headline beats one in the blurb. It runs inside the
+same cron job as the fetch, so each story arrives with a `place` already on it
+and the browser never sees the place list.
+
+Matching is deliberately conservative — a pin on the wrong continent is worse
+than a missing pin. It's case-sensitive (`Mobile` the city vs `mobile` the
+phone), and names that read as a person more often than a place are excluded.
+About half of stories get pinned; the rest just aren't on the globe.
+
+Pins are DOM elements laid over the canvas and positioned by the animation
+loop. Each one is a **zero-sized anchor** with its dot and label hanging off it
+absolutely — if the label were part of the layout box, centring the pin on its
+coordinate would push the dot west by half the label's width, and the error
+would look like bad geography rather than bad CSS.
+
+The sphere is drawn in a plain 2D canvas. A flat world map — coastlines,
+country borders, the big lakes, polar ice, graticule — is painted once at
+startup from `public/geo/world.json`, and then each frame walks the pixels of
+the disc and inverse-projects them back onto that map. That gets correct
+occlusion at the horizon for free and lets every pixel be lit, which is what
+makes it read as a ball rather than a circle. A horizontal drag costs almost
+nothing, because yaw drops out of the expensive part of the projection and
+becomes a sideways offset into the texture.
+
+The map is drawn rather than shipped as a finished image: Canvas2D gives
+antialiasing and stroking for free, the vectors are ~160KB over the wire
+against roughly a megabyte for a PNG the same size, and it comes out sharp at
+whatever texture size we ask for. The data is Natural Earth **50m** — 110m has
+no borders at all and renders Britain as a blob. Painting takes ~130ms, once,
+behind the channel's loading line.
+
+The texture is 3072×1536, which is the whole of what "the globe looks low
+resolution" turned out to mean: the globe shows about 9 pixels per degree of
+longitude at the centre of the disc, so a 2048-wide map at 5.7 was being
+magnified rather than sampled. Going on to 4096 measured no visible difference
+and tripled the per-frame cost — the sampler reads the map in a scattered
+pattern and lives or dies by the cache, so resolution past what the screen can
+show gets paid for entirely in cache misses.
+
+Both data files are generated and committed. Regenerate them from Natural Earth
+(public domain) after changing the place tables:
+
+```bash
+npm run build:geo      # rebuilds gazetteer.json + world.json
+npm run geocode:feed   # re-tags the feed already on disk; add --dry --list
+```
+
+`geocode:feed` touches no network, so it's the way to try out gazetteer changes
+without spending any of the GNews allowance.
 
 ## Notes
 

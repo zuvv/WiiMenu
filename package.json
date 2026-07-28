@@ -8,7 +8,9 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "fetch:news": "node scripts/fetch-news.mjs"
+    "fetch:news": "node scripts/fetch-news.mjs",
+    "geocode:feed": "node scripts/annotate-feed.mjs",
+    "build:geo": "node scripts/build-geo.mjs"
   },
   "dependencies": {
     "react": "^19.2.7",

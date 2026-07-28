@@ -3,7 +3,16 @@ import type { ChannelAppProps, ChannelIconProps } from "../wii/types";
 import { Sound } from "../wii/sound";
 import { NewsMusic } from "./NewsMusic";
 import { NewsSlideshow } from "./NewsSlideshow";
-import { CATEGORIES, DEFAULT_CATEGORY, getAllNews, getNews, type Story } from "./NewsFeed";
+import { NewsGlobe } from "./NewsGlobe";
+import {
+  CATEGORIES,
+  DEFAULT_CATEGORY,
+  domainOf,
+  getAllNews,
+  getNews,
+  relativeTime,
+  type Story,
+} from "./NewsFeed";
 import "./NewsChannel.css";
 
 /* ============================================================
@@ -16,34 +25,17 @@ import "./NewsChannel.css";
    as new as the last cron run, so a refresh would re-read the
    same file. The masthead's "Updated …" stamp says when that was.
 
+   Two views share the masthead:
+     · Globe     every located story, pinned where it happened
+     · Headlines the card grid, one section at a time
+
    Signature accent: GREEN.
    ============================================================ */
 
 type LoadState = "loading" | "ready" | "error";
+type View = "globe" | "grid";
 
 /* ---------- helpers ---------- */
-
-function domainOf(url: string | undefined): string {
-  if (!url) return "";
-  try {
-    return new URL(url).hostname.replace(/^www\./, "");
-  } catch {
-    return "";
-  }
-}
-
-function relativeTime(iso: string | undefined): string {
-  if (!iso) return "";
-  const then = new Date(iso).getTime();
-  if (Number.isNaN(then)) return "";
-  const diff = Math.max(0, Math.floor((Date.now() - then) / 1000));
-  if (diff < 60) return "just now";
-  const mins = Math.floor(diff / 60);
-  if (mins < 60) return `${mins}m ago`;
-  const hours = Math.floor(mins / 60);
-  if (hours < 24) return `${hours}h ago`;
-  return `${Math.floor(hours / 24)}d ago`;
-}
 
 /** Clock time of the last successful fetch — "Updated 3:52 PM". */
 function updatedLabel(at: number): string {
@@ -165,6 +157,9 @@ export function NewsApp(_props: ChannelAppProps) {
   const [fetchedAt, setFetchedAt] = useState(0);
   const [slideshow, setSlideshow] = useState(false);
   const [category, setCategory] = useState(DEFAULT_CATEGORY);
+  /* The globe leads. It's the view that says "News Channel" at a glance,
+     and it needs no section chosen — it plots the whole paper at once. */
+  const [view, setView] = useState<View>("globe");
   // Every section's stories, for the slideshow. Read from the same in-memory
   // feed as the tabs, so this is a merge rather than a second request.
   const [allStories, setAllStories] = useState<Story[]>([]);
@@ -215,9 +210,10 @@ export function NewsApp(_props: ChannelAppProps) {
     year: "numeric",
   });
 
-  /* The slideshow plays the whole paper. Until every section has arrived it
-     falls back to the open tab, so the button works on the first frame. */
-  const slideshowStories = allStories.length > 0 ? allStories : stories;
+  /* The globe and the slideshow both work on the whole paper rather than
+     the open tab. Until every section has arrived they fall back to the
+     current one, so neither is dead on the first frame. */
+  const wholePaper = allStories.length > 0 ? allStories : stories;
 
   const tickerText =
     stories.length > 0
@@ -262,6 +258,30 @@ export function NewsApp(_props: ChannelAppProps) {
           {today}
           {fetchedAt > 0 && <span className="news-mast-updated">{updatedLabel(fetchedAt)}</span>}
         </div>
+        {/* View switch */}
+        <div className="news-views" role="group" aria-label="View">
+          {(
+            [
+              ["globe", "🌍", "Globe"],
+              ["grid", "▤", "Headlines"],
+            ] as const
+          ).map(([id, glyph, label]) => (
+            <button
+              key={id}
+              className={`news-view-btn${view === id ? " is-on" : ""}`}
+              onClick={() => {
+                if (view === id) return;
+                Sound.page();
+                setView(id);
+              }}
+              onMouseEnter={() => Sound.hover()}
+              aria-pressed={view === id}
+            >
+              <span aria-hidden="true">{glyph}</span> {label}
+            </button>
+          ))}
+        </div>
+
         <button
           className="news-slideshow-btn"
           onClick={() => {
@@ -269,10 +289,10 @@ export function NewsApp(_props: ChannelAppProps) {
             setSlideshow(true);
           }}
           onMouseEnter={() => Sound.hover()}
-          disabled={slideshowStories.length === 0}
+          disabled={wholePaper.length === 0}
           title={
-            slideshowStories.length
-              ? `Play all ${slideshowStories.length} stories from every section`
+            wholePaper.length
+              ? `Play all ${wholePaper.length} stories from every section`
               : undefined
           }
         >
@@ -280,27 +300,31 @@ export function NewsApp(_props: ChannelAppProps) {
         </button>
       </header>
 
-      {/* Category tabs */}
-      <nav className="news-tabs" aria-label="News categories">
-        {CATEGORIES.map((c) => (
-          <button
-            key={c.id}
-            className={`news-tab${c.id === category ? " is-on" : ""}`}
-            onClick={() => {
-              if (c.id === category) return;
-              Sound.page();
-              setCategory(c.id);
-            }}
-            onMouseEnter={() => Sound.hover()}
-            aria-current={c.id === category ? "page" : undefined}
-          >
-            {c.label}
-          </button>
-        ))}
-      </nav>
+      {/* Category tabs. The globe has no sections — it plots the lot. */}
+      {view === "grid" && (
+        <nav className="news-tabs" aria-label="News categories">
+          {CATEGORIES.map((c) => (
+            <button
+              key={c.id}
+              className={`news-tab${c.id === category ? " is-on" : ""}`}
+              onClick={() => {
+                if (c.id === category) return;
+                Sound.page();
+                setCategory(c.id);
+              }}
+              onMouseEnter={() => Sound.hover()}
+              aria-current={c.id === category ? "page" : undefined}
+            >
+              {c.label}
+            </button>
+          ))}
+        </nav>
+      )}
 
       {/* Body */}
-      {state === "error" ? (
+      {view === "globe" ? (
+        <NewsGlobe stories={wholePaper} />
+      ) : state === "error" ? (
         <div className="news-error">
           <h2>Couldn't reach the newsroom</h2>
           <p>{errorMsg || "The headlines feed is unavailable right now."}</p>
@@ -330,8 +354,8 @@ export function NewsApp(_props: ChannelAppProps) {
         </div>
       )}
 
-      {slideshow && slideshowStories.length > 0 && (
-        <NewsSlideshow stories={slideshowStories} onClose={() => setSlideshow(false)} />
+      {slideshow && wholePaper.length > 0 && (
+        <NewsSlideshow stories={wholePaper} onClose={() => setSlideshow(false)} />
       )}
     </div>
   );

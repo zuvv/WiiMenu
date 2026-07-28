@@ -1,0 +1,567 @@
+/* ============================================================
+   News Globe — the map view of the News Channel.
+   Reads the channel's green tokens (--news-green &c.), which are
+   declared on .news-app, so this file assumes it renders inside.
+   ============================================================ */
+
+.ng-root {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  overflow: hidden;
+  /* The deep-space backdrop the globe floats in — a break from the
+     channel's white paper, and what makes the atmosphere read. */
+  background:
+    radial-gradient(circle at 50% 42%, #17384f 0%, #0d2233 48%, #071620 100%);
+}
+
+/* --- stage --- */
+
+.ng-stage {
+  position: relative;
+  /* Own stacking context. The loop gives each pin a z-index by depth so
+     near ones cover far ones; without a context to contain them those
+     values compete with the panel, and on a narrow screen — where the
+     panel is a sheet over the globe rather than a column beside it —
+     the pins come out on top of the story. */
+  z-index: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  touch-action: none;
+  /* The globe is a drag surface; a text cursor mid-spin looks broken. */
+  user-select: none;
+}
+.ng-stage:active {
+  cursor: grabbing;
+}
+
+/* Faint starfield. Two sizes of dot at different densities so it
+   doesn't read as a regular grid. */
+.ng-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1.4px 1.4px at 18% 22%, rgba(255, 255, 255, 0.5) 50%, transparent 51%),
+    radial-gradient(1.1px 1.1px at 72% 14%, rgba(255, 255, 255, 0.38) 50%, transparent 51%),
+    radial-gradient(1.6px 1.6px at 87% 63%, rgba(255, 255, 255, 0.42) 50%, transparent 51%),
+    radial-gradient(1px 1px at 34% 78%, rgba(255, 255, 255, 0.34) 50%, transparent 51%),
+    radial-gradient(1.2px 1.2px at 58% 88%, rgba(255, 255, 255, 0.3) 50%, transparent 51%),
+    radial-gradient(1px 1px at 8% 55%, rgba(255, 255, 255, 0.28) 50%, transparent 51%);
+  opacity: 0.9;
+}
+
+.ng-globe {
+  position: relative;
+  flex: 0 0 auto;
+  transform-origin: 50% 50%;
+  /* No transition: the animation loop eases the scale itself, in the same
+     frame that it repositions the pins. A CSS transition here would let the
+     two drift apart mid-zoom. */
+  will-change: transform;
+}
+
+.ng-canvas {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  /* The renderer leaves the corners transparent, so this only shapes
+     the shadow — but it also stops a stray edge pixel from squaring
+     off the silhouette. */
+  box-shadow:
+    0 26px 60px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(120, 200, 255, 0.14);
+}
+
+/* Halo. Sits behind the canvas and spills past its edge, so the globe
+   looks like it has air around it. */
+.ng-atmosphere {
+  position: absolute;
+  inset: -9%;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(
+    circle,
+    rgba(96, 190, 255, 0) 52%,
+    rgba(96, 190, 255, 0.28) 63%,
+    rgba(70, 160, 240, 0.12) 76%,
+    rgba(70, 160, 240, 0) 88%
+  );
+}
+
+.ng-loading {
+  position: absolute;
+  /* Clear of the pins, which carry a depth-ordered z-index of their own.
+     Contained by .ng-stage's stacking context, so this stays local. */
+  z-index: 300;
+  max-width: 60%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+}
+
+/* --- pins ---
+
+   This layer is deliberately not scaled with the globe: the loop
+   multiplies each pin's radius by the zoom instead, so labels stay
+   crisp instead of being blown up as bitmaps. */
+
+.ng-pins {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* A pin is a zero-sized anchor sitting exactly on its coordinate; the dot
+   and the label hang off it absolutely.
+
+   That is not fussiness. If the label were part of the layout box, the
+   loop's translate would centre *dot plus label* on the coordinate, which
+   pushes the dot west by half the label's width — so "United States"
+   would sit 40px off and "Gaza" 12px off, and the error would look like
+   bad geography rather than bad CSS. */
+.ng-pin {
+  --depth: 1;
+  --mark: 13px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: auto;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: var(--wii-font);
+  cursor: pointer;
+  /* The loop owns `transform`; anything animated here would fight it. */
+  transition: opacity 120ms linear;
+}
+
+.ng-pin-mark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: calc(var(--mark) * var(--depth));
+  height: calc(var(--mark) * var(--depth));
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 30%, #ffe9a8 0%, #ffc93d 42%, #f08a1c 100%);
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.85),
+    0 0 12px rgba(255, 190, 70, 0.85),
+    0 2px 5px rgba(0, 0, 0, 0.45);
+  transition:
+    width 120ms var(--wii-ease),
+    height 120ms var(--wii-ease),
+    background 150ms linear;
+}
+
+/* A stack is bigger and carries its count, so a busy city reads as
+   busy before you click it. */
+.ng-pin.is-stack {
+  --mark: 24px;
+}
+.ng-pin.is-stack .ng-pin-mark {
+  background: radial-gradient(circle at 34% 30%, #fff4d0 0%, #ffd451 40%, #ee7f13 100%);
+}
+
+.ng-pin-count {
+  font-size: calc(12px * var(--depth));
+  font-weight: 800;
+  color: #6b3a00;
+  line-height: 1;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.ng-pin-label {
+  position: absolute;
+  top: 0;
+  /* Clear of the dot, whose radius grows for a stack and shrinks near
+     the limb. */
+  left: calc(var(--mark) * var(--depth) * 0.5 + 6px);
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+  text-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.9),
+    0 0 10px rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transform: translateY(-50%) translateX(-4px);
+  transition:
+    opacity 130ms linear,
+    transform 130ms var(--wii-ease);
+}
+
+/* Labelling every pin at once turns the globe into a wall of text, so
+   the name waits until you point at it — or until it's the open one. */
+.ng-pin:hover .ng-pin-label,
+.ng-pin:focus-visible .ng-pin-label,
+.ng-pin.is-open .ng-pin-label {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+.ng-pin:hover .ng-pin-mark,
+.ng-pin:focus-visible .ng-pin-mark {
+  background: radial-gradient(circle at 34% 30%, #ffffff 0%, #b6f08a 40%, #4fae3f 100%);
+}
+
+/* The button itself is zero-sized, so a focus ring on it would be
+   invisible — put it on the dot. */
+.ng-pin:focus-visible {
+  outline: none;
+}
+.ng-pin:focus-visible .ng-pin-mark {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.ng-pin.is-open .ng-pin-mark {
+  background: radial-gradient(circle at 34% 30%, #ffffff 0%, #a5ea78 38%, #2c8b39 100%);
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.95),
+    0 0 20px rgba(120, 240, 130, 0.95),
+    0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* A soft ring that keeps pulsing under the open pin, so you can still
+   find it after spinning the globe away and back. */
+.ng-pin.is-open .ng-pin-mark::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid rgba(160, 255, 170, 0.7);
+  animation: ng-ping 1.8s var(--wii-ease) infinite;
+}
+@keyframes ng-ping {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ng-pin.is-open .ng-pin-mark::after {
+    animation: none;
+  }
+}
+
+/* --- hud --- */
+
+.ng-hud {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 16px;
+  pointer-events: none;
+  /* Above the pins, which sit at 100–200 by depth. */
+  z-index: 300;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.62);
+  background: linear-gradient(to top, rgba(5, 18, 26, 0.72), rgba(5, 18, 26, 0));
+}
+.ng-hud strong {
+  color: #b7f0a8;
+  font-weight: 800;
+}
+.ng-hud-hint {
+  opacity: 0.75;
+}
+
+/* --- panel --- */
+
+.ng-panel {
+  flex: 0 0 auto;
+  position: relative;
+  /* Over the channel's floating music toggle, which is pinned to the
+     same bottom-right corner as the panel's Read button. */
+  z-index: 30;
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: linear-gradient(to bottom, #ffffff 0%, #f4fbf2 100%);
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: -14px 0 34px rgba(0, 0, 0, 0.4);
+  animation: ng-slide 220ms var(--wii-ease);
+}
+@keyframes ng-slide {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ng-panel {
+    animation: none;
+  }
+}
+
+.ng-panel-head {
+  flex: 0 0 auto;
+  position: relative;
+  padding: 12px 40px 12px 14px;
+  background: linear-gradient(to bottom, var(--news-green-deep), var(--news-green-dark));
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+.ng-panel-kicker {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  opacity: 0.82;
+}
+.ng-panel-place {
+  margin: 2px 0 0;
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.15;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+.ng-panel-back {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background: none;
+  color: rgba(255, 255, 255, 0.9);
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+.ng-panel-back:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+.ng-panel-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font-size: 11px;
+  cursor: pointer;
+}
+.ng-panel-close:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* --- list --- */
+
+.ng-list {
+  flex: 1 1 auto;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-y: auto;
+}
+
+.ng-list-item {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 11px 12px;
+  border: none;
+  border-bottom: 1px solid #e2efdf;
+  background: none;
+  font-family: var(--wii-font);
+  text-align: left;
+  cursor: pointer;
+  transition: background 120ms linear;
+}
+.ng-list-item:hover {
+  background: #eaf7e6;
+}
+
+.ng-list-rank {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  background: var(--news-green);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.ng-list-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.ng-list-title {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--news-ink);
+}
+.ng-list-meta {
+  font-size: 11px;
+  color: var(--news-ink-soft);
+}
+.ng-list-chevron {
+  flex: 0 0 auto;
+  align-self: center;
+  color: var(--news-green);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+/* --- preview --- */
+
+.ng-preview {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.ng-preview-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #d5e8d1;
+  background: #eef5ec;
+}
+.ng-preview-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 11px;
+}
+.ng-preview-source {
+  font-weight: 800;
+  color: var(--news-green-deep);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.ng-preview-time {
+  color: var(--news-ink-soft);
+}
+.ng-preview-title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--news-ink);
+}
+.ng-preview-desc {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--news-ink-soft);
+}
+.ng-preview-read {
+  margin-top: auto;
+  padding: 10px 14px;
+  border: 1px solid var(--news-green-dark);
+  border-radius: 999px;
+  background: linear-gradient(to bottom, #6ecb5c, var(--news-green-deep));
+  color: #fff;
+  font-family: var(--wii-font);
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 2px 6px rgba(31, 107, 42, 0.3);
+}
+.ng-preview-read:hover {
+  filter: brightness(1.07);
+}
+.ng-preview-read:active {
+  transform: translateY(1px);
+}
+
+/* --- failure --- */
+
+.ng-empty {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--news-ink-soft);
+  text-align: center;
+}
+.ng-empty h2 {
+  margin: 0;
+  font-size: 18px;
+  color: var(--news-ink);
+}
+.ng-empty p {
+  margin: 0;
+  font-size: 13px;
+}
+
+/* --- narrow: the panel becomes a sheet over the globe --- */
+
+@media (max-width: 760px) {
+  .ng-panel {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    max-height: 62%;
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 -14px 34px rgba(0, 0, 0, 0.45);
+  }
+  @keyframes ng-slide {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  .ng-hud-hint {
+    display: none;
+  }
+}
