@@ -1,8 +1,13 @@
 # WiiMenu
 
+### ▶ [Open the Wii Menu](https://zuvv.github.io/WiiMenu/)
+
 A web recreation of the Nintendo Wii Menu — the glossy channel grid, the curved
 bottom bar with the live clock, the Wii-Remote pointer, and sound. Built with
 **React + TypeScript + Vite**.
+
+Live at **https://zuvv.github.io/WiiMenu/**, deployed from `main` by GitHub
+Actions on every push.
 
 ## Run it
 
