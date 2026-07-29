@@ -67,15 +67,27 @@
   will-change: transform;
 }
 
+/* The renderer's window onto the sphere. The loop sets its size (the
+   stage-clamped visible window) and its transform (the cheap CSS scale
+   that carries a zoom gesture between re-bakes); the silhouette is
+   anti-aliased by the renderer itself, so no clip here. */
 .ng-canvas {
-  position: relative;
+  position: absolute;
+  left: 50%;
+  top: 50%;
   display: block;
-  width: 100%;
-  height: 100%;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+/* The disc's drop shadow, on a transparent circle the size of the globe
+   at rest. It rides .ng-globe's zoom scale, and the canvas paints the
+   sphere over everything but the spill. */
+.ng-disc {
+  position: absolute;
+  inset: 0;
   border-radius: 50%;
-  /* The renderer leaves the corners transparent, so this only shapes
-     the shadow — but it also stops a stray edge pixel from squaring
-     off the silhouette. */
+  pointer-events: none;
   box-shadow:
     0 26px 60px rgba(0, 0, 0, 0.55),
     0 0 0 1px rgba(120, 200, 255, 0.14);

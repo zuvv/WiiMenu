@@ -34,17 +34,31 @@ const FLY_MS = 700;
 const ZOOM_MIN = 0.85;
 const ZOOM_MAX = 8;
 
-/** Ceiling on the pixel buffer. A frame costs ~2ms even here; what this
-    really bounds is the tilt table rebuild (~40ms) and ~68MB of arrays.
-    Both scale with the square of this number.
+/** Ceiling on the pixels the renderer computes per frame, at any zoom.
 
-    The buffer a given zoom wants is `stageSize × zoom × dpr`, so with a
-    ~554px stage at dpr 2 this covers up to ~1.85× at full detail. Past
-    that the renderer keeps drawing the same sphere and CSS magnifies those
-    pixels, so the far end of ZOOM_MAX gets you closer without getting you
-    sharper — deliberately, because sharpness up there is expensive: 4096
-    would want ~270MB of arrays, which is not worth it for a launcher. */
-const MAX_BUFFER = 2048;
+    The renderer only ever draws the *visible* window of the sphere — the
+    part of the disc that fits on the stage — so zooming in doesn't grow
+    the work; it just aims the same window at a bigger sphere. What this
+    bounds is the tilt-table rebuild, the per-frame cost of a vertical
+    drag: pure arithmetic at ~30ns a pixel, measured, so the budget is
+    the frame rate. It's set a shade over what the resting disc uses at
+    dpr 2 — the zoom-1 view keeps full sampling, and a drag while zoomed
+    in can never feel worse than the same drag at rest. Zoomed views on
+    a large stage give up a little sampling density for that (k lands
+    around 1.2–1.4 device px per css px instead of 2, still at or above
+    1:1 on screen), which on flat-colour map art is a fair trade. */
+const SAMPLE_BUDGET = 1_200_000;
+
+/** Largest sphere radius, in device pixels, worth rendering.
+
+    The world texture holds ~490 texels per radian at the equator, so a
+    sphere much bigger than that is magnifying the map, and the renderer's
+    nearest-neighbour lookup magnifies it as a staircase. Past this radius
+    the buffer stops growing and CSS scales it up instead — the browser's
+    smoothing turns "more zoom" into softness rather than jaggies, which
+    is exactly how the far end of ZOOM_MAX behaved when the buffer was
+    capped. As a bonus the buffer *shrinks* as the zoom climbs past it. */
+const MAX_RADIUS = 1024;
 
 /** How fast the globe catches up to a new zoom, per frame. */
 const ZOOM_EASE = 0.2;
@@ -103,9 +117,12 @@ export function NewsGlobe({ stories }: { stories: Story[] }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pinRefs = useRef(new Map<string, HTMLButtonElement>());
 
-  const [size, setSize] = useState(0);
+  const [stage, setStage] = useState({ w: 0, h: 0 });
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
+
+  // Leave room for the pin labels, which sit outside the disc.
+  const size = stage.w ? Math.max(160, Math.floor(Math.min(stage.w, stage.h) - 56)) : 0;
 
   const [openId, setOpenId] = useState<string | null>(null);
   const [storyIndex, setStoryIndex] = useState<number | null>(null);
@@ -129,8 +146,16 @@ export function NewsGlobe({ stories }: { stories: Story[] }) {
   /* Zoom is eased in the loop rather than by a CSS transition. The pins are
      positioned by the same frame that scales the globe, so if the canvas
      eased and they didn't, every wheel tick would slide the pins off the
-     map and back again. */
-  const zoom = useRef({ now: 1, target: 1 });
+     map and back again.
+
+     `baked` is the zoom the canvas is currently *rendered* at. During the
+     ease the canvas is CSS-scaled by now/baked — cheap, on the GPU — and
+     the renderer is only re-aimed at gesture boundaries. Baking down
+     happens the moment the target drops (or the shrinking window would
+     uncover unrendered sphere); baking up waits for the ease to settle,
+     so mid-gesture magnification is momentarily soft, exactly like the
+     old scheme. */
+  const zoom = useRef({ now: 1, target: 1, baked: 1 });
 
   /* --- open on the busiest place --- */
   const framed = useRef(false);
@@ -148,8 +173,10 @@ export function NewsGlobe({ stories }: { stories: Story[] }) {
     if (!el) return;
     const ro = new ResizeObserver(([entry]) => {
       const box = entry.contentRect;
-      // Leave room for the pin labels, which sit outside the disc.
-      setSize(Math.max(160, Math.floor(Math.min(box.width, box.height) - 56)));
+      // The full box, not just the min dimension: the visible window is
+      // clamped to the stage, so a width change (the panel opening, say)
+      // has to re-aim the renderer even when the globe size holds still.
+      setStage({ w: Math.floor(box.width), h: Math.floor(box.height) });
     });
     ro.observe(el);
     return () => ro.disconnect();
@@ -186,21 +213,35 @@ export function NewsGlobe({ stories }: { stories: Story[] }) {
 
     const dpr = Math.min(devicePixelRatio || 1, 2);
 
-    /* Zooming in scales the canvas up in CSS, which on its own just
-       magnifies the pixels we already had. So the buffer grows with the
-       zoom to keep the sphere sharp — but only once the gesture settles,
-       since each change reallocates the tables and redoes the tilt pass. */
-    let buffer = 0;
-    const fitBuffer = (z: number) => {
-      const want = Math.max(64, Math.min(MAX_BUFFER, Math.round(size * z * dpr)));
-      if (want === buffer) return;
-      buffer = want;
-      canvas.width = want;
-      canvas.height = want;
-      renderer.resize(want);
+    /* Aim the canvas at the part of the sphere a given zoom shows. The
+       window is the intersection of the stage and the scaled globe, so
+       at rest it's the disc's own square and zoomed in it stops at the
+       stage edges — the sphere beyond them is never computed. Sampling
+       density is the device's, backed off only if the window alone would
+       blow the per-frame budget. */
+    const rebake = (zb: number) => {
+      zoom.current.baked = zb;
+      const cssW = Math.min(stage.w, Math.ceil(size * zb));
+      const cssH = Math.min(stage.h, Math.ceil(size * zb));
+      // What the window can actually show: no more than the disc itself.
+      const disc = Math.PI * (size * zb) * (size * zb) * 0.25;
+      const shown = Math.min(disc, cssW * cssH);
+      const k = Math.min(
+        dpr,
+        Math.sqrt(SAMPLE_BUDGET / shown),
+        (2 * MAX_RADIUS) / (size * zb),
+      );
+      const bw = Math.max(64, Math.round(cssW * k));
+      const bh = Math.max(64, Math.round(cssH * k));
+      if (canvas.width !== bw) canvas.width = bw;
+      if (canvas.height !== bh) canvas.height = bh;
+      canvas.style.width = `${cssW}px`;
+      canvas.style.height = `${cssH}px`;
+      renderer.layout(bw, bh, (size * zb * k) / 2);
       rot.current.dirty = true;
     };
-    fitBuffer(zoom.current.now);
+    rebake(zoom.current.baked);
+    canvas.style.transform = `translate(-50%, -50%) scale(${zoom.current.now / zoom.current.baked})`;
 
     let raf = 0;
     const frame = (now: number) => {
@@ -210,8 +251,13 @@ export function NewsGlobe({ stories }: { stories: Story[] }) {
       if (z.now !== z.target) {
         const step = (z.target - z.now) * ZOOM_EASE;
         z.now = Math.abs(step) < 0.001 ? z.target : z.now + step;
+        /* Bake down immediately — scaling the canvas below 1 would
+           uncover sphere that was never rendered. Bake up at settle. */
+        if (z.target < z.baked || (z.now === z.target && z.baked !== z.target)) {
+          rebake(z.target);
+        }
         globeEl.style.transform = `scale(${z.now})`;
-        if (z.now === z.target) fitBuffer(z.now);
+        canvas.style.transform = `translate(-50%, -50%) scale(${z.now / z.baked})`;
       }
 
       if (fly.current) {
@@ -277,7 +323,7 @@ export function NewsGlobe({ stories }: { stories: Story[] }) {
 
     raf = requestAnimationFrame(frame);
     return () => cancelAnimationFrame(raf);
-  }, [ready, size, markers]);
+  }, [ready, size, stage, markers]);
 
   /* --- the hand ---
      Open over the globe, a fist while you're turning it, and back to the
@@ -429,11 +475,18 @@ export function NewsGlobe({ stories }: { stories: Story[] }) {
         onWheel={onWheel}
         onDoubleClick={onDoubleClick}
       >
-        {/* The loop owns this element's transform. */}
+        {/* Dressing only — halo and drop shadow. The loop owns this
+            element's transform and scales it with the zoom. */}
         <div className="ng-globe" ref={globeRef} style={{ width: size, height: size }}>
           <div className="ng-atmosphere" />
-          <canvas className="ng-canvas" ref={canvasRef} />
+          <div className="ng-disc" />
         </div>
+
+        {/* The sphere itself. Not inside .ng-globe: the renderer draws
+            the zoom natively into a stage-clamped window, so the canvas
+            must not inherit the decorations' CSS scale — the loop gives
+            it its own (a plain 1 whenever the zoom is settled). */}
+        <canvas className="ng-canvas" ref={canvasRef} />
 
         {/* Pins ride in an unscaled layer so labels stay crisp at any
             zoom; the loop multiplies their radius by the scale instead. */}

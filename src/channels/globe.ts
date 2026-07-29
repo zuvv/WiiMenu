@@ -257,46 +257,76 @@ export class GlobeRenderer {
   private image: ImageData | null = null;
   private out: Uint32Array | null = null;
 
-  /* Per-pixel tables, in scan order over the disc only. The disc is
-     convex, so a row is one unbroken run and `from`/`to` per row is
-     enough to walk them — which also means the output index can be
-     stepped rather than looked up. */
+  /* Per-pixel tables, in scan order over the lit pixels only: the part
+     of the disc that falls inside the window. The disc is convex, so a
+     row is one unbroken run and `from`/`to` per row is enough to walk
+     them — which also means the output index can be stepped rather than
+     looked up. */
   private from = new Int32Array(0);
   private to = new Int32Array(0);
   /** Texture row offset (row × TW). */
   private row = new Int32Array(0);
   /** Texture column at yaw 0, as a float in [0, TW). */
   private col = new Float32Array(0);
-  /** Lighting in the high half (8.8 fixed point), limb haze in the low. */
+  /** Lighting in bits 20–28 (8.8 fixed point), limb coverage in 8–15,
+      limb haze in the low byte. */
   private light = new Uint32Array(0);
 
-  private size = 0;
+  private w = 0;
+  private h = 0;
+  private radius = 0;
   private tabledPitch = Number.NaN;
+  /** Tight bounds of the disc within the window, for the putImageData. */
+  private bx = 0;
+  private by = 0;
+  private bw = 0;
+  private bh = 0;
 
   constructor(canvas: HTMLCanvasElement, texel: Uint32Array) {
     this.texel = texel;
     this.ctx = canvas.getContext("2d")!;
   }
 
-  /** Point the renderer at a square buffer of `size` device pixels. */
-  resize(size: number) {
-    if (size === this.size || size <= 0) return;
-    this.size = size;
-    this.image = this.ctx.createImageData(size, size);
-    this.out = new Uint32Array(this.image.data.buffer);
-
-    /* Allocated once at the full square. The disc only ever fills π/4 of
-       it, but sizing to the bound means `retable` — which runs on every
-       change of tilt — can fill these in place instead of growing arrays
-       and converting them, which is the difference between a smooth
-       vertical drag and a stuttering one. */
-    const cap = size * size;
-    this.from = new Int32Array(size);
-    this.to = new Int32Array(size);
-    this.row = new Int32Array(cap);
-    this.col = new Float32Array(cap);
-    this.light = new Uint32Array(cap);
+  /**
+   * Point the renderer at a `w`×`h` window of device pixels showing a
+   * sphere of `radius` device pixels centred on the window.
+   *
+   * The window is the *visible* part of the globe, not the whole disc:
+   * zoomed in, the disc overflows the window and everything past its
+   * edges is simply never computed. That is the whole zoom strategy —
+   * the work scales with what's on screen, not with the square of the
+   * zoom, so a deep zoom costs the same per frame as the resting view.
+   */
+  layout(w: number, h: number, radius: number) {
+    if ((w === this.w && h === this.h && radius === this.radius) || w <= 0 || h <= 0) return;
+    if (w !== this.w || h !== this.h) {
+      this.w = w;
+      this.h = h;
+      this.image = this.ctx.createImageData(w, h);
+      this.out = new Uint32Array(this.image.data.buffer);
+      /* Grown, never shrunk, so wheeling the zoom back and forth reuses
+         the same arrays. Sizing to the bound means `retable` — which
+         runs on every change of tilt — can fill these in place instead
+         of growing arrays and converting them, which is the difference
+         between a smooth vertical drag and a stuttering one. */
+      if (this.from.length < h) {
+        this.from = new Int32Array(h);
+        this.to = new Int32Array(h);
+      }
+      const cap = w * h;
+      if (this.row.length < cap) {
+        this.row = new Int32Array(cap);
+        this.col = new Float32Array(cap);
+        this.light = new Uint32Array(cap);
+      }
+    } else if (radius < this.radius && this.out) {
+      // The disc shrank in place: pixels it used to cover would keep
+      // their last colour unless wiped.
+      this.out.fill(0);
+    }
+    this.radius = radius;
     this.tabledPitch = Number.NaN;
+    this.ctx.clearRect(0, 0, w, h);
   }
 
   /**
@@ -319,25 +349,40 @@ export class GlobeRenderer {
     this.tabledPitch = pitch;
 
     const { from, to, row, col, light } = this;
-    const n = this.size;
-    const r = n / 2;
+    const w = this.w;
+    const h = this.h;
+    const r = this.radius;
+    const cx = w / 2;
+    const cy = h / 2;
     const cp = Math.cos(pitch);
     const sp = Math.sin(pitch);
 
+    let bx0 = w;
+    let bx1 = 0;
+    let by0 = h;
+    let by1 = 0;
     let i = 0;
-    for (let py = 0; py < n; py++) {
+    for (let py = 0; py < h; py++) {
       // Sample pixel centres; the half-pixel keeps the disc from sitting
       // a touch high and left of the canvas.
-      const y = (r - py - 0.5) / r;
-      // Solve the circle for this row instead of testing every pixel.
-      const half = Math.sqrt(Math.max(0, 1 - y * y)) * r;
-      const lo = Math.max(0, Math.ceil(r - half - 0.5));
-      const hi = Math.min(n, Math.floor(r + half - 0.5) + 1);
+      const y = (cy - py - 0.5) / r;
+      // Solve the circle for this row instead of testing every pixel,
+      // then clip the run to the window.
+      const d = 1 - y * y;
+      const half = d > 0 ? Math.sqrt(d) * r : 0;
+      const lo = Math.max(0, Math.ceil(cx - half - 0.5));
+      const hi = Math.min(w, Math.floor(cx + half - 0.5) + 1);
       from[py] = lo;
       to[py] = lo < hi ? hi : lo;
+      if (lo < hi) {
+        if (py < by0) by0 = py;
+        by1 = py + 1;
+        if (lo < bx0) bx0 = lo;
+        if (hi > bx1) bx1 = hi;
+      }
 
       for (let px = lo; px < hi; px++, i++) {
-        const x = (px + 0.5 - r) / r;
+        const x = (px + 0.5 - cx) / r;
         const q = x * x + y * y;
         const z = Math.sqrt(Math.max(0, 1 - q));
 
@@ -366,19 +411,33 @@ export class GlobeRenderer {
         const q4 = q * q * q * q;
         const limb = q4 * q4 * q4;
         const haze = ((limb * (0.35 + 0.65 * diffuse) * 190) | 0) & 0xff;
+        /* Coverage at the limb: (1 − q)/2 approximates the distance to
+           the edge in radii there, so ×r is pixels. Ramping alpha over
+           the last pixel anti-aliases the silhouette, which used to be
+           the border-radius clip's job back when the canvas edge and the
+           disc edge were the same circle. */
+        const cov = (1 - q) * r * 0.5;
+        const alpha = cov >= 1 ? 255 : cov > 0 ? (cov * 255) | 0 : 0;
         // Packed into one word: the inner loop is memory-bound, and one
-        // fetch beats two.
-        light[i] = (shade << 16) | haze;
+        // fetch beats three.
+        light[i] = (shade << 20) | (alpha << 8) | haze;
       }
     }
+    this.bx = bx0;
+    this.by = by0;
+    this.bw = Math.max(0, bx1 - bx0);
+    this.bh = Math.max(0, by1 - by0);
   }
 
   /** Draw the globe at this rotation. Radians. */
   render(yaw: number, pitch: number) {
-    if (!this.image || !this.out) return;
+    if (!this.image || !this.out || !this.radius) return;
     this.retable(pitch);
+    if (!this.bw || !this.bh) return;
 
-    const { from, to, row, col, light, texel, out, size } = this;
+    const { from, to, row, col, light, texel, out } = this;
+    const w = this.w;
+    const h = this.h;
 
     // Yaw as a texture-column offset, folded into [0, TW) so the sum
     // with `col` can only overflow by one turn.
@@ -386,31 +445,34 @@ export class GlobeRenderer {
     if (du < 0) du += TW;
 
     let i = 0;
-    for (let py = 0; py < size; py++) {
+    for (let py = 0; py < h; py++) {
       const end = to[py];
-      let o = py * size + from[py];
+      let o = py * w + from[py];
       for (let px = from[py]; px < end; px++, i++, o++) {
         let u = (col[i] + du) | 0;
         if (u >= TW) u -= TW;
 
         const src = texel[row[i] + u];
         const lit = light[i];
-        const s = lit >>> 16;
-        const h = lit & 0xff;
+        const s = lit >>> 20;
+        const a = (lit >>> 8) & 0xff;
+        const hz = lit & 0xff;
 
         // Little-endian byte order (0xAABBGGRR). Every browser this runs
         // in is little-endian; the alternative is a per-pixel shuffle.
-        let r = (((src & 0xff) * s) >> 8) + h;
-        let g = ((((src >> 8) & 0xff) * s) >> 8) + h;
-        let b = ((((src >> 16) & 0xff) * s) >> 8) + h;
+        let r = (((src & 0xff) * s) >> 8) + hz;
+        let g = ((((src >> 8) & 0xff) * s) >> 8) + hz;
+        let b = ((((src >> 16) & 0xff) * s) >> 8) + hz;
         if (r > 255) r = 255;
         if (g > 255) g = 255;
         if (b > 255) b = 255;
 
-        out[o] = 0xff000000 | (b << 16) | (g << 8) | r;
+        out[o] = (a << 24) | (b << 16) | (g << 8) | r;
       }
     }
 
-    this.ctx.putImageData(this.image, 0, 0);
+    // Only the rectangle the disc actually occupies goes to the canvas —
+    // at low zoom that's a fraction of the window.
+    this.ctx.putImageData(this.image, 0, 0, this.bx, this.by, this.bw, this.bh);
   }
 }
