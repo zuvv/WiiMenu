@@ -1,8 +1,111 @@
 {
-  "fetchedAt": 1787242938036,
+  "fetchedAt": 1787257030294,
   "categories": {
     "national": {
       "stories": [
+        {
+          "id": "https://www.cnbc.com/2026/08/20/iran-economy-worries-trump-sanction-war-hormuz-uae-.html",
+          "title": "Iranian adviser disputes Trump's claim that its economy is collapsing",
+          "url": "https://www.cnbc.com/2026/08/20/iran-economy-worries-trump-sanction-war-hormuz-uae-.html",
+          "source": "CNBC",
+          "image": "https://image.cnbcfm.com/api/v1/image/108345904-1786017738144-gettyimages-2288486958-AA_06082026_2906906.jpeg?v=1786017777&w=1920&h=1080",
+          "publishedAt": "2026-08-20T08:08:34Z",
+          "description": "Iran's economy is deteriorating under the weight of mounting sanctions, but far from unraveling, a former adviser to Iran's central bank told CNBC.",
+          "place": {
+            "id": "country:iran",
+            "name": "Iran",
+            "kind": "country",
+            "country": "",
+            "lat": 32.166,
+            "lon": 54.931
+          }
+        },
+        {
+          "id": "https://www.cnn.com/2026/08/20/us/texas-baby-surrogate-abortion-dispute",
+          "title": "The legal battle between a California couple, their surrogate and the Texas AG, explained",
+          "url": "https://www.cnn.com/2026/08/20/us/texas-baby-surrogate-abortion-dispute",
+          "source": "CNN",
+          "image": "https://media.cnn.com/api/v1/images/stellar/prod/ap26225649547612.jpg?c=16x9&q=w_800,c_fill",
+          "publishedAt": "2026-08-20T08:00:29Z",
+          "description": "As the baby recovers from surgery, anti-abortion activists have seized on the case to bolster arguments about fetal personhood, while feeding a small but rising movement against surrogacy in the US.",
+          "place": {
+            "id": "region:us-california",
+            "name": "California",
+            "kind": "region",
+            "country": "United States",
+            "lat": 37.2,
+            "lon": -119.5
+          }
+        },
+        {
+          "id": "https://www.foxnews.com/us/cbp-khat-seizure-maryland-airport",
+          "title": "Khat seizure of 847 pounds at Baltimore airport tied to 2 travelers",
+          "url": "https://www.foxnews.com/us/cbp-khat-seizure-maryland-airport",
+          "source": "Fox News",
+          "image": "https://static.foxnews.com/foxnews.com/content/uploads/2026/08/khat-tea-leaves-cbp-bwi-airport.jpg",
+          "publishedAt": "2026-08-20T07:39:28Z",
+          "description": "CBP officers seized nearly 850 pounds of khat, a DEA-classified controlled substance and stimulant, from 12 suitcases at Baltimore airport in a major drug smuggling bust.",
+          "place": {
+            "id": "city:united-states-baltimore",
+            "name": "Baltimore",
+            "kind": "city",
+            "country": "United States",
+            "lat": 39.302,
+            "lon": -76.622
+          }
+        },
+        {
+          "id": "https://www.bbc.com/news/articles/c62ey03z9d1o",
+          "title": "Prince Harry and Meghan moving back to UK",
+          "url": "https://www.bbc.com/news/articles/c62ey03z9d1o",
+          "source": "BBC",
+          "image": "https://ichef.bbci.co.uk/news/1024/branded_news/1aa9/live/d0abf130-9c1d-11f1-aed2-8d6da8d75094.jpg",
+          "publishedAt": "2026-08-20T07:21:03Z",
+          "description": "The couple's children, Prince Archie, 7, and Princess Lilibet, 5, are enrolled to start at a school in September.",
+          "place": {
+            "id": "country:united-kingdom",
+            "name": "United Kingdom",
+            "kind": "country",
+            "country": "",
+            "lat": 54.403,
+            "lon": -2.116
+          }
+        },
+        {
+          "id": "https://www.npr.org/2026/08/20/nx-s1-5939320/harry-meghan-return-uk",
+          "title": "Prince Harry and Meghan are returning to the U.K. : NPR",
+          "url": "https://www.npr.org/2026/08/20/nx-s1-5939320/harry-meghan-return-uk",
+          "source": "NPR",
+          "image": "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/3000x1688+0+161/resize/1400/quality/85/format/jpeg/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2Fac%2F71%2Faca661b74413ab5ae6453a1200eb%2Fap26231801112485.jpg",
+          "publishedAt": "2026-08-20T06:17:42Z",
+          "description": "Prince Harry and his wife, Meghan, have decided to return to the United Kingdom for an extended stay starting this fall, but they won't resume their roles as working members of the royal family.",
+          "place": {
+            "id": "country:united-kingdom",
+            "name": "United Kingdom",
+            "kind": "country",
+            "country": "",
+            "lat": 54.403,
+            "lon": -2.116
+          }
+        },
+        {
+          "id": "https://www.kcra.com/article/stabbing-investigation-thunder-valley-casino-placer-county/73480324",
+          "title": "Deputies: 5 stabbed at Thunder Valley Casino in Lincoln",
+          "url": "https://www.kcra.com/article/stabbing-investigation-thunder-valley-casino-placer-county/73480324",
+          "source": "KCRA",
+          "image": "https://kubrick.htvapps.com/htv-prod/images/a920df8c-7944-4b2a-97aa-c23c4025f31d.jpg?crop=1.00xw%3A1.00xh%3B0%2C0&resize=1200%3A*",
+          "publishedAt": "2026-08-20T06:11:00Z",
+          "description": "A suspect has been arrested in connection with a stabbing investigation at Thunder Valley Casino, according to the Placer County Sheriff's Office."
+        },
+        {
+          "id": "https://www.foxnews.com/politics/alina-habba-shuts-down-speculation-replace-karoline-leavitt-white-house-press-secretary",
+          "title": "Alina Habba rules out replacing Karoline Leavitt as press secretary",
+          "url": "https://www.foxnews.com/politics/alina-habba-shuts-down-speculation-replace-karoline-leavitt-white-house-press-secretary",
+          "source": "Fox News",
+          "image": "https://static.foxnews.com/foxnews.com/content/uploads/2025/08/alina-habba-ceremony.jpg",
+          "publishedAt": "2026-08-20T06:00:48Z",
+          "description": "Alina Habba says she is not in the running to replace Karoline Leavitt as White House press secretary. Scott Jennings is now the Kalshi prediction market favorite."
+        },
         {
           "id": "https://apnews.com/article/iran-immigration-deportation-flights-emails-97554a7ab9d1f33ca00700434dcae3df",
           "title": "ICE worked with Iran to deport over 100 Iranians, emails show",
@@ -200,242 +303,35 @@
           }
         },
         {
-          "id": "https://www.notus.org/trump-white-house/president-trump-considers-man-white-house-press-secretary",
-          "title": "Trump Considers a Press Secretary Shakeup: Picking a Man",
-          "url": "https://www.notus.org/trump-white-house/president-trump-considers-man-white-house-press-secretary",
-          "source": "News of the United States - NOTUS",
-          "image": "https://static.notus.org/dims4/default/c7275ea/2147483647/strip/true/crop/1024x576+0+53/resize/1440x810!/quality/90/?url=https%3A%2F%2Fk2-prod-aji.s3.us-east-1.amazonaws.com%2Fbrightspot%2F67%2F40%2F7b1017ca41f0a0328d507260ff2a%2Fap26231709388693.jpg",
-          "publishedAt": "2026-08-20T01:32:28Z",
-          "description": "The president is considering a man to prevent comparisons with outgoing spokesperson Karoline Leavitt, sources say."
-        },
-        {
-          "id": "https://www.nbcnews.com/news/us-news/two-students-killed-driver-charged-crash-tennessee-college-cycling-tea-rcna593466",
-          "title": "Two students killed, driver charged after crash into Tennessee college cycling team",
-          "url": "https://www.nbcnews.com/news/us-news/two-students-killed-driver-charged-crash-tennessee-college-cycling-tea-rcna593466",
-          "source": "NBC News",
-          "image": "https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/rockcms/2026-08/260819-bike-crash-scene-tennessee-ww-1724-b748be.jpg",
-          "publishedAt": "2026-08-20T01:12:00Z",
-          "description": "Milligan University sophomores Haylan Engdahl and Brayden Rogers were killed and seven other college cyclists were injured in the crash on Highway 19 in Carter County.",
+          "id": "https://www.thefp.com/p/socialist-surge-florida-angie-nixon-senate-primary",
+          "title": "The Socialist Surge Hits Florida",
+          "url": "https://www.thefp.com/p/socialist-surge-florida-angie-nixon-senate-primary",
+          "source": "The Free Press",
+          "image": "https://substackcdn.com/image/fetch/$s_!wYd6!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff995c236-6c4d-4da7-931e-00b3d7ee2524_1024x683.jpeg",
+          "publishedAt": "2026-08-20T01:33:14Z",
+          "description": "DSA member Angie Nixon claimed victory in the Democratic Senate primary and proved socialism has support in a solid red state.",
           "place": {
-            "id": "region:us-tennessee",
-            "name": "Tennessee",
+            "id": "region:us-florida",
+            "name": "Florida",
             "kind": "region",
             "country": "United States",
-            "lat": 35.8,
-            "lon": -86.4
+            "lat": 28.6,
+            "lon": -82.4
           }
-        },
-        {
-          "id": "https://www.foxnews.com/us/parents-seek-six-figures-from-surrogate-who-refused-abortion-after-babys-heart-diagnosis-report",
-          "title": "Surrogate hit with $100K countersuit for refusing abortion: report",
-          "url": "https://www.foxnews.com/us/parents-seek-six-figures-from-surrogate-who-refused-abortion-after-babys-heart-diagnosis-report",
-          "source": "Fox News",
-          "image": "https://static.foxnews.com/foxnews.com/content/uploads/2026/08/texas-surrogate-mckenna-west-baby-gabriel.png",
-          "publishedAt": "2026-08-20T01:11:08Z",
-          "description": "Biological parents are suing their surrogate for over $100,000 after she refused an abortion when the baby was diagnosed with hypoplastic left heart syndrome in a Texas custody battle.",
-          "place": {
-            "id": "region:us-texas",
-            "name": "Texas",
-            "kind": "region",
-            "country": "United States",
-            "lat": 31.5,
-            "lon": -99.3
-          }
-        },
-        {
-          "id": "https://apnews.com/article/icc-trump-sanctions-japan-international-court-bc088ac5a678975e358650ac314b252f",
-          "title": "International Criminal Court condemns latest US sanctions",
-          "url": "https://apnews.com/article/icc-trump-sanctions-japan-international-court-bc088ac5a678975e358650ac314b252f",
-          "source": "AP News",
-          "image": "https://dims.apnews.com/dims4/default/393a33f/2147483647/strip/true/crop/5154x3434+0+1/resize/980x653!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2Ff1%2F77%2Fbf4c4301d8b75662c4f512d77022%2F365438d68cf146ecb19feb188f0c8073",
-          "publishedAt": "2026-08-20T00:56:00Z",
-          "description": "The International Criminal Court has criticized new U.S. sanctions on its senior staff as a “flagrant attack” on its independence. The U.S.",
-          "place": {
-            "id": "country:united-states",
-            "name": "United States",
-            "kind": "country",
-            "country": "",
-            "lat": 39.538,
-            "lon": -97.483
-          }
-        },
-        {
-          "id": "https://6abc.com/post/midair-collision-involving-pa-state-police-aircraft-investigation-carlisle-governor-says/19705483/",
-          "title": "Pilot killed, 2 Pa. State Police troopers injured in midair crash at Carlisle Airport",
-          "url": "https://6abc.com/post/midair-collision-involving-pa-state-police-aircraft-investigation-carlisle-governor-says/19705483/",
-          "source": "6abc Philadelphia",
-          "image": "https://cdn.abcotvs.com/dip/images/19706127_081926-wpvi-midair-crash-pa-11pm-CC-vid.jpg?w=1600",
-          "publishedAt": "2026-08-20T00:55:16Z",
-          "description": "A small airplane and a helicopter collided midair near an airport in Carlisle, Pennsylvania, on Wednesday evening.",
-          "place": {
-            "id": "region:us-pennsylvania",
-            "name": "Pennsylvania",
-            "kind": "region",
-            "country": "United States",
-            "lat": 40.9,
-            "lon": -77.8
-          }
-        },
-        {
-          "id": "https://komonews.com/news/local/seattle-mayor-katie-wilson-recall-petition-effort-poll-numbers-closed-circuit-cctv-system-housing-production-task-force-columbia-city-public-questioning-allegations-sue-rahr",
-          "title": "Seattle Mayor Wilson responds to recall effort, poll numbers asking for CCTV system",
-          "url": "https://komonews.com/news/local/seattle-mayor-katie-wilson-recall-petition-effort-poll-numbers-closed-circuit-cctv-system-housing-production-task-force-columbia-city-public-questioning-allegations-sue-rahr",
-          "source": "KOMO",
-          "image": "https://komonews.com/resources/media2/16x9/1637/1320/0x55/90/22c05a02-2041-4607-ac1b-b5122884bbc3-1.png",
-          "publishedAt": "2026-08-20T00:49:33Z",
-          "description": "But much of the questioning focused on issues that have emerged during the mayor’s recent absence from public questioning.",
-          "place": {
-            "id": "city:united-states-seattle",
-            "name": "Seattle",
-            "kind": "city",
-            "country": "United States",
-            "lat": 47.572,
-            "lon": -122.342
-          }
-        },
-        {
-          "id": "https://katu.com/news/local/portland-spent-decades-trying-to-redevelop-centennial-mills-what-went-wrong-oregon-warehouse-abandoned-city-of-portland-construction-demolition-detonation",
-          "title": "Portland spent more than $12 million on Centennial Mills in six years as plans halted",
-          "url": "https://katu.com/news/local/portland-spent-decades-trying-to-redevelop-centennial-mills-what-went-wrong-oregon-warehouse-abandoned-city-of-portland-construction-demolition-detonation",
-          "source": "KATU",
-          "image": "https://katu.com/resources/media2/16x9/1280/1320/center/90/9feff3da-4b02-4c80-a0c0-75c82241c47f-TOWERTEARDOWNANTHONY_frame_38368.jpeg",
-          "publishedAt": "2026-08-20T00:04:36Z",
-          "description": "After 24 years under city ownership, Portland’s Centennial Mills was never redeveloped as plans shifted from demolition to reuse.",
-          "place": {
-            "id": "city:united-states-portland",
-            "name": "Portland",
-            "kind": "city",
-            "country": "United States",
-            "lat": 45.522,
-            "lon": -122.682
-          }
-        },
-        {
-          "id": "https://www.nbcboston.com/news/local/lindsay-clancy-trial-day-16-live-stream-live-updates/4000212/",
-          "title": "Watch Lindsay Clancy trial Day 16: What happened in court Wednesday",
-          "url": "https://www.nbcboston.com/news/local/lindsay-clancy-trial-day-16-live-stream-live-updates/4000212/",
-          "source": "NBC Boston",
-          "image": "https://media.nbcboston.com/2026/08/split-2-diagonal-1200x675-3-4.jpg?quality=85&strip=all&resize=1200%2C675",
-          "publishedAt": "2026-08-20T00:00:03Z",
-          "description": "Watch video and read what happened Wednesday in the Lindsay Clancy trial, including TikToker Emily Thorndike's voir dire questions and why the jury was excused..."
         }
       ],
-      "fetchedAt": 1787242909541
+      "fetchedAt": 1787257002317
     },
     "international": {
       "stories": [
         {
-          "id": "https://www.myanmaritv.com/news/icebreaker-knowledge-myanmar-student-joins-arctic-expedition-north-pole",
-          "title": "Icebreaker of Knowledge: Myanmar student joins Arctic expedition to North Pole",
-          "url": "https://www.myanmaritv.com/news/icebreaker-knowledge-myanmar-student-joins-arctic-expedition-north-pole",
-          "source": "Myanmar International TV",
-          "image": "https://www.myanmaritv.com/sites/default/files/styles/meta_image/public/20.8.2026.%20ICEBREAKER%20KNOWLEDGE%20%281%29.jpg?itok=VcePTuCi",
-          "publishedAt": "2026-08-20T04:11:30Z",
-          "description": "A student from Myanmar, Phyo Thu Min Thit, was among 68 young participants from Russia and 22 countries who took part in the seventh international scientific and educational expedition “Icebreaker of Knowledge,” organized with the support of Rosatom.",
-          "place": {
-            "id": "country:myanmar",
-            "name": "Myanmar",
-            "kind": "country",
-            "country": "",
-            "lat": 21.574,
-            "lon": 95.804
-          }
-        },
-        {
-          "id": "https://kyivindependent.com/ukrainian-drones-reportedly-strike-russian-oil-refinery/",
-          "title": "Ukraine's military reportedly strikes Russian oil refinery, terminal in latest drone attack",
-          "url": "https://kyivindependent.com/ukrainian-drones-reportedly-strike-russian-oil-refinery/",
-          "source": "The Kyiv Independent",
-          "image": "https://assets.kyivindependent.com/content/images/2026/05/GettyImages-611563980_20260505-185542.jpg",
-          "publishedAt": "2026-08-20T04:09:07Z",
-          "description": "Ukrainian drones reportedly struck an oil refinery in the Russian Republic of Tatarstan and an oil terminal in Krasnodar Krai overnight on Aug. 20, as Ukraine continues its campaign targeting Russian oil infrastructure.",
-          "place": {
-            "id": "country:ukraine",
-            "name": "Ukraine",
-            "kind": "country",
-            "country": "",
-            "lat": 49.725,
-            "lon": 32.141
-          }
-        },
-        {
-          "id": "https://www.businessinsider.com/h1b-lottery-visa-working-amazon-building-life-home-family-america-2026-8",
-          "title": "He Got an H-1B Visa, but Uncertainty Makes It Hard to Plan His Future",
-          "url": "https://www.businessinsider.com/h1b-lottery-visa-working-amazon-building-life-home-family-america-2026-8",
-          "source": "Business Insider",
-          "image": "https://i.insider.com/6a79d3918fcc2e955f7defa7?width=1200&format=jpeg",
-          "publishedAt": "2026-08-20T04:06:20Z",
-          "description": "Madhur Mehta worried about his US visa status. When he was selected in the H-1B lottery, \"it was like someone had taken a 100-pound weight off my mind,\" he told Business Insider.",
-          "place": {
-            "id": "country:united-states",
-            "name": "United States",
-            "kind": "country",
-            "country": "",
-            "lat": 39.538,
-            "lon": -97.483
-          }
-        },
-        {
-          "id": "https://www.theguardian.com/tv-and-radio/2026/aug/20/larry-david-alan-dershowitz-friendship-trump-epstein",
-          "title": "Larry David says former friend Alan Dershowitz ‘made a deal with the devil’ as Trump’s lawyer",
-          "url": "https://www.theguardian.com/tv-and-radio/2026/aug/20/larry-david-alan-dershowitz-friendship-trump-epstein",
-          "source": "The Guardian",
-          "image": "https://i.guim.co.uk/img/media/9bcbdb9e43ba55ae32bfff48c924e9a9ce2d0489/263_0_2625_2100/master/2625.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=16c9c3df2707c0b9dca3642b4a4b6203",
-          "publishedAt": "2026-08-20T04:06:00Z",
-          "description": "The Seinfeld and Curb Your Enthusiasm creator says Dershowitz, who has also defended Jeffrey Epstein and Harvey Weinstein, ‘only has himself to blame’ for being ostracised"
-        },
-        {
-          "id": "https://apnews.com/article/champagne-record-early-harvest-heat-drought-4d639c52469a5a6e36e4940b834a8ba9",
-          "title": "Champagne growers race to preserve quality in record-early harvest",
-          "url": "https://apnews.com/article/champagne-record-early-harvest-heat-drought-4d639c52469a5a6e36e4940b834a8ba9",
-          "source": "AP News",
-          "image": "https://dims.apnews.com/dims4/default/844f826/2147483647/strip/true/crop/7841x5225+0+1/resize/980x653!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2F11%2Fb8%2F59170d6f6c4c248385ea7c3b8026%2F352348aebb5345d48b367bc2c0f9868b",
-          "publishedAt": "2026-08-20T04:05:00Z",
-          "description": "Champagne producers are racing to pick grapes as the region experiences its earliest harvest on record."
-        },
-        {
-          "id": "https://www.rte.ie/news/ulster/2026/0820/1588593-ulster-health/",
-          "title": "UUP's Robbie Butler announced as Stormont health minister",
-          "url": "https://www.rte.ie/news/ulster/2026/0820/1588593-ulster-health/",
-          "source": "RTE.ie",
-          "image": "https://www.rte.ie/images/0024ded6-1600.jpg",
-          "publishedAt": "2026-08-20T04:04:34Z",
-          "description": "Ulster Unionist Party MLA Robbie Butler has been announced as Stormont's health minister, replacing Mike Nesbitt who stepped down earlier this week."
-        },
-        {
-          "id": "https://www.rte.ie/news/ulster/2026/0820/1588593-ulster-health-regional/",
-          "title": "UUP leader set to announce new Stormont Health Minister",
-          "url": "https://www.rte.ie/news/ulster/2026/0820/1588593-ulster-health-regional/",
-          "source": "RTE.ie",
-          "image": "https://www.rte.ie/images/0023e6e7-1600.jpg",
-          "publishedAt": "2026-08-20T04:04:34Z",
-          "description": "UUP leader Jon Burrows is set to name the next Stormont Health Minister later."
-        },
-        {
-          "id": "https://globalnation.inquirer.net/335354/venezuelas-main-airport-finds-ways-to-reopen-post-earthquakes",
-          "title": "Venezuela's main airport finds ways to reopen post-earthquakes",
-          "url": "https://globalnation.inquirer.net/335354/venezuelas-main-airport-finds-ways-to-reopen-post-earthquakes",
-          "source": "globalnation.inquirer.net",
-          "image": "https://globalnation.inquirer.net/files/2026/08/Venezuelas-main-airport-finds-ways-to-reopen-post-earthquakes-scaled.jpg",
-          "publishedAt": "2026-08-20T04:04:00Z",
-          "description": "Venezuela carried out a readiness drill to test the provisional terminals installed at the airport that serves Caracas, which was damaged in June's twin earthquakes.",
-          "place": {
-            "id": "country:venezuela",
-            "name": "Venezuela",
-            "kind": "country",
-            "country": "",
-            "lat": 7.182,
-            "lon": -64.599
-          }
-        },
-        {
-          "id": "https://www.enca.com/lifestyle-top-stories/prince-harry-and-meghan-moving-back-uk-british-press",
-          "title": "Prince Harry and Meghan moving back to UK: British press",
-          "url": "https://www.enca.com/lifestyle-top-stories/prince-harry-and-meghan-moving-back-uk-british-press",
-          "source": "enca.com",
-          "image": "https://www.enca.com/sites/default/files/styles/large/public/afp/2026-08/doc-C6347ZR-%40photo0.jpg.webp?itok=RM-iVoCu",
-          "publishedAt": "2026-08-20T04:02:46Z",
-          "description": "Six years after stepping down as working royals, Prince Harry and his wife Meghan are moving back to the United Kingdom within weeks, British press reported.",
+          "id": "https://tribuneonlineng.com/prince-harry-meghan-plan-return-to-uk-with-children/",
+          "title": "Prince Harry, Meghan plan return to UK with children",
+          "url": "https://tribuneonlineng.com/prince-harry-meghan-plan-return-to-uk-with-children/",
+          "source": "Tribune Online",
+          "image": "https://tribuneonlineng.com/wp-content/uploads/2026/08/Prince-Harry-and-Wife1.jpg",
+          "publishedAt": "2026-08-20T08:15:38Z",
+          "description": "The Duke and Duchess of Sussex are planning to move back to the UK later this month, with their children expected to begin attending...",
           "place": {
             "id": "country:united-kingdom",
             "name": "United Kingdom",
@@ -446,30 +342,13 @@
           }
         },
         {
-          "id": "https://www.euronews.com/2026/08/20/north-korea-says-trumps-scale-back-of-joint-military-exercises-with-south-korea-changes-no",
-          "title": "North Korea fires suspected missile as US move to cut drills with South Korea 'changes nothing'",
-          "url": "https://www.euronews.com/2026/08/20/north-korea-says-trumps-scale-back-of-joint-military-exercises-with-south-korea-changes-no",
-          "source": "Euronews.com",
-          "image": "https://images.euronews.com/articles/stories/09/88/12/98/1200x675_cmsv2_853beaec-5ccb-5471-a264-8d60a37ed188-9881298.jpg",
-          "publishedAt": "2026-08-20T04:02:29Z",
-          "description": "Pyongyang says scaling back US-South Korean military drills does not make them less provocative, as Japan says North Korea fired a suspected ballistic missile towards the sea.",
-          "place": {
-            "id": "country:north-korea",
-            "name": "North Korea",
-            "kind": "country",
-            "country": "",
-            "lat": 39.885,
-            "lon": 126.445
-          }
-        },
-        {
-          "id": "https://www.cnn.com/2026/08/20/business/iran-economy-war-leverage-intl",
-          "title": "Trump is squeezing Iran’s economy and oil sales. It may still have the upper hand in Hormuz",
-          "url": "https://www.cnn.com/2026/08/20/business/iran-economy-war-leverage-intl",
-          "source": "CNN",
-          "image": "https://media.cnn.com/api/v1/images/stellar/prod/ap26218279447356-1.jpg?c=16x9&q=w_800,c_fill",
-          "publishedAt": "2026-08-20T04:01:30Z",
-          "description": "Iran and the United States are doubling down on competing claims of control over the Strait of Hormuz, but the reality is more nuanced than either side is willing to admit.",
+          "id": "https://www.cnbc.com/2026/08/20/somali-pirates-return-iran-war.html",
+          "title": "Somali pirate menace returns amid U.S.-Iran war",
+          "url": "https://www.cnbc.com/2026/08/20/somali-pirates-return-iran-war.html",
+          "source": "CNBC",
+          "image": "https://image.cnbcfm.com/api/v1/image/108340411-1785152246267-gettyimages-2286971983-AFP_C37P2FU.jpeg?v=1785152321&w=1920&h=1080",
+          "publishedAt": "2026-08-20T08:15:38Z",
+          "description": "Somali piracy incidents have resurged in the Red Sea region in recent times, especially since the U.S.-Iran war kicked off-major concern for shipping companies.",
           "place": {
             "id": "country:iran",
             "name": "Iran",
@@ -480,30 +359,81 @@
           }
         },
         {
-          "id": "https://edition.cnn.com/2026/08/20/europe/monaco-bombing-anastasiia-berezovska-ukraine-intl-vis",
-          "title": "She tried to blow up a millionaire in Monaco. Days later, she was dead",
-          "url": "https://edition.cnn.com/2026/08/20/europe/monaco-bombing-anastasiia-berezovska-ukraine-intl-vis",
-          "source": "CNN",
-          "image": "https://media.cnn.com/api/v1/images/stellar/prod/20260811-mom-millionaire-monaco-final-both-cctv-bombsite.jpg?c=16x9&q=w_800,c_fill",
-          "publishedAt": "2026-08-20T04:01:29Z",
-          "description": "When the blast went off, Vadym Yermolaiev’s mind went blank. For a split second, he thought his electronic keys might have exploded in his hand. But then he saw his partner splayed out on the steps, wounded. His son waving his bloodied arms. Panic set in.",
+          "id": "https://www.nbcnews.com/world/africa/death-toll-mine-collapse-central-african-republic-rises-100-rcna593484",
+          "title": "Death toll in mine collapse in Central African Republic rises to more than 100",
+          "url": "https://www.nbcnews.com/world/africa/death-toll-mine-collapse-central-african-republic-rises-100-rcna593484",
+          "source": "NBC News",
+          "image": "https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/rockcms/2026-08/260820-mine-collapse-in-Central-African-Republic-rs-9ae2af.jpg",
+          "publishedAt": "2026-08-20T08:12:45Z",
+          "description": "The death toll from a gold mine collapse in a western part of Central African Republic has risen to more than 100, a Red Cross volunteer involved in relief efforts and a local official said Wednesday.",
           "place": {
-            "id": "city:monaco-monaco",
-            "name": "Monaco",
-            "kind": "city",
-            "country": "Monaco",
-            "lat": 43.74,
-            "lon": 7.407
+            "id": "country:central-african-republic",
+            "name": "Central African Republic",
+            "kind": "country",
+            "country": "",
+            "lat": 6.99,
+            "lon": 20.907
           }
         },
         {
-          "id": "https://www.greenqueen.com.hk/us-dietary-guidelines-trump-administration-lawsuit-meat-dairy-influence/",
-          "title": "Trump Administration Sued Over Meat & Dairy Influence in US Dietary Guidelines",
-          "url": "https://www.greenqueen.com.hk/us-dietary-guidelines-trump-administration-lawsuit-meat-dairy-influence/",
-          "source": "Green Queen Media",
-          "image": "https://www.greenqueen.com.hk/wp-content/uploads/2026/08/us-dietary-guidelines-trump-administration-lawsuit-meat-dairy-influence-social.png",
-          "publishedAt": "2026-08-20T04:00:00Z",
-          "description": "The US government has been sued for appointing a \"secret panel\" of meat and dairy lobbyists to issue the new Dietary Guidelines for Americans.",
+          "id": "https://www.middleeastmonitor.com/20260820-egypt-renews-opposition-to-new-ethiopian-dams-on-the-river-nile/",
+          "title": "Egypt renews opposition to new Ethiopian dams on the River Nile",
+          "url": "https://www.middleeastmonitor.com/20260820-egypt-renews-opposition-to-new-ethiopian-dams-on-the-river-nile/",
+          "source": "Middle East Monitor",
+          "image": "https://i0.wp.com/www.middleeastmonitor.com/wp-content/uploads/2025/11/GettyImages-2233926885.jpg?fit=920%2C613&ssl=1",
+          "publishedAt": "2026-08-20T08:09:00Z",
+          "description": "Cairo on Wednesday evening renewed its opposition to the construction of new Ethiopian dams on the River Nile, marking the third similar Egyptian position in about two weeks.  Egyptian Foreign Mini…",
+          "place": {
+            "id": "country:egypt",
+            "name": "Egypt",
+            "kind": "country",
+            "country": "",
+            "lat": 26.186,
+            "lon": 29.446
+          }
+        },
+        {
+          "id": "https://www.cnbc.com/2026/08/20/iran-economy-worries-trump-sanction-war-hormuz-uae-.html",
+          "title": "Iranian adviser disputes Trump's claim that its economy is collapsing",
+          "url": "https://www.cnbc.com/2026/08/20/iran-economy-worries-trump-sanction-war-hormuz-uae-.html",
+          "source": "CNBC",
+          "image": "https://image.cnbcfm.com/api/v1/image/108345904-1786017738144-gettyimages-2288486958-AA_06082026_2906906.jpeg?v=1786017777&w=1920&h=1080",
+          "publishedAt": "2026-08-20T08:08:34Z",
+          "description": "Iran's economy is deteriorating under the weight of mounting sanctions, but far from unraveling, a former adviser to Iran's central bank told CNBC.",
+          "place": {
+            "id": "country:iran",
+            "name": "Iran",
+            "kind": "country",
+            "country": "",
+            "lat": 32.166,
+            "lon": 54.931
+          }
+        },
+        {
+          "id": "https://www.globalsistersreport.org/social-justice/sisters-quietly-shelter-domestic-abuse-survivors-discreet-kenyan-convent-network",
+          "title": "Sisters quietly shelter domestic abuse survivors in discreet Kenyan convent network",
+          "url": "https://www.globalsistersreport.org/social-justice/sisters-quietly-shelter-domestic-abuse-survivors-discreet-kenyan-convent-network",
+          "source": "Global Sisters Report",
+          "image": "https://www.globalsistersreport.org/files/styles/facebook_ratio/public/2026-08/Njeru%20GSR%20domestic%20abuse%20convents%20kenya%20resized.jpg?h=e65cdfc4&itok=Y1RUvELX",
+          "publishedAt": "2026-08-20T08:08:05Z",
+          "description": "Operating outside the bureaucracy of Kenya's formal shelter system, at least 10 Catholic convents across Kenya have turned their peaceful residences into informal safe havens for domestic abuse survivors.",
+          "place": {
+            "id": "country:kenya",
+            "name": "Kenya",
+            "kind": "country",
+            "country": "",
+            "lat": 0.549,
+            "lon": 37.908
+          }
+        },
+        {
+          "id": "https://indtoday.com/pilot-killed-after-plane-collides-with-police-helicopter-near-us-runway/",
+          "title": "Pilot Killed After Plane Collides With Police Helicopter Near US Runway",
+          "url": "https://indtoday.com/pilot-killed-after-plane-collides-with-police-helicopter-near-us-runway/",
+          "source": "INDToday",
+          "image": "https://indtoday.com/wp-content/uploads/2026/08/YT-Thumbnails-2026-08-20T133322.242.jpg",
+          "publishedAt": "2026-08-20T08:06:19Z",
+          "description": "A after a small aircraft collided with a Pennsylvania State Police helicopter near a runway at a small airport in Carlisle, authorities said.",
           "place": {
             "id": "country:united-states",
             "name": "United States",
@@ -514,65 +444,39 @@
           }
         },
         {
-          "id": "https://www.theguardian.com/news/2026/aug/20/long-shadow-argentinas-dictatorship-she-was-not-who-she-thought-she-was-neither-was-her-father",
-          "title": "The long shadow of Argentina’s dictatorship: she wasn’t who she thought she was - neither was her father",
-          "url": "https://www.theguardian.com/news/2026/aug/20/long-shadow-argentinas-dictatorship-she-was-not-who-she-thought-she-was-neither-was-her-father",
-          "source": "The Guardian",
-          "image": "https://i.guim.co.uk/img/media/4d753378bc6a5bac62d08054e1e91055ab09b5b3/500_0_5000_4000/master/5000.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=4307e7a98ee6b9b10d44add584ee6acf",
-          "publishedAt": "2026-08-20T04:00:00Z",
-          "description": "The long read: The political rift between them was profound. Then one evening, a kiss goodbye sent her on painful yet remarkable journey that continues today",
+          "id": "https://tanzaniatimes.net/dr-lina-finda-the-tanzanian-lady-who-impresses-bill-gates-and-she-only-just-listens/",
+          "title": "The Tanzanian Lady who impresses Bill Gates",
+          "url": "https://tanzaniatimes.net/dr-lina-finda-the-tanzanian-lady-who-impresses-bill-gates-and-she-only-just-listens/",
+          "source": "The Tanzania Times",
+          "image": "https://i0.wp.com/tanzaniatimes.net/wp-content/uploads/2026/08/Lina-Finda-Bill-Gates.jpg?fit=1170%2C649&ssl=1",
+          "publishedAt": "2026-08-20T08:05:16Z",
+          "description": "Finda’s team has now sat down with national malaria programs, regulators, scientists, civil society organizations, faith leaders, and youth groups from more than 25 African countries.",
           "place": {
-            "id": "country:argentina",
-            "name": "Argentina",
+            "id": "country:tanzania",
+            "name": "Tanzania",
             "kind": "country",
             "country": "",
-            "lat": -33.501,
-            "lon": -64.173
+            "lat": -6.052,
+            "lon": 34.959
           }
         },
         {
-          "id": "https://www.mentalfloss.com/random-facts/trivia-of-the-day-august-20-2026",
-          "title": "Trivia of the Day for August 20, 2026: 25 Questions to Test Your Knowledge",
-          "url": "https://www.mentalfloss.com/random-facts/trivia-of-the-day-august-20-2026",
-          "source": "Mental Floss",
-          "image": "https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_0,w_1999,h_1124/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/voltaxMediaLibrary/mmsport/mentalfloss/01m0d2yh3t1zp6kdna26.png",
-          "publishedAt": "2026-08-20T04:00:00Z",
-          "description": "Wake up your brain with a new list of trivia questions with answers below for easy access."
+          "id": "https://wearetyrone.com/news/campaign-for-billy-united-the-entire-community/",
+          "title": "Journalist recalls campaign that raised £250k for Billy Caldwell",
+          "url": "https://wearetyrone.com/news/campaign-for-billy-united-the-entire-community/",
+          "source": "We Are Tyrone",
+          "image": "https://wearetyrone.com/wp-content/uploads/2026/08/data4871683.jpg",
+          "publishedAt": "2026-08-20T08:03:45Z",
+          "description": "Former Strabane Chronicle journalist Mark McKelvey recalls the community campaign that raised almost £250,000 for Billy Caldwell's treatment."
         },
         {
-          "id": "https://en.globes.co.il/en/article-uvision-wins-us-army-follow-on-suicide-drone-order-1001552877",
-          "title": "UVision wins US Army follow-on suicide drone order",
-          "url": "https://en.globes.co.il/en/article-uvision-wins-us-army-follow-on-suicide-drone-order-1001552877",
-          "source": "Globes - Israel Business News",
-          "image": "https://res.cloudinary.com/globes/image/upload/t_800X392/v1717759184/direct/Hero-120_sky_fwueyk.jpg",
-          "publishedAt": "2026-08-20T03:56:23Z",
-          "description": "The order in collaboration with US defense technology company Mistral is worth $50 million.",
-          "place": {
-            "id": "country:united-states",
-            "name": "United States",
-            "kind": "country",
-            "country": "",
-            "lat": 39.538,
-            "lon": -97.483
-          }
-        },
-        {
-          "id": "https://indiashippingnews.com/company/dp-world-and-world-food-programme-deliver-5000-tonnes-of-rice-to-communities-in-africa/",
-          "title": "DP World and World Food Programme deliver 5,000 tonnes of rice to communities in Africa",
-          "url": "https://indiashippingnews.com/company/dp-world-and-world-food-programme-deliver-5000-tonnes-of-rice-to-communities-in-africa/",
-          "source": "India Shipping News",
-          "image": "https://indiashippingnews.com/wp-content/uploads/2026/08/DP-World_1-2.jpg",
-          "publishedAt": "2026-08-20T03:50:36Z",
-          "description": "MUMBAI: DP World and the United Nations World Food Programme (WFP) have delivered 5,000 metric tonnes of rice to support humanitarian response operations in"
-        },
-        {
-          "id": "https://www.thailand-business-news.com/pr-news/wanda-hotels-resorts-celebrates-300th-hotel-opening-milestone-globally",
-          "title": "Wanda Hotels & Resorts Celebrates 300th Hotel Opening Milestone Globally",
-          "url": "https://www.thailand-business-news.com/pr-news/wanda-hotels-resorts-celebrates-300th-hotel-opening-milestone-globally",
-          "source": "Thailand Business News",
-          "image": "https://i0.wp.com/r2.thailand-business-news.com/wp-content/uploads/2026/03/image.jpg?fit=32%2C32&ssl=1",
-          "publishedAt": "2026-08-20T03:48:49Z",
-          "description": "HONG KONG, Aug. 19, 2026 /PRNewswire/ -- Wanda Hotels & Resorts surpassed 300 opened hotels in August, marking a new stage in the expansion of one of China's leading hotel management groups. Established in 2007, the company provides services spanning hotel design, development and operations. Its portfolio covers luxury, upscale…",
+          "id": "https://news.cgtn.com/news/2026-08-20/China-calls-for-diplomacy-to-resolve-tensions-over-Iran-1PLk3nGKHao/p.html",
+          "title": "China calls for diplomacy to resolve tensions over Iran",
+          "url": "https://news.cgtn.com/news/2026-08-20/China-calls-for-diplomacy-to-resolve-tensions-over-Iran-1PLk3nGKHao/p.html",
+          "source": "news.cgtn.com",
+          "image": "https://news.cgtn.com/news/2026-08-20/China-calls-for-diplomacy-to-resolve-tensions-over-Iran-1PLk3nGKHao/img/b9df4a1a05ed4d6fba576842ac3b74d4/b9df4a1a05ed4d6fba576842ac3b74d4-250.png",
+          "publishedAt": "2026-08-20T08:01:48Z",
+          "description": "China on Thursday urged relevant parties to resolve tensions over Iran through political and diplomatic means after US President Donald Trump announced what he called \"the most crushing economic operation\" against the Islamic Republic.",
           "place": {
             "id": "country:china",
             "name": "China",
@@ -583,13 +487,65 @@
           }
         },
         {
-          "id": "https://www.arabnews.com/node/2655274/middle-east",
-          "title": "‘Ray of hope’: Gaza seed bank rebuilds after wartime destruction",
-          "url": "https://www.arabnews.com/node/2655274/middle-east",
-          "source": "Arab News",
-          "image": "https://www.arabnews.com/sites/default/files/styles/watermark_670x423/public/main-image/2026/08/20/4742698-1651354736.jpg?itok=duqVLCa_",
-          "publishedAt": "2026-08-20T03:48:44Z",
-          "description": "DEIR EL BALAH: From a small makeshift tent in the central Gaza Strip, a dedicated team works to carefully store and document some of the war-shattered territory’s most precious commodities: local seeds. Shelves of unassuming plastic tubs line the walls of the Al Qarara Seed Bank, each holding indigenous seeds seen as a way of reviving Gaza’s devastated farming sector and",
+          "id": "https://africa.businessinsider.com/local/lifestyle/trumps-administration-has-been-given-the-right-to-do-away-with-5000-ethiopians-being/smj2my4",
+          "title": "Trump’s administration has been given the right to do away with 5000 Ethiopians being protected in the US after a major legal conclusion",
+          "url": "https://africa.businessinsider.com/local/lifestyle/trumps-administration-has-been-given-the-right-to-do-away-with-5000-ethiopians-being/smj2my4",
+          "source": "Business Insider Africa",
+          "image": "https://ocdn.eu/pulscms-transforms/1/A_AktkuTURBXy81MDI4YjRkMi1lMTY1LTQ2NDUtYTFiMi1kNzk1YzQ4NTM4NGEuanBlZ5KVAwEAzQnCzQV-kwXNBLDNAnY",
+          "publishedAt": "2026-08-20T08:00:55Z",
+          "description": "Per the recent approval of a US federal court, the Trump-led administration can now revoke Temporary Protected Status (TPS) for about 5,000 Ethiopians living in the United States, removing a legal hurdle that had previously kept the protections in place. | Business Insider Africa",
+          "place": {
+            "id": "country:ethiopia",
+            "name": "Ethiopia",
+            "kind": "country",
+            "country": "",
+            "lat": 8.033,
+            "lon": 39.089
+          }
+        },
+        {
+          "id": "https://civileats.com/2026/08/20/why-crops-are-becoming-less-nutritious/",
+          "title": "Why Crops Are Becoming Less Nutritious",
+          "url": "https://civileats.com/2026/08/20/why-crops-are-becoming-less-nutritious/",
+          "source": "Civil Eats",
+          "image": "https://civileats.com/wp-content/uploads/2026/08/260820-Farming250-corn-crop-nutrients-california-hero.png",
+          "publishedAt": "2026-08-20T08:00:53Z",
+          "description": "Rising CO2 is the likely culprit for fewer nutrients like zinc, protein, and iron in our food, but experts say more research is needed."
+        },
+        {
+          "id": "https://www.cnn.com/2026/08/20/us/texas-baby-surrogate-abortion-dispute",
+          "title": "The legal battle between a California couple, their surrogate and the Texas AG, explained",
+          "url": "https://www.cnn.com/2026/08/20/us/texas-baby-surrogate-abortion-dispute",
+          "source": "CNN",
+          "image": "https://media.cnn.com/api/v1/images/stellar/prod/ap26225649547612.jpg?c=16x9&q=w_800,c_fill",
+          "publishedAt": "2026-08-20T08:00:29Z",
+          "description": "As the baby recovers from surgery, anti-abortion activists have seized on the case to bolster arguments about fetal personhood, while feeding a small but rising movement against surrogacy in the US.",
+          "place": {
+            "id": "region:us-california",
+            "name": "California",
+            "kind": "region",
+            "country": "United States",
+            "lat": 37.2,
+            "lon": -119.5
+          }
+        },
+        {
+          "id": "https://oilprice.com/Latest-Energy-News/World-News/Middle-East-Oil-Crisis-Sends-Supertanker-Prices-to-Record-Highs.html",
+          "title": "Middle East Oil Crisis Sends Supertanker Prices to Record Highs",
+          "url": "https://oilprice.com/Latest-Energy-News/World-News/Middle-East-Oil-Crisis-Sends-Supertanker-Prices-to-Record-Highs.html",
+          "source": "Crude Oil Prices Today | OilPrice.com",
+          "image": "https://d32r1sh890xpii.cloudfront.net/news/1200x675/2026-08-20_5wutrqeydg.jpg",
+          "publishedAt": "2026-08-20T08:00:00Z",
+          "description": "Middle Eastern oil producers are scrambling to secure their own shipping capacity as the Strait of Hormuz crisis drives tanker prices and charter rates to record highs."
+        },
+        {
+          "id": "https://www.cbc.ca/news/world/yellow-line-gaza-israel-9.7313205",
+          "title": "As Israel’s military advances its yellow line, Gazans fear they’re being pushed to the sea",
+          "url": "https://www.cbc.ca/news/world/yellow-line-gaza-israel-9.7313205",
+          "source": "CBC",
+          "image": "https://i.cbc.ca/ais/c14a7c3a-a53d-470c-ab56-1d4e82fe4448,1787174877806/full/max/0/default.jpg?im=Crop%2Crect%3D%280%2C270%2C5171%2C2908%29%3BResize%3D620",
+          "publishedAt": "2026-08-20T08:00:00Z",
+          "description": "Nearly a year into the first phase of the ceasefire, Israel’s “yellow line” — marking the the edge of Israeli military control inside Gaza — keeps marching westward, pushing Palestinians out of their homes and squeezing the population into an ever smaller area.",
           "place": {
             "id": "region:gaza",
             "name": "Gaza",
@@ -600,434 +556,130 @@
           }
         },
         {
-          "id": "https://healthcareasiamagazine.com/healthcare/news/china-unveils-five-year-plan-overhaul-healthcare-security-system",
-          "title": "China unveils five-year plan to overhaul healthcare security system",
-          "url": "https://healthcareasiamagazine.com/healthcare/news/china-unveils-five-year-plan-overhaul-healthcare-security-system",
-          "source": "Healthcare Asia Magazine",
-          "image": "https://healthcareasiamagazine.com/s3/files/styles/opengraph/public/2026-08/pexels-izzy-12190237.jpg?h=f334d39f&itok=6uVnb0-D",
-          "publishedAt": "2026-08-20T03:48:36Z",
-          "description": "China unveiled a five-year plan to overhaul its healthcare security system, which covers more than 1.3 billion people.",
+          "id": "https://www.cbc.ca/news/world/syria-mohammad-ghamira-white-helmets-death-syrian-detention-9.7312254",
+          "title": "Who is Mohammad Ghamira and why has his death, alleged abuse ignited outcry in Syria?",
+          "url": "https://www.cbc.ca/news/world/syria-mohammad-ghamira-white-helmets-death-syrian-detention-9.7312254",
+          "source": "CBC",
+          "image": "https://i.cbc.ca/ais/be00b429-eee3-40b7-9f6f-914169b12b5a,1787146403083/full/max/0/default.jpg?im=Crop%2Crect%3D%280%2C44%2C860%2C483%29%3BResize%3D620",
+          "publishedAt": "2026-08-20T08:00:00Z",
+          "description": "Syrians took to the streets this week to call for justice over the death of Mohammad Ghamira, a Syrian man who died in hospital after alleged abuse by security forces while in detention. His death has become a litmus test of whether the new Syrian government's promises of accountability will translate into action.",
           "place": {
-            "id": "country:china",
-            "name": "China",
+            "id": "country:syria",
+            "name": "Syria",
             "kind": "country",
             "country": "",
-            "lat": 32.498,
-            "lon": 106.337
+            "lat": 35.007,
+            "lon": 38.278
+          }
+        },
+        {
+          "id": "https://ca.news.yahoo.com/least-five-killed-russian-missile-014357648.html",
+          "title": "Russia 'purposefully' hit critical infrastructure in latest strikes, Kyiv mayor says",
+          "url": "https://ca.news.yahoo.com/least-five-killed-russian-missile-014357648.html",
+          "source": "Yahoo News Canada",
+          "image": "https://s.yimg.com/lo/mysterio/api/78f2021dc1a0d315ed6380923a82008790efe6d03d34101105a395dfdbaa8a9d/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fbbc_us_articles_995%2F608d28f7341d47ca6cb62e1c2c6609fc.jpg",
+          "publishedAt": "2026-08-20T07:59:58Z",
+          "description": "At least 17 people were killed in the \"massive attack\" overnight on Ukraine's capital, as mayor Vitali Klitschko warns hot water supply has been disrupted.",
+          "place": {
+            "id": "city:ukraine-kyiv",
+            "name": "Kyiv",
+            "kind": "city",
+            "country": "Ukraine",
+            "lat": 50.435,
+            "lon": 30.515
+          }
+        },
+        {
+          "id": "https://dailypost.ng/2026/08/20/zambia-election-mundubile-moves-against-president-hichilema/",
+          "title": "Zambia election: Mundubile moves against President Hichilema",
+          "url": "https://dailypost.ng/2026/08/20/zambia-election-mundubile-moves-against-president-hichilema/",
+          "source": "Daily Post Nigeria",
+          "image": "https://dailypost.ng/wp-content/uploads/2026/08/Mundubile-Hichilema.jpg",
+          "publishedAt": "2026-08-20T07:57:58Z",
+          "description": "Zambian opposition leader, Brian Mundubile has declared his intention to contest the re-election of President Hakainde Hichilema through the judicial",
+          "place": {
+            "id": "country:zambia",
+            "name": "Zambia",
+            "kind": "country",
+            "country": "",
+            "lat": -14.661,
+            "lon": 26.395
+          }
+        },
+        {
+          "id": "https://www.channelnewsasia.com/east-asia/japan-train-hit-four-workers-6330276",
+          "title": "Four workers hit and killed by train in Japan",
+          "url": "https://www.channelnewsasia.com/east-asia/japan-train-hit-four-workers-6330276",
+          "source": "CNA",
+          "image": "https://dam.mediacorp.sg/image/upload/s--FP7t8FZ_--/c_crop,h_626,w_1113,x_1,y_95/c_fill,g_auto,h_676,w_1200/f_auto,q_auto/v1/mediacorp/cna/image/2026/08/20/screenshot_2026-08-20_122937.png?itok=WuPvUW0d",
+          "publishedAt": "2026-08-20T07:55:47Z",
+          "description": "Japan media reported that the four workers were removing weeds from the train tracks at Shin-Kanuma Station in Kanuma city north of Tokyo when the express train struck them.",
+          "place": {
+            "id": "country:japan",
+            "name": "Japan",
+            "kind": "country",
+            "country": "",
+            "lat": 36.143,
+            "lon": 138.442
+          }
+        },
+        {
+          "id": "https://apnews.com/article/poisonous-mushrooms-australia-erin-patterson-death-cap-bee29f74d7af491cda9c99b58b8f49e3",
+          "title": "Triple-murderer Erin Patterson should never be released, prosecutor argues",
+          "url": "https://apnews.com/article/poisonous-mushrooms-australia-erin-patterson-death-cap-bee29f74d7af491cda9c99b58b8f49e3",
+          "source": "AP News",
+          "image": "https://dims.apnews.com/dims4/default/11e7419/2147483647/strip/true/crop/2732x1820+0+114/resize/980x653!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2Fc8%2Ff1%2F672bc3dae8bd77d7f8d72219edf7%2F61f799ab871f43bca0d02acc94849be3",
+          "publishedAt": "2026-08-20T07:55:00Z",
+          "description": "A prosecutor tells an Australian court triple-murderer Erin Patterson should never be released from prison after she poisoned four of her estranged husband’s relatives with death cap mushrooms.",
+          "place": {
+            "id": "country:australia",
+            "name": "Australia",
+            "kind": "country",
+            "country": "",
+            "lat": -24.13,
+            "lon": 134.05
           }
         }
       ],
-      "fetchedAt": 1787242914714
+      "fetchedAt": 1787257007409
     },
     "sports": {
       "stories": [
         {
-          "id": "https://www.goal.com/en-gh/lists/darwin-nunez-al-hilal-al-diriyah-loan-transfer/blt3de4a498ec638314",
-          "title": "Darwin Nunez set for loan move to newly promoted Al-Diriyah from Al-Hilal",
-          "url": "https://www.goal.com/en-gh/lists/darwin-nunez-al-hilal-al-diriyah-loan-transfer/blt3de4a498ec638314",
+          "id": "https://www.abc.net.au/news/2026-08-20/max-verstappen-extends-formula-1-contract-to-2030/107060388",
+          "title": "Max Verstappen extends Formula 1 contract to 2030 with Red Bull Racing",
+          "url": "https://www.abc.net.au/news/2026-08-20/max-verstappen-extends-formula-1-contract-to-2030/107060388",
+          "source": "ABC News & Headlines – Australian Broadcasting Corporation",
+          "image": "https://live-production.wcms.abc-cdn.net.au/3d607daffba44e0254af2fc54f774c92?impolicy=wcms_watermark_news&cropH=2813&cropW=5000&xPos=0&yPos=194&width=862&height=485&imformat=generic",
+          "publishedAt": "2026-08-20T08:16:39Z",
+          "description": "Max Verstappen has ended speculation about his Formula 1 future by signing a contract extension with Red Bull until 2030."
+        },
+        {
+          "id": "https://sports.yahoo.com/articles/fabrizio-romano-explains-man-utds-081524155.html",
+          "title": "Fabrizio Romano Explains Man Utd's Next Two Signings After Carlos Baleba",
+          "url": "https://sports.yahoo.com/articles/fabrizio-romano-explains-man-utds-081524155.html",
+          "source": "Yahoo Sports",
+          "image": "https://s.yimg.com/lo/mysterio/api/1d39c59bca2b4dbcabd53be8e061fdc28ec352f631acb82af0bbb27f4349bfac/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Froundtable_sports_manchester_united_928%2Fab5003490bfcde84480875f69bea6dfe.jpg",
+          "publishedAt": "2026-08-20T08:15:24Z",
+          "description": "With a £65 million deal for the Brighton midfielder nearing completion, the Red Devils pivot toward defensive reinforcements and a potential attacking replacement before the deadline."
+        },
+        {
+          "id": "https://www.goal.com/en-ke/lists/ian-wright-fears-arsenal-selling-myles-lewis-skelly-pure-profit/bltddd40fee219c9cfe",
+          "title": "Ian Wright fears 'noose of pure profit' could lead to Arsenal selling Myles Lewis-Skelly",
+          "url": "https://www.goal.com/en-ke/lists/ian-wright-fears-arsenal-selling-myles-lewis-skelly-pure-profit/bltddd40fee219c9cfe",
           "source": "Goal.com",
-          "image": "https://assets.goal.com/images/v3/blt245352db8acb90fa/crop/MM5DIOBWGQ5DENZTGY5G433XMU5DCOB2GA======/GettyImages-2283572218.jpg",
-          "publishedAt": "2026-08-20T04:20:05Z",
-          "description": "Darwin Nunez is set to join newly promoted Saudi Pro League side Al-Diriyah on a season-long loan from Al-Hilal.",
-          "place": {
-            "id": "country:saudi-arabia",
-            "name": "Saudi Arabia",
-            "kind": "country",
-            "country": "",
-            "lat": 23.807,
-            "lon": 44.7
-          }
+          "image": "https://assets.goal.com/images/v3/getty-2290283034/crop/MM5DCNZWGA5DSOJQHJXG653FHI3TANZ2GIYTE===/GettyImages-2290283034.jpg",
+          "publishedAt": "2026-08-20T08:15:12Z",
+          "description": "Ian Wright fears financial rules and 'pure profit' incentives could tempt Arsenal into selling teenage midfielder Myles Lewis-Skelly."
         },
         {
-          "id": "https://www.goal.com/en-ke/lists/darwin-nunez-al-hilal-al-diriyah-loan-transfer/blt3de4a498ec638314",
-          "title": "Darwin Nunez set for loan move to newly promoted Al-Diriyah from Al-Hilal",
-          "url": "https://www.goal.com/en-ke/lists/darwin-nunez-al-hilal-al-diriyah-loan-transfer/blt3de4a498ec638314",
-          "source": "Goal.com",
-          "image": "https://assets.goal.com/images/v3/blt245352db8acb90fa/crop/MM5DIOBWGQ5DENZTGY5G433XMU5DCOB2GA======/GettyImages-2283572218.jpg",
-          "publishedAt": "2026-08-20T04:20:05Z",
-          "description": "Darwin Nunez is set to join newly promoted Saudi Pro League side Al-Diriyah on a season-long loan from Al-Hilal.",
-          "place": {
-            "id": "country:saudi-arabia",
-            "name": "Saudi Arabia",
-            "kind": "country",
-            "country": "",
-            "lat": 23.807,
-            "lon": 44.7
-          }
-        },
-        {
-          "id": "https://www.goal.com/en/lists/darwin-nunez-al-hilal-al-diriyah-loan-transfer/blt3de4a498ec638314",
-          "title": "Darwin Nunez set for loan move to newly promoted Al-Diriyah from Al-Hilal",
-          "url": "https://www.goal.com/en/lists/darwin-nunez-al-hilal-al-diriyah-loan-transfer/blt3de4a498ec638314",
-          "source": "Goal.com",
-          "image": "https://assets.goal.com/images/v3/blt245352db8acb90fa/crop/MM5DIOBWGQ5DENZTGY5G433XMU5DCOB2GA======/GettyImages-2283572218.jpg",
-          "publishedAt": "2026-08-20T04:20:05Z",
-          "description": "Darwin Nunez is set to join newly promoted Saudi Pro League side Al-Diriyah on a season-long loan from Al-Hilal.",
-          "place": {
-            "id": "country:saudi-arabia",
-            "name": "Saudi Arabia",
-            "kind": "country",
-            "country": "",
-            "lat": 23.807,
-            "lon": 44.7
-          }
-        },
-        {
-          "id": "https://www.goal.com/en-ug/lists/darwin-nunez-al-hilal-al-diriyah-loan-transfer/blt3de4a498ec638314",
-          "title": "Darwin Nunez set for loan move to newly promoted Al-Diriyah from Al-Hilal",
-          "url": "https://www.goal.com/en-ug/lists/darwin-nunez-al-hilal-al-diriyah-loan-transfer/blt3de4a498ec638314",
-          "source": "Goal.com",
-          "image": "https://assets.goal.com/images/v3/blt245352db8acb90fa/crop/MM5DIOBWGQ5DENZTGY5G433XMU5DCOB2GA======/GettyImages-2283572218.jpg",
-          "publishedAt": "2026-08-20T04:20:05Z",
-          "description": "Darwin Nunez is set to join newly promoted Saudi Pro League side Al-Diriyah on a season-long loan from Al-Hilal.",
-          "place": {
-            "id": "country:saudi-arabia",
-            "name": "Saudi Arabia",
-            "kind": "country",
-            "country": "",
-            "lat": 23.807,
-            "lon": 44.7
-          }
-        },
-        {
-          "id": "https://www.goal.com/en-za/lists/mikel-arteta-premier-league-arsenal-pep-guardiola/blt15e14e887e2b78b3",
-          "title": "Mikel Arteta targets historic Premier League repeat as Arsenal boss prepares for life after Pep Guardiola rivalry",
-          "url": "https://www.goal.com/en-za/lists/mikel-arteta-premier-league-arsenal-pep-guardiola/blt15e14e887e2b78b3",
-          "source": "Goal.com",
-          "image": "https://assets.goal.com/images/v3/blt61ca5dca8e2bce8c/crop/MM5DIOBQGA5DENZQGA5G433XMU5DIORSGMYA====/GettyImages-2289225955.jpg",
-          "publishedAt": "2026-08-20T04:13:17Z",
-          "description": "Mikel Arteta aims to lead Arsenal to consecutive Premier League titles as the Gunners prepare to face Coventry City following Pep Guardiola's departure."
-        },
-        {
-          "id": "https://www.goal.com/en/news/bayern-munich-news-and-rumours-explosive-allegation-mole-suspicion-involving-a-close-associate-of-max-eberl/bltb2476b8e9fa1c38f",
-          "title": "Mole at Bayern Munich? Explosive suspicion involving a confidant of Max Eberl",
-          "url": "https://www.goal.com/en/news/bayern-munich-news-and-rumours-explosive-allegation-mole-suspicion-involving-a-close-associate-of-max-eberl/bltb2476b8e9fa1c38f",
-          "source": "Goal.com",
-          "image": "https://assets.goal.com/images/v3/getty-2288031906/crop/MM5DIMBQGA5DEMRVGA5G433XMU5DMOJTHIYTSMA=/GettyImages-2288031906.jpg",
-          "publishedAt": "2026-08-20T04:11:20Z",
-          "description": "There is explosive background to the possible dismissal of Nils Schmadtke. Max Eberl is full of praise for Harry Kane and new signing Ismael Saibari is planning a very special visit to PSV Eindhoven. News and rumours surrounding Bayern Munich.",
-          "place": {
-            "id": "city:germany-munich",
-            "name": "Munich",
-            "kind": "city",
-            "country": "Germany",
-            "lat": 48.132,
-            "lon": 11.573
-          }
-        },
-        {
-          "id": "https://www.beinsports.com/en-us/soccer/conmebol-libertadores/articles-video/-video-flamengo-eliminate-cruzeiro-at-the-maracan-in-all-brazilian-clash-to-advance-to-the-2026-conmebol-libertadores-quarterfinals-2026-08-19",
-          "title": "(VIDEO) Flamengo Eliminate Cruzeiro at the Maracanã in All-Brazilian Clash to Advance to the 2026 CONMEBOL Libertadores Quarterfinals",
-          "url": "https://www.beinsports.com/en-us/soccer/conmebol-libertadores/articles-video/-video-flamengo-eliminate-cruzeiro-at-the-maracan-in-all-brazilian-clash-to-advance-to-the-2026-conmebol-libertadores-quarterfinals-2026-08-19",
-          "source": "beIN SPORTS",
-          "image": "https://prod-media.beinsports.com/image/Flamengo_Cruzeiro_Video.png",
-          "publishedAt": "2026-08-20T04:09:47Z",
-          "description": "Mengão made the most of home-field advantage and the support of their fans to overcome the Belo Horizonte side. Who will they face next?",
-          "place": {
-            "id": "country:brazil",
-            "name": "Brazil",
-            "kind": "country",
-            "country": "",
-            "lat": -12.099,
-            "lon": -49.559
-          }
-        },
-        {
-          "id": "https://www.smh.com.au/business/companies/publisher-pauses-publication-of-isaac-heeney-s-next-children-s-book-20260820-p60q3s.html",
-          "title": "Publication of Isaac Heeney’s next children’s book paused as Nike stands down Swans",
-          "url": "https://www.smh.com.au/business/companies/publisher-pauses-publication-of-isaac-heeney-s-next-children-s-book-20260820-p60q3s.html",
-          "source": "SMH.com.au",
-          "image": "https://static.ffx.io/images/$zoom_0.9141%2C$multiply_0.7554%2C$ratio_1.777778%2C$width_1059%2C$x_0%2C$y_0/t_crop_custom/q_86%2Cf_auto/9f8538cd48d35b5264bc8cd4a721ea36c01804b9",
-          "publishedAt": "2026-08-20T04:09:05Z",
-          "description": "The publisher’s move on Thursday afternoon coincided with a decision by sportswear giant Nike to pause its sponsorship of Heeney and his teammate Chad Warner over the incident at a Melbourne hotel in the early hours of Monday morning.",
-          "place": {
-            "id": "city:australia-melbourne",
-            "name": "Melbourne",
-            "kind": "city",
-            "country": "Australia",
-            "lat": -37.818,
-            "lon": 144.973
-          }
-        },
-        {
-          "id": "https://timesofindia.indiatimes.com/sports/badminton/delhis-invisible-opponent-how-drift-is-becoming-a-factor-at-the-world-championships/articleshow/133363793.cms",
-          "title": "Delhi’s invisible opponent: How drift is becoming a factor at the World Championships",
-          "url": "https://timesofindia.indiatimes.com/sports/badminton/delhis-invisible-opponent-how-drift-is-becoming-a-factor-at-the-world-championships/articleshow/133363793.cms",
-          "source": "The Times of India",
-          "image": "https://static.toiimg.com/thumb/msid-133363876,width-1280,height-720,resizemode-6,overlay-toi_sw,pt-32,y_pad-600/photo.jpg",
-          "publishedAt": "2026-08-20T04:09:00Z",
-          "description": "Badminton News: New Delhi: In a sport decided by precision and where the smallest margins can separate a winner from a loser, the most talked-about variable at the In.",
-          "place": {
-            "id": "city:india-delhi",
-            "name": "Delhi",
-            "kind": "city",
-            "country": "India",
-            "lat": 28.672,
-            "lon": 77.228
-          }
-        },
-        {
-          "id": "https://www.foxsports.com.au/nrl/nrl-premiership/nrl-2026-aj-brimson-granted-permission-to-leave-titans-contracted-until-end-of-2030-josh-hannay-where-could-he-go-rugby-league-news/news-story/1a95e6a4297235b6cf62391575fc7cc9",
-          "title": "BREAKING: Intense bidding war to play out after Titans’ stunning contract call",
-          "url": "https://www.foxsports.com.au/nrl/nrl-premiership/nrl-2026-aj-brimson-granted-permission-to-leave-titans-contracted-until-end-of-2030-josh-hannay-where-could-he-go-rugby-league-news/news-story/1a95e6a4297235b6cf62391575fc7cc9",
-          "source": "Fox Sports",
-          "image": "https://content.api.news/v3/images/bin/c81483cbc83027180ac40d7e2924f88f",
-          "publishedAt": "2026-08-20T04:08:34Z",
-          "description": "BREAKING: Intense bidding war to play out after Titans’ stunning contract call"
-        }
-      ],
-      "fetchedAt": 1787242917300
-    },
-    "entertainment": {
-      "stories": [
-        {
-          "id": "https://www.euronews.com/my-europe/2026/08/20/prince-harry-and-meghan-markle-to-move-back-to-the-uk-later-this-month",
-          "title": "Prince Harry and Meghan Markle to move back to the UK later this month",
-          "url": "https://www.euronews.com/my-europe/2026/08/20/prince-harry-and-meghan-markle-to-move-back-to-the-uk-later-this-month",
-          "source": "Euronews.com",
-          "image": "https://images.euronews.com/articles/stories/09/88/13/47/1200x675_cmsv2_54605f67-578f-52f5-8f1e-cb5db7d1c1ac-9881347.jpg",
-          "publishedAt": "2026-08-20T04:21:51Z",
-          "description": "Harry expressed a desire to reconcile with his father and spend more time with the UK monarch who is being treated for an undisclosed form of cancer.",
-          "place": {
-            "id": "country:united-kingdom",
-            "name": "United Kingdom",
-            "kind": "country",
-            "country": "",
-            "lat": 54.403,
-            "lon": -2.116
-          }
-        },
-        {
-          "id": "https://www.irishtimes.com/culture/tv-radio/2026/08/20/this-reacher-could-carry-tom-cruise-around-in-a-babybjorn-he-should-do-that/",
-          "title": "This Jack Reacher could carry Tom Cruise around in a BabyBjörn. He should",
-          "url": "https://www.irishtimes.com/culture/tv-radio/2026/08/20/this-reacher-could-carry-tom-cruise-around-in-a-babybjorn-he-should-do-that/",
-          "source": "The Irish Times",
-          "image": "https://www.irishtimes.com/resizer/v2/AETBIWG7DREC7NTJRW5XHXB3CY.jpg?smart=true&auth=b65d82d693ea381a6a0305eddf999f14dbae14613a544c7e7bde80de1dc599ef&width=1200&height=630",
-          "publishedAt": "2026-08-20T04:16:02Z",
-          "description": "Alan Ritchson moves down streets like an annoyed wall of beef in the new Prime Video series"
-        },
-        {
-          "id": "https://www.gmanetwork.com/news/showbiz/chikaminute/999221/bianca-umali-reveals-plans-to-continue-studies-i-m-excited/story/",
-          "title": "Bianca Umali reveals plans to continue studies: 'I'm excited'",
-          "url": "https://www.gmanetwork.com/news/showbiz/chikaminute/999221/bianca-umali-reveals-plans-to-continue-studies-i-m-excited/story/",
-          "source": "GMA Network",
-          "image": "https://images.gmanews.tv/webpics/2026/08/bianca_2026_08_20_11_55_04.jpg",
-          "publishedAt": "2026-08-20T04:15:37Z",
-          "description": "Bianca Umali is planning to continue her studies, the Kapuso actress revealed in an episode of “i-Listen” with Kara David."
-        },
-        {
-          "id": "https://www.theguardian.com/tv-and-radio/2026/aug/20/larry-david-alan-dershowitz-friendship-trump-epstein",
-          "title": "Larry David says former friend Alan Dershowitz ‘made a deal with the devil’ as Trump’s lawyer",
-          "url": "https://www.theguardian.com/tv-and-radio/2026/aug/20/larry-david-alan-dershowitz-friendship-trump-epstein",
-          "source": "The Guardian",
-          "image": "https://i.guim.co.uk/img/media/9bcbdb9e43ba55ae32bfff48c924e9a9ce2d0489/263_0_2625_2100/master/2625.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=16c9c3df2707c0b9dca3642b4a4b6203",
-          "publishedAt": "2026-08-20T04:15:00Z",
-          "description": "The Seinfeld and Curb Your Enthusiasm creator says Dershowitz, who has also defended Jeffrey Epstein and Harvey Weinstein, ‘only has himself to blame’ for being ostracised"
-        },
-        {
-          "id": "https://www.bandwagon.asia/articles/andrea-bocelli-to-celebrate-30-years-of-romanza-with-2-concerts-in-indonesia",
-          "title": "Andrea Bocelli to celebrate 30 years of 'Romanza' with 2 concerts in",
-          "url": "https://www.bandwagon.asia/articles/andrea-bocelli-to-celebrate-30-years-of-romanza-with-2-concerts-in-indonesia",
-          "source": "bandwagon.asia",
-          "image": "https://cdn.filestackcontent.com/crop=d:%5B0%2C684%2C3072%2C1536%5D/resize=h:300%2Cw:450%2Cf:crop/pjpg=q:90/compress/a5fMvdbS0KpDIifkgSBv",
-          "publishedAt": "2026-08-20T04:13:00Z",
-          "description": "Andrea Bocelli is heading back to Indonesia for two special performances celebrating three decades of his landmark album Romanza. Presented by Ban...",
-          "place": {
-            "id": "country:indonesia",
-            "name": "Indonesia",
-            "kind": "country",
-            "country": "",
-            "lat": -0.954,
-            "lon": 101.893
-          }
-        },
-        {
-          "id": "https://www.allkpop.com/article/2026/08/wendys-agency-to-take-legal-action-against-malicious-comments",
-          "title": "Wendy's agency to take legal action against malicious comments",
-          "url": "https://www.allkpop.com/article/2026/08/wendys-agency-to-take-legal-action-against-malicious-comments",
-          "source": "allkpop",
-          "image": "https://www.allkpop.com/upload/2026/08/content/192126/1787189184-1.jpg",
-          "publishedAt": "2026-08-20T04:12:27Z",
-          "description": "Red Velvet's Wendy has become the focus of public discussion as her agency ASND declared a firm stance against malicious online comments, especially…"
-        },
-        {
-          "id": "https://www.indiatoday.in/movies/bollywood/story/anjali-arora-sita-vfx-criticism-mahakavya-shri-ramayan-katha-teaser-respect-adipurush-2975433-2026-08-20",
-          "title": "Anjali Arora plays Sita in Ramayan Katha, internet says ‘respect for Adipurush’",
-          "url": "https://www.indiatoday.in/movies/bollywood/story/anjali-arora-sita-vfx-criticism-mahakavya-shri-ramayan-katha-teaser-respect-adipurush-2975433-2026-08-20",
-          "source": "India Today",
-          "image": "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202608/anjali-arora-205816932-16x9_0.png?VersionId=xDqlCZXDt_7ad9Lr5lBXBxC83tA7pd1e",
-          "publishedAt": "2026-08-20T04:05:55Z",
-          "description": "The makers of Mahakavya Shri Ramayan Katha unveiled the first poster and teaser featuring Anjali Arora as Sita and Dev Sharma as Ram. The promotional material triggered criticism over the casting, visual effects and treatment of the Ramayana."
-        },
-        {
-          "id": "https://www.beatportal.com/articles/1580225-portola-week-returns-with-overmono-fatboy-slim-sg-lewis-more-for-festivals-fifth-anniversary?token=6GQOuJdxmJESifBYWxsolE2zFdpqIaVp",
-          "title": "Portola Week Returns with Overmono, Fatboy Slim, SG Lewis & More for Festival’s Fifth Anniversary",
-          "url": "https://www.beatportal.com/articles/1580225-portola-week-returns-with-overmono-fatboy-slim-sg-lewis-more-for-festivals-fifth-anniversary?token=6GQOuJdxmJESifBYWxsolE2zFdpqIaVp",
-          "source": "Beatportal",
-          "image": "https://assets.beatportal.com/images/transforms/content-item/_1200x630_crop_center-center_none/Courtesy-of-Portola-Music-Festival.jpg",
-          "publishedAt": "2026-08-20T04:04:50Z",
-          "description": "Find the latest electronic music news, features, interviews, videos and podcasts from Beatportal - the reference for DJs and dance music artists."
-        },
-        {
-          "id": "https://www.irishtimes.com/food/restaurants/review/2026/08/20/osteria-nove-review-i-expected-more-from-oliver-dunnes-new-dublin-spot/",
-          "title": "Osteria Nove review: I expected more from Oliver Dunne’s new Dublin spot",
-          "url": "https://www.irishtimes.com/food/restaurants/review/2026/08/20/osteria-nove-review-i-expected-more-from-oliver-dunnes-new-dublin-spot/",
-          "source": "The Irish Times",
-          "image": "https://www.irishtimes.com/resizer/v2/22JB5P5CTRHQHKPOZ6CUI7TO2E.jpg?smart=true&auth=725153c041db7d6c4995504e21bdf684324ba4b6847ffd61867b41684e1c4f13&width=1200&height=630",
-          "publishedAt": "2026-08-20T04:04:12Z",
-          "description": "Former Michelin-starred Bon Appetit is now an Italian neighbourhood restaurant",
-          "place": {
-            "id": "city:ireland-dublin",
-            "name": "Dublin",
-            "kind": "city",
-            "country": "Ireland",
-            "lat": 53.335,
-            "lon": -6.251
-          }
-        },
-        {
-          "id": "https://www.enca.com/lifestyle-top-stories/prince-harry-and-meghan-moving-back-uk-british-press",
-          "title": "Prince Harry and Meghan moving back to UK: British press",
-          "url": "https://www.enca.com/lifestyle-top-stories/prince-harry-and-meghan-moving-back-uk-british-press",
-          "source": "eNCA",
-          "image": "https://www.enca.com/sites/default/files/styles/large/public/afp/2026-08/doc-C6347ZR-%40photo0.jpg.webp?itok=RM-iVoCu",
-          "publishedAt": "2026-08-20T04:02:46Z",
-          "description": "Six years after stepping down as working royals, Prince Harry and his wife Meghan are moving back to the United Kingdom within weeks, British press reported.",
-          "place": {
-            "id": "country:united-kingdom",
-            "name": "United Kingdom",
-            "kind": "country",
-            "country": "",
-            "lat": 54.403,
-            "lon": -2.116
-          }
-        },
-        {
-          "id": "https://wwd.com/fashion-news/fashion-features/archive-fashion-friends-foes-and-style-1239094834/",
-          "title": "Inside the WWD Archives: Fashion Friends, Foes and Style",
-          "url": "https://wwd.com/fashion-news/fashion-features/archive-fashion-friends-foes-and-style-1239094834/",
-          "source": "WWD",
-          "image": "https://wwd.com/wp-content/uploads/2026/08/2_WWD001_19730615_01-008_25aade.jpg?crop=0px%2C0px%2C1250px%2C699px&resize=1000%2C563",
-          "publishedAt": "2026-08-20T04:02:22Z",
-          "description": "From royal marriages to rock royalty, explore the couples, friendships and partnerships that influenced fashions conversations over decades."
-        },
-        {
-          "id": "https://wwd.com/business-news/markets/lee-x-marilyn-monroe-limited-edition-capsule-honoring-cons-100th-birthday-1239099562/",
-          "title": "Lee x Marilyn Monroe Limited-Edition Capsule is Launched Honoring the Icon's 100th Birthday",
-          "url": "https://wwd.com/business-news/markets/lee-x-marilyn-monroe-limited-edition-capsule-honoring-cons-100th-birthday-1239099562/",
-          "source": "WWD",
-          "image": "https://wwd.com/wp-content/uploads/2026/08/112388816_112388996_112388782_112388973_FF01_LEO_0503.jpg?crop=0px%2C152px%2C4160px%2C2327px&resize=1000%2C563",
-          "publishedAt": "2026-08-20T04:02:20Z",
-          "description": "The collection is informed by images of Marilyn wearing Lee's iconic StormRider jacket."
-        },
-        {
-          "id": "https://www.thestar.com.my/lifestyle/entertainment/2026/08/19/039spooky-in-love039-stars-park-eun-bin-yang-se-jong-play-tourists-in-singapore",
-          "title": "'Spooky In Love' stars Park Eun-bin, Yang Se-jong play tourists in Singapore",
-          "url": "https://www.thestar.com.my/lifestyle/entertainment/2026/08/19/039spooky-in-love039-stars-park-eun-bin-yang-se-jong-play-tourists-in-singapore",
-          "source": "The Star",
-          "image": "https://apicms.thestar.com.my/uploads/images/2026/08/18/4065673.png",
-          "publishedAt": "2026-08-20T04:02:00Z",
-          "description": "The 12-episode show follows Park's hotel heiress Yeo-ri, who is cursed with the ability to see ghosts and finds herself falling for Yang's ace prosecutor Gang-uk.",
-          "place": {
-            "id": "city:singapore-singapore",
-            "name": "Singapore",
-            "kind": "city",
-            "country": "Singapore",
-            "lat": 1.295,
-            "lon": 103.854
-          }
-        },
-        {
-          "id": "https://www.hollywoodreporter.com/movies/movie-news/naomi-watts-zurich-fest-golden-eye-award-the-housewife-1236676940/",
-          "title": "Naomi Watts to Receive Zurich Fest Golden Eye Award",
-          "url": "https://www.hollywoodreporter.com/movies/movie-news/naomi-watts-zurich-fest-golden-eye-award-the-housewife-1236676940/",
-          "source": "The Hollywood Reporter",
-          "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/08/Naomi-Watts_Credit-JuanKR.jpg?crop=0px%2C4px%2C1920px%2C1074px&resize=1440%2C810",
-          "publishedAt": "2026-08-20T04:00:34Z",
-          "description": "The two-time Oscar nominee will be honored for her performance in Ben Shirinian’s The Housewife, where she plays the wife of a suspected Nazi."
-        },
-        {
-          "id": "https://www.scmp.com/native/lifestyle/topics/creative-fusion/article/3364269/chef-kombucha-maker-team-show-how-gastronomic-innovation-knows-no-bounds-macau",
-          "title": "Chef, kombucha maker team up to show how gastronomic innovation knows no bounds in Macau",
-          "url": "https://www.scmp.com/native/lifestyle/topics/creative-fusion/article/3364269/chef-kombucha-maker-team-show-how-gastronomic-innovation-knows-no-bounds-macau",
-          "source": "South China Morning Post",
-          "image": "https://cdn.i-scmp.com/sites/default/files/styles/og_image_scmp_generic/public/d8/images/canvas/2026/08/17/21939d56-bac5-415b-af62-88b17733c692_9edefb43.jpg?itok=32yVpPiY&v=1786951508",
-          "publishedAt": "2026-08-20T04:00:07Z",
-          "description": "Kevin Law of Cafe Cheri and Katy Ou of Boozy Brew share creative insights and collaborate on ways to pair the fermented drink with fusion cuisine.",
-          "place": {
-            "id": "city:macau-s-a-r-macau",
-            "name": "Macau",
-            "kind": "city",
-            "country": "Macau S.A.R",
-            "lat": 22.203,
-            "lon": 113.545
-          }
-        },
-        {
-          "id": "https://www.yahoo.com/entertainment/tv/articles/josh-radnor-not-even-little-040000301.html",
-          "title": "Josh Radnor Is ‘Not Even A Little Bit’ Close To ‘How I Met Your Mother’ Co-Stars Now",
-          "url": "https://www.yahoo.com/entertainment/tv/articles/josh-radnor-not-even-little-040000301.html",
-          "source": "yahoo.com",
-          "image": "https://s.yimg.com/lo/mysterio/api/6204945f84c5299123be1374925f78380088b495180772f2d6c215ae692e3c07/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftheblast_73%2F4ff3dd384a40ec9d07c9eab258d46bdd.jpg",
-          "publishedAt": "2026-08-20T04:00:00Z",
-          "description": "For nine seasons, Josh Radnor and his “How I Met Your Mother” co-stars spent countless hours together, becoming one of The Josh Radnor Is ‘Not Even A Little Bit’ Close To ‘How I Met Your Mother’ Co-St..."
-        },
-        {
-          "id": "https://www.theguardian.com/stage/2026/aug/20/julian-clary-fully-dilated-smut-edinburgh-fringe-comedy-entendre",
-          "title": "‘Are you ready for some filth?’ Julian Clary and more on comedy’s great smut explosion",
-          "url": "https://www.theguardian.com/stage/2026/aug/20/julian-clary-fully-dilated-smut-edinburgh-fringe-comedy-entendre",
-          "source": "theguardian.com",
-          "image": "https://i.guim.co.uk/img/media/5a5b3cbc635812ff05eeb826f117b79cccc3350d/2743_545_3735_2988/master/3735.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=8e9d34a100f9107d1d302670afa2e59c",
-          "publishedAt": "2026-08-20T04:00:00Z",
-          "description": "Clary’s back with Fully Dilated, a burlesque star called Entendre Entendre is doing lewd singalongs and there’s an A-Z of very dirty words. Our writer investigates Edinburgh’s smut outbreak – and ends up getting his own fantasies turned into erotica",
-          "place": {
-            "id": "city:united-kingdom-edinburgh",
-            "name": "Edinburgh",
-            "kind": "city",
-            "country": "United Kingdom",
-            "lat": 55.948,
-            "lon": -3.219
-          }
-        },
-        {
-          "id": "https://apnews.com/article/britain-prince-harry-meghan-royal-family-timeline-a33fbdfc01164806ae246247348b15bb",
-          "title": "A timeline of the rift between Prince Harry and the royal family",
-          "url": "https://apnews.com/article/britain-prince-harry-meghan-royal-family-timeline-a33fbdfc01164806ae246247348b15bb",
-          "source": "AP News",
-          "image": "https://dims.apnews.com/dims4/default/efd42f3/2147483647/strip/true/crop/2210x1473+0+94/resize/980x653!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2F72%2F5f%2F96819b290146d11b571aeea5cf90%2F6286ef2f47f7417a8ca9e10b5fcae9ba",
-          "publishedAt": "2026-08-20T04:00:00Z",
-          "description": "Prince Harry and his wife, Meghan, will return to the United Kingdom, seemingly marking an end to a yearslong rift with the royal family.",
-          "place": {
-            "id": "country:united-kingdom",
-            "name": "United Kingdom",
-            "kind": "country",
-            "country": "",
-            "lat": 54.403,
-            "lon": -2.116
-          }
-        },
-        {
-          "id": "https://www.irishtimes.com/culture/books/review/2026/08/15/knives-and-spoons-by-alasdair-gill-a-bittersweet-life-in-kitchens/",
-          "title": "The son of AA Gill and protege of Anthony Bourdain is both sweet and irritating in his tender memoir",
-          "url": "https://www.irishtimes.com/culture/books/review/2026/08/15/knives-and-spoons-by-alasdair-gill-a-bittersweet-life-in-kitchens/",
-          "source": "The Irish Times",
-          "image": "https://www.irishtimes.com/resizer/v2/6LWDLU3FMZHKZEYTZJA74TFTJY.jpg?smart=true&auth=06177afcc012e419ddf28ec05537cd0fe2a0ab7bbd302692583e2821ed1f8c85&width=1200&height=630",
-          "publishedAt": "2026-08-20T03:54:10Z",
-          "description": "The author, a son of AA Gill and protege of Anthony Bourdain, balances struggles with addiction with a tender memoir about family"
-        }
-      ],
-      "fetchedAt": 1787242922470
-    },
-    "business": {
-      "stories": [
-        {
-          "id": "https://mb.com.ph/2026/08/20/philippine-bop-swings-to-147-billion-deficit-in-july-as-forex-reserves-hit-18-month-low",
-          "title": "Philippine BOP swings to $1.47-billion deficit in July as forex reserves hit 18-month low",
-          "url": "https://mb.com.ph/2026/08/20/philippine-bop-swings-to-147-billion-deficit-in-july-as-forex-reserves-hit-18-month-low",
-          "source": "Manila Bulletin",
-          "image": "https://mb.com.ph/manilabulletin/uploads/images/2026/08/20/125082.webp",
-          "publishedAt": "2026-08-20T04:18:45Z",
-          "description": "The Philippines’ balance of payments (BOP) swung to a $1.47-billion deficit in July, reversing the $3.4-billion surplus recorded in June, as the country’s...",
+          "id": "https://www.abs-cbn.com/sports/othersports/2026/8/20/ej-obiena-on-celebrating-wins-enjoying-life-outside-of-pole-vault-1611",
+          "title": "From leaping high to driving fast: EJ Obiena on celebrating wins, enjoying life outside of pole vault",
+          "url": "https://www.abs-cbn.com/sports/othersports/2026/8/20/ej-obiena-on-celebrating-wins-enjoying-life-outside-of-pole-vault-1611",
+          "source": "ABS-CBN",
+          "image": "https://od2-image-api.abs-cbn.com/prod/2026082009088/e2b596f0395deb09a8b2db093e4d2407881ae81af02dc57bff375fe145e598b4.jpg?w=1200&h=800",
+          "publishedAt": "2026-08-20T08:15:00Z",
+          "description": "With several years of experience and numerous accolades under his belt, Filipino Olympic pole vaulter EJ Obiena shared he's learned to enjoy more and cherish mo",
           "place": {
             "id": "country:philippines",
             "name": "Philippines",
@@ -1038,13 +690,96 @@
           }
         },
         {
-          "id": "https://cnalifestyle.channelnewsasia.com/dining/ate-cookies-levain-style-hawker-golden-mile-587696",
-          "title": "Banker-turned-hawker sells S$7 NYC Levain-style cookies at Golden Mile Food Centre",
-          "url": "https://cnalifestyle.channelnewsasia.com/dining/ate-cookies-levain-style-hawker-golden-mile-587696",
-          "source": "CNA Lifestyle",
-          "image": "https://dam.mediacorp.sg/image/upload/s--wESqHgEm--/c_fill,g_auto,h_676,w_1200/f_auto,q_auto/v1/mediacorp/cna/image/2026/08/20/ate_cookies_golden_mile.png?itok=MkuNyBFW",
-          "publishedAt": "2026-08-20T04:18:00Z",
-          "description": "The self-taught baker invested S$40,000 into his solo venture, Ate Cookies.",
+          "id": "https://sports.yahoo.com/articles/start-2026-27-season-across-081500580.html",
+          "title": "Start of the 2026/27 Season Across Europe's Top Five Leagues",
+          "url": "https://sports.yahoo.com/articles/start-2026-27-season-across-081500580.html",
+          "source": "Yahoo Sports",
+          "image": "https://s.yimg.com/lo/mysterio/api/7225d06f1af3fa3660e4ef2c9192d50f02ee32207e24479e8d734e2fe78d4d74/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fplaymakerstats_articles_264%2F45d6b0bc518286678b67856609eb7ce6.jpg",
+          "publishedAt": "2026-08-20T08:15:00Z",
+          "description": "The new European season begins only a few weeks after the World Cup, leaving many clubs with less preparation than usual. Some squads have barely changed. Others have spent heavily or reshaped key pos..."
+        },
+        {
+          "id": "https://www.goal.com/en-qa/originals/lionel-messi-cornella-cristiano-ronaldo-almeria-six-biggest-new-club-ownership-projects-football-players/blt5fc5b1fb205a1f0f",
+          "title": "Lionel Messi's Cornella capture, Cristiano Ronaldo at Almeria & the six biggest new club ownership projects being taken on by football's elite stars",
+          "url": "https://www.goal.com/en-qa/originals/lionel-messi-cornella-cristiano-ronaldo-almeria-six-biggest-new-club-ownership-projects-football-players/blt5fc5b1fb205a1f0f",
+          "source": "Goal.com",
+          "image": "https://assets.goal.com/images/v3/blt440bfd37adca151f/Messi's%20at%20Cornella%20&%20six%20biggest%20new%20club%20ownership%20projects.jpg",
+          "publishedAt": "2026-08-20T08:14:39Z",
+          "description": "GOAL runs through the six biggest new club ownership projects that have been taken on by football's elite stars, including Lionel Messi's purchase of Cornella and Cristiano Ronaldo's investment in Almeria"
+        },
+        {
+          "id": "https://www.theguardian.com/sport/2026/aug/20/max-verstappen-signs-new-red-bull-contract-to-stay-in-f1-until-2030",
+          "title": "Max Verstappen signs new Red Bull contract to stay in F1 until 2030",
+          "url": "https://www.theguardian.com/sport/2026/aug/20/max-verstappen-signs-new-red-bull-contract-to-stay-in-f1-until-2030",
+          "source": "The Guardian",
+          "image": "https://i.guim.co.uk/img/media/59239b80c67e4357a3880206dc3a106fc7a1d6e2/432_0_4315_3452/master/4315.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=0312c4284f79ec1142714c363d95c35b",
+          "publishedAt": "2026-08-20T08:14:00Z",
+          "description": "Max Verstappen has ended speculation about his future in Formula One by singing a new contract with his Red Bull team that will extend to the end of 2030"
+        },
+        {
+          "id": "https://www.goal.com/en/news/after-ermedin-demirovic-another-attacking-star-on-the-list-are-galatasaray-about-to-strike-twice-at-vfb-stuttgart/blta6da24c72fe025bb",
+          "title": "After Ermedin Demirovic, another attacking star on the list: Are Galatasaray about to strike twice at VfB Stuttgart?",
+          "url": "https://www.goal.com/en/news/after-ermedin-demirovic-another-attacking-star-on-the-list-are-galatasaray-about-to-strike-twice-at-vfb-stuttgart/blta6da24c72fe025bb",
+          "source": "Goal.com",
+          "image": "https://assets.goal.com/images/v3/blt0032bd19d1f2d0d4/06.gif",
+          "publishedAt": "2026-08-20T08:12:31Z",
+          "description": "Galatasaray are reportedly interested in Ermedin Demirovic. In addition, the Istanbul club could even snatch a second attacking star from VfB Stuttgart.",
+          "place": {
+            "id": "city:turkey-istanbul",
+            "name": "Istanbul",
+            "kind": "city",
+            "country": "Turkey",
+            "lat": 41.107,
+            "lon": 29.008
+          }
+        },
+        {
+          "id": "https://www.con-telegraph.ie/2026/08/20/mayo-gaa-stars-bring-sam-maguire-to-grave-of-former-teammate/",
+          "title": "Mayo GAA stars bring Sam Maguire to grave of former teammate",
+          "url": "https://www.con-telegraph.ie/2026/08/20/mayo-gaa-stars-bring-sam-maguire-to-grave-of-former-teammate/",
+          "source": "Connaught Telegraph",
+          "image": "https://imengine.public.prod.cmg.infomaker.io/?uuid=21380b32-e0eb-5854-a566-9ee9668f5069&function=cropresize&type=preview&source=false&q=75&crop_w=0.99999&crop_h=0.55487&width=1200&height=675&x=1.0E-5&y=0.04562",
+          "publishedAt": "2026-08-20T08:09:22Z",
+          "description": "Four members of Mayo's All-Ireland-winning squad have made a poignant visit with the Sam Maguire to the grave of former Mayo star, Darragh Doherty.",
+          "place": {
+            "id": "country:ireland",
+            "name": "Ireland",
+            "kind": "country",
+            "country": "",
+            "lat": 53.079,
+            "lon": -7.799
+          }
+        },
+        {
+          "id": "https://www.goal.com/en-ke/lists/hansi-flick-barcelona-rodri-blaugrana-spanish-international/blt15c2cee09804a404",
+          "title": "Hansi Flick hails new Barcelona signing Rodri as the best No.6 in the world after the Blaugrana secure the Spanish international",
+          "url": "https://www.goal.com/en-ke/lists/hansi-flick-barcelona-rodri-blaugrana-spanish-international/blt15c2cee09804a404",
+          "source": "Goal.com",
+          "image": "https://assets.goal.com/images/v3/bltdd5bb9264c28c0b6/FotoJet%20-%202026-08-19T060128.152.jpg",
+          "publishedAt": "2026-08-20T08:08:22Z",
+          "description": "Hansi Flick discusses Rodri's transfer to Barcelona from Manchester City, praising the Spain midfielder as the world's best No.6 after his €75m move.",
+          "place": {
+            "id": "city:spain-barcelona",
+            "name": "Barcelona",
+            "kind": "city",
+            "country": "Spain",
+            "lat": 41.385,
+            "lon": 2.181
+          }
+        }
+      ],
+      "fetchedAt": 1787257009959
+    },
+    "entertainment": {
+      "stories": [
+        {
+          "id": "https://www.ladbible.com/entertainment/celebrity/brooklyn-beckham-victoria-tattoo-tribute-feud-celebrity-family-553558-20260820",
+          "title": "Brooklyn Beckham brutally covers over tattoo tribute to mum Victoria",
+          "url": "https://www.ladbible.com/entertainment/celebrity/brooklyn-beckham-victoria-tattoo-tribute-feud-celebrity-family-553558-20260820",
+          "source": "LADbible",
+          "image": "https://resizer.ladbiblegroup.com/ogimage/v3/assets/bltcd74acc1d0a99f3a/blt959c5bba6fc940cd/6a86a1dc7ce2332f031be0c1/brooklyn-tattoos.png",
+          "publishedAt": "2026-08-20T08:16:43Z",
+          "description": "He's made it clear that they shouldn't contact him anymore",
           "place": {
             "id": "city:united-states-new-york",
             "name": "New York",
@@ -1055,66 +790,56 @@
           }
         },
         {
-          "id": "https://finance.yahoo.com/energy/articles/japan-maritime-daily-host-international-041500572.html",
-          "title": "Japan Maritime Daily to Host International Shipping Seminar in Singapore on October 5, 2026",
-          "url": "https://finance.yahoo.com/energy/articles/japan-maritime-daily-host-international-041500572.html",
-          "source": "Yahoo Finance",
-          "image": "https://s.yimg.com/lo/mysterio/api/27244CC54BA2373B6DCF9A060EF9825583E8F43481CAEF653A545874228CB04E/subgraphmysterio/resizefill_w1200_h600;quality_80;format_webp/https:%2F%2Fmedia.zenfs.com%2Fen%2Fbusiness-wire.com%2F6efdab7db09b9b1b941b04378e92c2e7.jpg",
-          "publishedAt": "2026-08-20T04:15:00Z",
-          "description": "TOKYO, August 20, 2026--The Japan Maritime Daily (JMD), Japan’s leading maritime newspaper, will host an international seminar in Singapore on Monday, October 5, 2026. Supported by Singapore Exchange (SGX), the event will focus on \"Emerging Transport Demands,\" examining major shipping initiatives and the future of maritime transport through presentations and a panel discussion.",
+          "id": "https://www.thestar.com.my/lifestyle/entertainment/2026/08/20/hayden-panettiere-drugenforcement-administration-joins-investigation-into-actresssdeath",
+          "title": "Hayden Panettiere: Drug Enforcement Administration joins investigation into actress’s death",
+          "url": "https://www.thestar.com.my/lifestyle/entertainment/2026/08/20/hayden-panettiere-drugenforcement-administration-joins-investigation-into-actresssdeath",
+          "source": "The Star",
+          "image": "https://apicms.thestar.com.my/uploads/images/2026/08/20/4068737.jpg",
+          "publishedAt": "2026-08-20T08:16:00Z",
+          "description": "Panettiere, who was 36 when she died in South Carolina on Sunday, had frequently discussed her struggles with drugs, alcohol and debilitating chronic pain",
           "place": {
-            "id": "city:singapore-singapore",
-            "name": "Singapore",
-            "kind": "city",
-            "country": "Singapore",
-            "lat": 1.295,
-            "lon": 103.854
+            "id": "region:us-south-carolina",
+            "name": "South Carolina",
+            "kind": "region",
+            "country": "United States",
+            "lat": 33.9,
+            "lon": -80.9
           }
         },
         {
-          "id": "https://www.nature.com/articles/s41598-026-67203-8?error=cookies_not_supported&code=ab6758bc-23d2-4e08-94d4-7be3ac9c8bc2",
-          "title": "Inertial sensor-based road condition evaluation in laboratory and real environments",
-          "url": "https://www.nature.com/articles/s41598-026-67203-8?error=cookies_not_supported&code=ab6758bc-23d2-4e08-94d4-7be3ac9c8bc2",
-          "source": "nature.com",
-          "image": "https://www.nature.com/oscar-static/images/favicons/nature/favicon-48x48-b52890008c.png",
-          "publishedAt": "2026-08-20T04:14:36Z",
-          "description": "The condition of road surfaces is a critical factor that impacts the technical state of vehicles, the distribution of passenger and freight traffic, and road safety, to name just a few aspects. This issue becomes increasingly important year by year as the automotive industry continues to develop, leading to a growing number of passenger and freight vehicles on the roads. Even though numerous articles have already been published on this topic, there is a lack of a validated, low-cost, and real-time method that accurately links inertial sensor data, vehicle speed, and road defect severity under controlled and real-world conditions. The objective of this work was to develop and validate a reliable, real-time road surface quality assessment method based on inertial sensor data and vehicle speed, using both controlled laboratory experiments and real-world outdoor measurements. The laboratory investigation identified a linear relationship within the tested model vehicle and an ethylene-vinyl-acetate (EVA)-foam track system. This finding is based on the Pearson correlation coefficient (r), which exceeded the critical value at the significance level α = 0.05 in all test cases (r > 0.89). Based on the laboratory results, this study proposes a bivariate function to model the relationship between road quality, acceleration magnitude, and vehicle speed. A comparison presented in the paper also highlights that the proposed method exhibits a strong correlation (r = 0.981) with a model established in a simulated environment for approximating the International Roughness Index (IRI). The proposed method offers a cost-effective, speed-aware, accurate, and scalable solution for real-time assessment of road surface quality."
+          "id": "https://www.bollywoodhungama.com/news/features/from-awarapan-2-to-gunmaaster-g9-emraan-hashmis-next-act-looks-interestingly-well-timed/",
+          "title": "From Awarapan 2 To Gunmaaster G9, Emraan Hashmi’s next act looks interestingly well-timed",
+          "url": "https://www.bollywoodhungama.com/news/features/from-awarapan-2-to-gunmaaster-g9-emraan-hashmis-next-act-looks-interestingly-well-timed/",
+          "source": "Bollywood Hungama",
+          "image": "https://stat4.bollywoodhungama.in/wp-content/uploads/2026/08/Emraan-620.jpg",
+          "publishedAt": "2026-08-20T08:13:48Z",
+          "description": "From Awarapan 2 To Gunmaaster G9, Emraan Hashmi’s next act looks interestingly well-timed Bollywood News: Latest Bollywood News, Bollywood News Today, Bollywood Celebrity News, Breaking News, Celeb News, Celebrities News, Bollywood News Hindi, Hindi Bollywood News at Bollywood Hungama.com 2."
         },
         {
-          "id": "https://www.nature.com/articles/s41598-026-67380-6?error=cookies_not_supported&code=399fcf13-2385-4a4e-9956-fceec76a42ce",
-          "title": "Integrated experimental-machine learning framework for the synthesis optimization and predictive modeling of iron oxide nanoparticles in dye removal applications",
-          "url": "https://www.nature.com/articles/s41598-026-67380-6?error=cookies_not_supported&code=399fcf13-2385-4a4e-9956-fceec76a42ce",
-          "source": "nature.com",
-          "image": "https://www.nature.com/oscar-static/images/favicons/nature/favicon-48x48-b52890008c.png",
-          "publishedAt": "2026-08-20T04:14:35Z",
-          "description": "Iron oxide nanoparticles are promising adsorbents for wastewater treatment due to their high surface area and magnetic separability, however, optimizing their synthesis to achieve desired properties remains challenging, particularly with limited experimental data. This study presents an integrated experimental and machine learning framework for optimizing the co-precipitation synthesis of iron oxide nanoparticles and predicting their crystal size and specific surface area. A comparative evaluation of two precipitating agents showed that ammonium hydroxide produced superior results, yielding smaller crystal size (86 Å) and higher surface area (87.23 m2/g). A central composite experimental design was applied to model the effects of temperature (30–90 °C), stirring speed (100–600 rpm), and synthesis time (15–75 min) using Response Surface Methodology. To improve model generalization, the dataset was expanded from 15 to 44 samples using Gaussian noise addition and linear interpolation. Extreme Gradient Boosting (XGBoost) regressors trained on the augmented data demonstrated promising predictive capability and successfully captured nonlinear synthesis-property relationships. Feature importance analysis revealed that temperature was the most influential factor for crystal size, while stirring speed dominated surface area predictions. The XGBoost models provided interpretable insights into the relative roles of synthesis parameters, offering valuable guidance for tailored nanomaterial design. These results highlight the effectiveness of combining experimental design, data augmentation, and machine learning to optimize nanoparticle synthesis for environmental applications such as dye removal. The findings of this study can help for better understanding of synthesis–property relationships in nanomaterials and provide a cost-effective, data-driven strategy for the rational design of adsorbents in wastewater treatment."
+          "id": "https://www.straitstimes.com/life/arts/quoted-by-bts-rm-poet-lee-seong-boks-work-now-translated-into-english-by-anton-hur",
+          "title": "Quoted by BTS’ RM, poet Lee Seong-bok’s work now translated into English by Anton Hur",
+          "url": "https://www.straitstimes.com/life/arts/quoted-by-bts-rm-poet-lee-seong-boks-work-now-translated-into-english-by-anton-hur",
+          "source": "The Straits Times",
+          "image": "https://cassette.sphdigital.com.sg/image/straitstimes/3e88fdaf4abc390abf036cd4f6e8f458148f3be8646a9a85b17af716f5602622",
+          "publishedAt": "2026-08-20T08:13:00Z",
+          "description": "Discover the English translation of Lee Seong-bok’s acclaimed poetry collection, exploring love, despair, and healing through meditative verse. Read more at straitstimes.com.",
+          "place": {
+            "id": "region:england",
+            "name": "England",
+            "kind": "region",
+            "country": "United Kingdom",
+            "lat": 52.4,
+            "lon": -1.5
+          }
         },
         {
-          "id": "https://www.thehindu.com/sci-tech/technology/former-meta-engineer-says-instagram-took-a-dont-ask-dont-tell-approach-on-kids-under-13/article71367651.ece",
-          "title": "Former Meta engineer says Instagram took a ‘don’t ask, don’t tell’ approach on kids under 13",
-          "url": "https://www.thehindu.com/sci-tech/technology/former-meta-engineer-says-instagram-took-a-dont-ask-dont-tell-approach-on-kids-under-13/article71367651.ece",
-          "source": "The Hindu",
-          "image": "https://th-i.thgim.com/public/incoming/sclsb5/article71367656.ece/alternates/LANDSCAPE_1200/2026-08-13T205804Z_666082646_RC2WXMAMMJDR_RTRMADP_3_META-PLATFORMS-INSTAGRAM.JPG",
-          "publishedAt": "2026-08-20T04:13:26Z",
-          "description": "During his second day of testimony, Arturo Béjar said Meta consistently prioritised profits over safety in designing its products"
-        },
-        {
-          "id": "https://seekingalpha.com/article/4938538-noumi-limited-noumf-q4-2026-earnings-call-transcript",
-          "title": "Noumi Limited (NOUMF) Q4 2026 Earnings Call Transcript",
-          "url": "https://seekingalpha.com/article/4938538-noumi-limited-noumf-q4-2026-earnings-call-transcript",
-          "source": "Seeking Alpha",
-          "image": "https://static.seekingalpha.com/assets/og_image_1200-29b2bfe1a595477db6826bd2126c63ac2091efb7ec76347a8e7f81ba17e3de6c.png",
-          "publishedAt": "2026-08-20T04:11:48Z",
-          "description": "Noumi Limited (NOUMF) Q4 2026 Earnings Call August 19, 2026 8:01 PM EDTCompany ParticipantsMichael Perich - CEO & MDIain Short - Chief Financial..."
-        },
-        {
-          "id": "https://timesofindia.indiatimes.com/technology/tech-news/us-tech-company-whose-ceo-fired-900-people-in-79-second-call-tells-court-dont-allow-him-to-go-to-shareholders-for-30-days/articleshow/133339187.cms",
-          "title": "US tech company whose CEO fired 900 people in 79-second call tells court: Don't allow him to go to shareholders for 30 days",
-          "url": "https://timesofindia.indiatimes.com/technology/tech-news/us-tech-company-whose-ceo-fired-900-people-in-79-second-call-tells-court-dont-allow-him-to-go-to-shareholders-for-30-days/articleshow/133339187.cms",
-          "source": "The Times of India",
-          "image": "https://static.toiimg.com/thumb/msid-133339242,width-1280,height-720,resizemode-6,overlay-toi_sw,pt-32,y_pad-600/photo.jpg",
-          "publishedAt": "2026-08-20T04:09:00Z",
-          "description": "Tech News News: US-based Better Home & Finance has asked a US court to stop former CEO Vishal Garg from seeking shareholder support for at least 30 days, escalati.",
+          "id": "https://www.straitstimes.com/life/entertainment/wayf-boys-break-k-pop-rules-and-interscope-is-buying-in",
+          "title": "Rookie boy band Wayf Boys break K-pop rules - and US record label Interscope is buying in",
+          "url": "https://www.straitstimes.com/life/entertainment/wayf-boys-break-k-pop-rules-and-interscope-is-buying-in",
+          "source": "The Straits Times",
+          "image": "https://cassette.sphdigital.com.sg/image/straitstimes/4a5ef35c8b6d8e7eda828a4f063f6c19c1193490d128599c252446eb4860a369",
+          "publishedAt": "2026-08-20T08:10:00Z",
+          "description": "The US deal also fits Wayf’s strategy of prioritising overseas markets. Read more at straitstimes.com.",
           "place": {
             "id": "country:united-states",
             "name": "United States",
@@ -1125,385 +850,637 @@
           }
         },
         {
-          "id": "https://www.irishtimes.com/business/work/2026/08/20/i-tried-out-new-foods-at-work-they-helped-my-focus-and-creativity-and-i-felt-better-too/",
-          "title": "I tried out new foods at work. They helped my focus and creativity, and I felt better too",
-          "url": "https://www.irishtimes.com/business/work/2026/08/20/i-tried-out-new-foods-at-work-they-helped-my-focus-and-creativity-and-i-felt-better-too/",
-          "source": "The Irish Times",
-          "image": "https://www.irishtimes.com/resizer/v2/XKRVWX44CFAQXE47CZ4QQRLY6Q.JPG?smart=true&auth=79a492e463e40988d7fcc722bc8cc77f7fd4031b961058daa0a0f544d74d9d74&width=1200&height=630",
-          "publishedAt": "2026-08-20T04:07:26Z",
-          "description": "New book examines how the right diet can improve workplace performance, including focus, clarity, energy and creativity"
+          "id": "https://www.abs-cbn.com/entertainment/showbiz/celebrities/2026/8/20/vanessa-blanca-s-cause-of-death-shared-by-family-1607",
+          "title": "Vanessa Blanca’s cause of death shared by family",
+          "url": "https://www.abs-cbn.com/entertainment/showbiz/celebrities/2026/8/20/vanessa-blanca-s-cause-of-death-shared-by-family-1607",
+          "source": "ABS-CBN",
+          "image": "https://od2-image-api.abs-cbn.com/prod/2026082009084/53c0dc435fe3ab39eec7ca3aa5f4fc0df4b380cbd23345fdfec5a6a605a7309c.png?w=1200&h=800",
+          "publishedAt": "2026-08-20T08:08:18Z",
+          "description": "Vanessa Blanca’s family has shared new details surrounding the singer’s sudden death."
         },
         {
-          "id": "https://paultan.org/2026/08/20/icaur-v27-previewed-in-thailand-reev-up-to-455-ps-150-km-nedc-ev-1000-km-total-in-malaysia-this-year/",
-          "title": "iCaur V27 previewed in Thailand - REEV, up to 455 PS, 150 km NEDC EV, 1,000 km total; in Malaysia this year?",
-          "url": "https://paultan.org/2026/08/20/icaur-v27-previewed-in-thailand-reev-up-to-455-ps-150-km-nedc-ev-1000-km-total-in-malaysia-this-year/",
-          "source": "Paul Tan's Automotive News",
-          "image": "https://paultan.org/image/2026/08/iCaur-V27-Thailand-preview-Autolifethailand-1-630x420.jpg",
-          "publishedAt": "2026-08-20T04:06:59Z",
-          "description": "Image from Autolifethailand Previewed in Indonesia earlier this month, the iCaur V27 has now made its way to Thailand, where it was shown to the media ahead of its launch in September. Autolifethailand reports that …",
+          "id": "https://www.theguardian.com/books/2026/aug/20/holiday-charles-dickens-exhibition",
+          "title": "‘Armed with a hamper from Fortnum & Mason’: on holiday with Charles Dickens",
+          "url": "https://www.theguardian.com/books/2026/aug/20/holiday-charles-dickens-exhibition",
+          "source": "The Guardian",
+          "image": "https://i.guim.co.uk/img/media/de660408d6ffb8d7200af6f4860f03ac971a865b/200_0_3430_2744/master/3430.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=929a0ef47a0963d2a52cc0d611bb15d5",
+          "publishedAt": "2026-08-20T08:06:00Z",
+          "description": "Exhibition at Charles Dickens Museum in London looks at writer’s holiday pursuits, from Kent to the Isle of Wight",
           "place": {
-            "id": "country:thailand",
-            "name": "Thailand",
+            "id": "city:united-kingdom-london",
+            "name": "London",
+            "kind": "city",
+            "country": "United Kingdom",
+            "lat": 51.502,
+            "lon": -0.119
+          }
+        },
+        {
+          "id": "https://tribune.com.pk/story/2624892/bts-rm-removed-from-the-pixel-projects-male-role-models-list-after-chris-brown-concert-controversy",
+          "title": "BTS RM removed from The Pixel Project’s 'Male Role Models' list after Chris Brown concert controversy",
+          "url": "https://tribune.com.pk/story/2624892/bts-rm-removed-from-the-pixel-projects-male-role-models-list-after-chris-brown-concert-controversy",
+          "source": "The Express Tribune",
+          "image": "https://i.tribune.com.pk/media/images/fizza-fi-31787212402-0/fizza-fi-31787212402-0-640x480.webp",
+          "publishedAt": "2026-08-20T08:04:41Z",
+          "description": "The global non-profit organisation focused on ending violence against women, announced the decision on August 19"
+        },
+        {
+          "id": "https://www.irishtimes.com/ireland/housing-planning/2026/08/20/rtb-awards-6500-in-damages-to-tenant-after-traumatic-incident/",
+          "title": "RTB awards €6,500 in damages to tenant after ‘traumatic’ incident",
+          "url": "https://www.irishtimes.com/ireland/housing-planning/2026/08/20/rtb-awards-6500-in-damages-to-tenant-after-traumatic-incident/",
+          "source": "The Irish Times",
+          "image": "https://www.irishtimes.com/resizer/v2/O5HLTKSZKVH43GBQKL2D3NCRKI.JPG?smart=true&auth=78f044cb72ee3ac493573c4aa2805df49fdbc3c09db7552d9c2f30e5775f62cd&width=1200&height=630",
+          "publishedAt": "2026-08-20T08:02:33Z",
+          "description": "Brendan Wall said he was detained by gardaí after landlord Noel Larkin claimed man was trying to break into rented home"
+        },
+        {
+          "id": "https://mb.com.ph/2026/08/20/khalil-ramos-is-giving-anne-hathaway-a-run-for-her-money-with-2026-projects",
+          "title": "Khalil Ramos is giving Anne Hathaway a run for her money with 2026 projects",
+          "url": "https://mb.com.ph/2026/08/20/khalil-ramos-is-giving-anne-hathaway-a-run-for-her-money-with-2026-projects",
+          "source": "Manila Bulletin",
+          "image": "https://mb.com.ph/manilabulletin/uploads/images/2026/08/20/125184.webp",
+          "publishedAt": "2026-08-20T08:00:21Z",
+          "description": "Filipino actor and singer Khalil Ramos jokingly compared his busy 2026 schedule with that of Oscar-winning actress Anne Hathaway. In a Facebook post on August...",
+          "place": {
+            "id": "country:philippines",
+            "name": "Philippines",
             "kind": "country",
             "country": "",
-            "lat": 15.46,
-            "lon": 101.073
+            "lat": 11.198,
+            "lon": 122.465
+          }
+        },
+        {
+          "id": "https://www.infoq.com/news/2026/08/flux-mirror-gitless-gitops/",
+          "title": "Flux Mirror Uses Gitless GitOps to Keep Software Supply Chain Under Control",
+          "url": "https://www.infoq.com/news/2026/08/flux-mirror-gitless-gitops/",
+          "source": "infoq.com",
+          "image": "https://res.infoq.com/news/2026/08/flux-mirror-gitless-gitops/en/headerimage/generatedHeaderImage-1787065801496.jpg",
+          "publishedAt": "2026-08-20T08:00:20Z",
+          "description": "Flux has introduced Flux Mirror, a CLI plugin that mirrors container images, Helm charts and OCI artifacts between registries from a declarative configuration. The plugin is part of the Flux v2.9 CLI"
+        },
+        {
+          "id": "https://toronto.citynews.ca/2026/08/20/it-feels-like-a-homecoming-bts-army-takes-over-toronto-ahead-of-stadium-shows/",
+          "title": "BTS Army takes over Toronto ahead of stadium shows",
+          "url": "https://toronto.citynews.ca/2026/08/20/it-feels-like-a-homecoming-bts-army-takes-over-toronto-ahead-of-stadium-shows/",
+          "source": "CityNews Toronto",
+          "image": "https://toronto.citynews.ca/wp-content/blogs.dir/sites/10/2026/08/ff7ad5d8173b688cd2dffc5ae43b7b4c16e07721139f3eca83a18ab5cab15e17.jpg",
+          "publishedAt": "2026-08-20T08:00:00Z",
+          "description": "TORONTO — Nearly four years ago, Sokvin Vann felt like her life was in a rut.",
+          "place": {
+            "id": "city:canada-toronto",
+            "name": "Toronto",
+            "kind": "city",
+            "country": "Canada",
+            "lat": 43.702,
+            "lon": -79.422
+          }
+        },
+        {
+          "id": "https://www.allkpop.com/article/2026/08/sess-bada-shares-tribute-and-photos-with-lee-soo-man",
+          "title": "S.E.S's Bada shares tribute and photos with Lee Soo Man",
+          "url": "https://www.allkpop.com/article/2026/08/sess-bada-shares-tribute-and-photos-with-lee-soo-man",
+          "source": "allkpop",
+          "image": "https://www.allkpop.com/upload/2024/12/content/240525/1735035932-0000694146-001-20241224154014058.jpg",
+          "publishedAt": "2026-08-20T08:00:00Z",
+          "description": "S.E.S's Bada gave fans a touching glimpse into her long-standing bond with producer Lee Soo Man by sharing new photos and a personal message on Augu…"
+        },
+        {
+          "id": "https://www.whowhatwear.com/beauty/makeup/madelyn-cline-night-out-beauty-staples",
+          "title": "Madelyn Cline on Low-Effort Makeup and Fun OBX Cast Outings",
+          "url": "https://www.whowhatwear.com/beauty/makeup/madelyn-cline-night-out-beauty-staples",
+          "source": "Who What Wear",
+          "image": "https://cdn.mos.cms.futurecdn.net/rAxRPfhNYLE5Yz5UjFUvVK-1200-80.jpg",
+          "publishedAt": "2026-08-20T08:00:00Z",
+          "description": "Here, Madelyn Cline discusses her going-out makeup staples, the \"House Tour\" music video, and a fun night with the Outer Banks cast, just in time for season 5."
+        },
+        {
+          "id": "https://punchng.com/friends-turned-foes-how-a-woman-became-central-to-odumodublvck-blaqbonez-feud/",
+          "title": "Woman at Centre of Dispute",
+          "url": "https://punchng.com/friends-turned-foes-how-a-woman-became-central-to-odumodublvck-blaqbonez-feud/",
+          "source": "Punch Newspapers",
+          "image": "https://punchng.com/wp-content/uploads/2026/08/2872b44f-3e4c-4b11-95ff-0765e060b2c5_1787211468.webp",
+          "publishedAt": "2026-08-20T07:50:19Z",
+          "description": "Explore the bitter feud between Nigerian rappers Odumodublvck and BlaqBonez, revealing how a woman became central to their personal and musical dispute.",
+          "place": {
+            "id": "country:nigeria",
+            "name": "Nigeria",
+            "kind": "country",
+            "country": "",
+            "lat": 9.44,
+            "lon": 7.503
+          }
+        },
+        {
+          "id": "https://mb.com.ph/2026/08/20/gary-valenciano-opens-up-on-his-son-gabs-mental-health-journey",
+          "title": "Gary Valenciano opens up on his son Gab's mental health journey",
+          "url": "https://mb.com.ph/2026/08/20/gary-valenciano-opens-up-on-his-son-gabs-mental-health-journey",
+          "source": "Manila Bulletin",
+          "image": "https://mb.com.ph/manilabulletin/uploads/images/2026/08/20/125103.webp",
+          "publishedAt": "2026-08-20T07:50:18Z",
+          "description": "(Trigger warning: Suicide/Self-harm)Gary Valenciano shared that his son, Gab Valenciano, is doing “extremely well” while continuing to work on his mental..."
+        },
+        {
+          "id": "https://www.tuko.co.ke/entertainment/celebrities/636888-where-kanye-west-live-hidden-hills-beverly-park/",
+          "title": "Where does Kanye West live now? From Hidden Hills to Beverly Park",
+          "url": "https://www.tuko.co.ke/entertainment/celebrities/636888-where-kanye-west-live-hidden-hills-beverly-park/",
+          "source": "Tuko News",
+          "image": "https://cdn.tuko.co.ke/images/1200x675/dcf737977357d474.jpeg?v=1",
+          "publishedAt": "2026-08-20T07:49:45Z",
+          "description": "Kanye West resides in a $35 million mansion in Beverly Park North after parting with Kim Kardashian's Hidden Hills estate. Discover his real estate journey."
+        },
+        {
+          "id": "https://www.aol.co.uk/articles/inside-steph-mcgoverns-love-life-073614000.html",
+          "title": "Inside Steph McGovern's love life from mystery partner to 'utter heartbreak' after split",
+          "url": "https://www.aol.co.uk/articles/inside-steph-mcgoverns-love-life-073614000.html",
+          "source": "AOL.co.uk",
+          "image": "https://hermes.media.static.aol.com/media/2026/08/20/d3944cca-d83b-3a61-9ea2-1a3f0bac302d/aeda03a2-c2f4-495d-8188-06ff96671475.jpg",
+          "publishedAt": "2026-08-20T07:49:12Z",
+          "description": "Away from the showbiz world, Steph McGovern is loved-up with her partner"
+        },
+        {
+          "id": "https://yen.com.gh/entertainment/celebrities/310253-poco-lees-close-associate-tunde-perry-defends-dancer-unverified-uk-arrest-allegations/",
+          "title": "Poco Lee's Close Associate Tunde Perry Defends Dancer Amid Unverified UK Arrest Allegations",
+          "url": "https://yen.com.gh/entertainment/celebrities/310253-poco-lees-close-associate-tunde-perry-defends-dancer-unverified-uk-arrest-allegations/",
+          "source": "yen.com.gh",
+          "image": "https://cdn.yen.com.gh/images/1200x675/abe4fdcafa456b2a.jpeg?v=1",
+          "publishedAt": "2026-08-20T07:46:04Z",
+          "description": "Poco Lee’s close associate has defended him amid UK arrest allegations. Details remain unclear, as fans react to the unfolding scandal surrounding the dancer.",
+          "place": {
+            "id": "country:united-kingdom",
+            "name": "United Kingdom",
+            "kind": "country",
+            "country": "",
+            "lat": 54.403,
+            "lon": -2.116
+          }
+        },
+        {
+          "id": "https://www.perthnow.com.au/entertainment/celebrity-gossip/hayden-panettieres-neighbours-warned-to-call-police-in-past-if-they-ever-saw-brian-hickerson-near-condo-c-22753741",
+          "title": "Hayden Panettiere’s neighbours warned to call police in past if they ever saw Brian Hickerson near condo",
+          "url": "https://www.perthnow.com.au/entertainment/celebrity-gossip/hayden-panettieres-neighbours-warned-to-call-police-in-past-if-they-ever-saw-brian-hickerson-near-condo-c-22753741",
+          "source": "PerthNow",
+          "image": "https://images.perthnow.com.au/publication/C-22753741/78594eaf7383e3e3af8fba6f61a45f4fd7fb6d51-16x9-x128y67w1753h986.jpg?imwidth=1200",
+          "publishedAt": "2026-08-20T07:42:00Z",
+          "description": "‘If he is seen anywhere on this property, please call 911 immediately and report that he is trespassing on the premises.’"
+        }
+      ],
+      "fetchedAt": 1787257015055
+    },
+    "business": {
+      "stories": [
+        {
+          "id": "https://www.coingabbar.com/en/price-prediction/skyai-price-forecast-today-falling-wedge-breakout-whale-alert",
+          "title": "Can SKYAI Hold Above $0.08?",
+          "url": "https://www.coingabbar.com/en/price-prediction/skyai-price-forecast-today-falling-wedge-breakout-whale-alert",
+          "source": "Coin Gabbar",
+          "image": "https://d3iuzwoiyg9qa8.cloudfront.net/webadmin/storage/public/crypto-news/August2026/skyai-price-forecast-today-falling-wedge-breakout-whale-alert-8970.webp",
+          "publishedAt": "2026-08-20T08:15:00Z",
+          "description": "SkyAI price forecast: SKYAI jumped 28% in a day to $0.0719 as volume surged 31%. See support, resistance, bear, base, and bull targets inside."
+        },
+        {
+          "id": "https://paultan.org/2026/08/20/touch-n-go-lpr-parking-license-plate-recognition-at-over-140-locations-fees-auto-deduct-from-tng-ewallet/",
+          "title": "license plate recognition at over 140 locations, fees auto deduct from TNG eWallet",
+          "url": "https://paultan.org/2026/08/20/touch-n-go-lpr-parking-license-plate-recognition-at-over-140-locations-fees-auto-deduct-from-tng-ewallet/",
+          "source": "Paul Tan's Automotive News",
+          "image": "https://paultan.org/image/2026/08/TNG-LPR-Parking-FB-1200x777.jpg",
+          "publishedAt": "2026-08-20T08:14:26Z",
+          "description": "Did you know that Touch n Go has an LPR Parking feature that lets you breeze through parking at over 140 locations without having to take parking tickets, queue at the autopay machine or find …"
+        },
+        {
+          "id": "https://www.coingabbar.com/en/price-prediction/gtech-network-launch-gtc-listing-80-percent-mining",
+          "title": "80% Mining Allocation Before Launch",
+          "url": "https://www.coingabbar.com/en/price-prediction/gtech-network-launch-gtc-listing-80-percent-mining",
+          "source": "Coin Gabbar",
+          "image": "https://d3iuzwoiyg9qa8.cloudfront.net/webadmin/storage/public/crypto-news/August2026/gtech-network-launch-gtc-listing-80-percent-mining-3923.webp",
+          "publishedAt": "2026-08-20T08:14:16Z",
+          "description": "The GTC listing is confirmed for September 28, while 80% of supply is allocated to mining. Here’s what the tokenomics could mean for launch."
+        },
+        {
+          "id": "https://www.irishexaminer.com/property/commercial/arid-41898643.html",
+          "title": "Iconic Kerry coastguard restaurant with expansion plans goes on sale for €1.5m",
+          "url": "https://www.irishexaminer.com/property/commercial/arid-41898643.html",
+          "source": "Irish Examiner",
+          "image": "https://www.irishexaminer.com/cms_media/module_img/10398/5199283_8_org_Aerial_20Shot_20Jacks_20No_20logo_1_.jpg",
+          "publishedAt": "2026-08-20T08:14:00Z",
+          "description": "Jack's Coastguard Restaurant, a top Kerry seafood destination on the Wild Atlantic Way, offers a €1.5m investment with 28-room expansion approval and cottages."
+        },
+        {
+          "id": "https://www.abc.net.au/news/2026-08-20/xpeng-trueev-federal-court-case-dismissed/107045386",
+          "title": "XPeng says it will pay customers after True EV court case dismissed",
+          "url": "https://www.abc.net.au/news/2026-08-20/xpeng-trueev-federal-court-case-dismissed/107045386",
+          "source": "ABC News & Headlines – Australian Broadcasting Corporation",
+          "image": "https://live-production.wcms.abc-cdn.net.au/8c151b16f750b5f547623024d4c8b155?impolicy=wcms_watermark_news&cropH=2737&cropW=4866&xPos=134&yPos=0&width=862&height=485&imformat=generic",
+          "publishedAt": "2026-08-20T08:13:44Z",
+          "description": "Customers left in the lurch when a Chinese electric vehicle giant terminated its exclusive agreement with an Australian company now have more certainty, but it's been a hard for many.",
+          "place": {
+            "id": "country:china",
+            "name": "China",
+            "kind": "country",
+            "country": "",
+            "lat": 32.498,
+            "lon": 106.337
+          }
+        },
+        {
+          "id": "https://www.liverpoolecho.co.uk/news/liverpool-news/merseyrail-wirral-live-cancelations-disruption-34487473",
+          "title": "Merseyrail chaos live as all Wirral lines face cancellations",
+          "url": "https://www.liverpoolecho.co.uk/news/liverpool-news/merseyrail-wirral-live-cancelations-disruption-34487473",
+          "source": "Liverpool Echo",
+          "image": "https://i2-prod.liverpoolecho.co.uk/article34299020.ece/ALTERNATES/s1200d/0_New-Merseyrail-train-at-Sandhills-Station-being-testedPic-Andrew-Teebay.jpg",
+          "publishedAt": "2026-08-20T08:11:33Z",
+          "description": "A number of Merseyrail services have been cancelled this morning"
+        },
+        {
+          "id": "https://www.telefonica.com/en/communication-room/press-room/o2-offering-customers-benefits-movistar-e6-month-access-handsets-e0-tariffs/",
+          "title": "O2 is offering its customers even more benefits with Movistar Plus for €6 a month and access to handsets from €0 on more tariffs",
+          "url": "https://www.telefonica.com/en/communication-room/press-room/o2-offering-customers-benefits-movistar-e6-month-access-handsets-e0-tariffs/",
+          "source": "telefonica.com",
+          "image": "https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoidGVsZWZvbmljYVwvYWNjb3VudHNcLzJkXC80MDAwNDcwXC9mYXZpY29uc1wvYzRcLzFcLzQ5MTliZTlhNDQxYWE1N2VlZjRlY2M4MmM1M2ZhNjVmLTE2MTkxNzczMzUucG5nIn0:telefonica:f1WW8WEiNAXO7Ttc8TjZokUZ2LVwPdFEo3CSJEVgV-A?width=196&rect=0,0,800,800&reference_width=800&format=png",
+          "publishedAt": "2026-08-20T08:11:20Z",
+          "description": "O2 is offering its customers even more benefits with Movistar Plus for €6 a month and access to handsets from €0 on more tariffs"
+        },
+        {
+          "id": "https://www.thejournal.ie/mark-zuckerberg-buys-castle-in-waterford-7136325-Aug2026/",
+          "title": "Mark Zuckerberg ‘looking forward’ to spending time in Ireland after buying castle in Waterford",
+          "url": "https://www.thejournal.ie/mark-zuckerberg-buys-castle-in-waterford-7136325-Aug2026/",
+          "source": "The Journal",
+          "image": "https://img2.thejournal.ie/article/7136325/river/?height=400&version=7136357",
+          "publishedAt": "2026-08-20T08:11:00Z",
+          "description": "Meta’s international headquarters is in Dublin, and Zuckerberg has had his eye on an Irish property for some time.",
+          "place": {
+            "id": "country:ireland",
+            "name": "Ireland",
+            "kind": "country",
+            "country": "",
+            "lat": 53.079,
+            "lon": -7.799
+          }
+        },
+        {
+          "id": "https://www.straitstimes.com/singapore/scoot-expands-china-network-with-new-flights-to-south-western-city-of-guiyang",
+          "title": "Scoot launches new flights to Guiyang in south-west China",
+          "url": "https://www.straitstimes.com/singapore/scoot-expands-china-network-with-new-flights-to-south-western-city-of-guiyang",
+          "source": "The Straits Times",
+          "image": "https://cassette.sphdigital.com.sg/image/straitstimes/3a1a1267886066f6d8dff0ca55de7196764833000da1de47286e2d31065658e9",
+          "publishedAt": "2026-08-20T08:09:54Z",
+          "description": "Scoot launches new flights to Guiyang, expanding its China network with 81 weekly flights to 16 cities, boosting travel options for the year-end holiday season. Read more at straitstimes.com.",
+          "place": {
+            "id": "city:china-guiyang",
+            "name": "Guiyang",
+            "kind": "city",
+            "country": "China",
+            "lat": 26.582,
+            "lon": 106.718
+          }
+        },
+        {
+          "id": "https://economictimes.indiatimes.com/industry/transportation/railways/alstom-seeks-200-more-locomotive-orders-from-indian-railways/articleshow/133357905.cms?from=mdr",
+          "title": "Alstom seeks 200 more locomotive orders from Indian Railways",
+          "url": "https://economictimes.indiatimes.com/industry/transportation/railways/alstom-seeks-200-more-locomotive-orders-from-indian-railways/articleshow/133357905.cms?from=mdr",
+          "source": "The Economic Times",
+          "image": "https://img.etimg.com/thumb/msid-133376061,width-1200,height-630,imgsize-156276,overlay-economictimes/articleshow.jpg",
+          "publishedAt": "2026-08-20T08:09:01Z",
+          "description": "French train maker Alstom is seeking a follow-on order for 200 electric freight locomotives from Indian Railways for its Madhepura plant in Bihar. The company is nearing completion of its existing 800-locomotive contract, with deliveries due by March 2028, and is discussing additional orders and greater localisation of components.",
+          "place": {
+            "id": "country:india",
+            "name": "India",
+            "kind": "country",
+            "country": "",
+            "lat": 22.687,
+            "lon": 79.358
           }
         }
       ],
-      "fetchedAt": 1787242925126
+      "fetchedAt": 1787257017602
     },
     "scihealth": {
       "stories": [
         {
-          "id": "https://www.spatialsource.com.au/bathymetry-reveals-great-barrier-reefs-ancient-landscape/",
-          "title": "Bathymetry reveals Great Barrier Reef’s ancient landscape",
-          "url": "https://www.spatialsource.com.au/bathymetry-reveals-great-barrier-reefs-ancient-landscape/",
-          "source": "Spatial Source",
-          "image": "https://www.spatialsource.com.au/wp-content/uploads/2026/08/BATHYMETRY_IN2026-V04-voyage-study-area_625x442.jpg",
-          "publishedAt": "2026-08-20T04:18:47Z",
-          "description": "The work has revealed the land that existed long before the southern Great Barrier Reef region became submerged around 7,000 years ago."
-        },
-        {
-          "id": "https://www.knysnaplettherald.com/News/Article/LifeStyle/10-things-you-probably-didn-t-know-about-mosquito-laboratories-202608181053",
-          "title": "10 things you probably didn’t know about mosquito laboratories",
-          "url": "https://www.knysnaplettherald.com/News/Article/LifeStyle/10-things-you-probably-didn-t-know-about-mosquito-laboratories-202608181053",
-          "source": "Knysna-Plett Herald",
-          "image": "https://cms.groupeditors.com/img/2026/Aug/710cbb74-2df9-457b-a6b5-5073d1403dad.png",
-          "publishedAt": "2026-08-20T04:21:00Z",
-          "description": "LIFESTYLE NEWS - Most people know mosquitoes..."
-        },
-        {
-          "id": "https://www.optica-opn.org/home/articles/volume_37/september_2026/features/the_invisible_half_of_light/",
-          "title": "The Invisible Half of Light",
-          "url": "https://www.optica-opn.org/home/articles/volume_37/september_2026/features/the_invisible_half_of_light/",
-          "source": "Optics & Photonics News",
-          "image": "https://opnmedia.blob.core.windows.net/$web/opn/media/images/articles/2026/0926/features/202609-p36-bhaskar-icon.jpg?ext=.jpg",
-          "publishedAt": "2026-08-20T04:10:48Z",
-          "description": "Engineered nano-assemblies are opening a new route to biosensing by tapping the long-overlooked magnetic component of light."
-        },
-        {
-          "id": "https://www.mosselbayadvertiser.com/News/Article/LifeStyle/10-things-you-probably-didn-t-know-about-mosquito-laboratories-202608181053",
-          "title": "10 things you probably didn’t know about mosquito laboratories",
-          "url": "https://www.mosselbayadvertiser.com/News/Article/LifeStyle/10-things-you-probably-didn-t-know-about-mosquito-laboratories-202608181053",
-          "source": "Mossel Bay Advertiser",
-          "image": "https://cms.groupeditors.com/img/2026/Aug/710cbb74-2df9-457b-a6b5-5073d1403dad.png",
-          "publishedAt": "2026-08-20T04:21:00Z",
-          "description": "LIFESTYLE NEWS - Most people know mosquitoes..."
-        },
-        {
-          "id": "https://phys.org/news/2026-08-honeybees-struggle-nectar-august-reveal.html",
-          "title": "Honeybees struggle to gather nectar in August, direct measurements reveal",
-          "url": "https://phys.org/news/2026-08-honeybees-struggle-nectar-august-reveal.html",
+          "id": "https://phys.org/news/2026-08-eclipses-space-northern-southern.html",
+          "title": "What beats seeing eclipses from space? Try the northern and southern lights",
+          "url": "https://phys.org/news/2026-08-eclipses-space-northern-southern.html",
           "source": "Phys.org",
-          "image": "https://scx2.b-cdn.net/gfx/news/hires/2026/honeybees-struggle-to.jpg",
-          "publishedAt": "2026-08-20T04:10:01Z",
-          "description": "Letting late-summer weeds grow could help honeybees when they find it most challenging to gather nectar, according to new research published in the journal, Functional Ecology."
+          "image": "https://scx2.b-cdn.net/gfx/news/2026/what-beats-seeing-ecli.jpg",
+          "publishedAt": "2026-08-20T08:15:47Z",
+          "description": "Eclipses may be wondrous, but nothing beats seeing the northern and southern lights from space."
         },
         {
-          "id": "https://www.oudtshoorncourant.com/News/Article/LifeStyle/10-things-you-probably-didn-t-know-about-mosquito-laboratories-202608181053",
-          "title": "10 things you probably didn’t know about mosquito laboratories",
-          "url": "https://www.oudtshoorncourant.com/News/Article/LifeStyle/10-things-you-probably-didn-t-know-about-mosquito-laboratories-202608181053",
-          "source": "Oudtshoorn Courant",
-          "image": "https://cms.groupeditors.com/img/2026/Aug/710cbb74-2df9-457b-a6b5-5073d1403dad.png",
-          "publishedAt": "2026-08-20T04:21:00Z",
-          "description": "LIFESTYLE NEWS - Most people know mosquitoes..."
-        },
-        {
-          "id": "https://www.space.com/space-exploration/launches-spacecraft/rocket-lab-launch-private-japanese-earth-observing-sar-satellite-lightning-god-defends",
-          "title": "Watch Rocket Lab launch a private Japanese Earth-observing satellite to orbit today",
-          "url": "https://www.space.com/space-exploration/launches-spacecraft/rocket-lab-launch-private-japanese-earth-observing-sar-satellite-lightning-god-defends",
-          "source": "Space",
-          "image": "https://cdn.mos.cms.futurecdn.net/L8gLoNGc6GGoDUBkTvDj27-2048-80.jpg",
-          "publishedAt": "2026-08-20T04:08:38Z",
-          "description": "Rocket Lab will launch its ninth mission for the Japanese Earth-imaging company iQPS this morning (Aug. 20), and you can watch the action live.",
+          "id": "https://allafrica.com/stories/202608200229.html",
+          "title": "Africa: Five African Countries End Polio Outbreaks",
+          "url": "https://allafrica.com/stories/202608200229.html",
+          "source": "allAfrica.com",
+          "image": "https://cdn.allafrica.com/download/pic/main/main/csiid/00680662:93fe6d1b333482d07e59533f0579cc68:arc614x376:w1200.jpg",
+          "publishedAt": "2026-08-20T08:15:00Z",
+          "description": "Brazzaville – Following rigorous technical assessments, five African countries have successfully stopped the spread of polio, marking an important milestone in efforts to protect children from this virus and advance towards eradication.",
           "place": {
-            "id": "country:japan",
-            "name": "Japan",
-            "kind": "country",
-            "country": "",
-            "lat": 36.143,
-            "lon": 138.442
+            "id": "city:congo-brazzaville-brazzaville",
+            "name": "Brazzaville",
+            "kind": "city",
+            "country": "Congo (Brazzaville)",
+            "lat": -4.257,
+            "lon": 15.283
           }
         },
         {
-          "id": "https://www.georgeherald.com/News/Article/LifeStyle/10-things-you-probably-didn-t-know-about-mosquito-laboratories-202608181053",
-          "title": "10 things you probably didn’t know about mosquito laboratories",
-          "url": "https://www.georgeherald.com/News/Article/LifeStyle/10-things-you-probably-didn-t-know-about-mosquito-laboratories-202608181053",
-          "source": "George Herald",
-          "image": "https://cms.groupeditors.com/img/2026/Aug/710cbb74-2df9-457b-a6b5-5073d1403dad.png",
-          "publishedAt": "2026-08-20T04:21:00Z",
-          "description": "LIFESTYLE NEWS - Most people know mosquitoes..."
+          "id": "https://www.nextcenturyfoundation.org/methane-the-low-hanging-fruit-of-climate-action/",
+          "title": "Hanging Fruit of Climate Action",
+          "url": "https://www.nextcenturyfoundation.org/methane-the-low-hanging-fruit-of-climate-action/",
+          "source": "Next Century Foundation",
+          "image": "https://www.nextcenturyfoundation.org/wp-content/uploads/2026/08/anne-nygard-vc-vPgGqAr4-unsplash-1024x683.jpg",
+          "publishedAt": "2026-08-20T08:12:19Z",
+          "description": "If there was one take away from the Environment meeting of the Healing the Nations conference, it was this: reducing methane emissions is imperative to"
         },
         {
-          "id": "https://www.nature.com/articles/s41598-026-67305-3?error=cookies_not_supported&code=bee30b5c-a6d8-4ad7-9db8-dcbdd82182f5",
-          "title": "Binary Dhole Optimization Algorithm with bell-shaped transfer function for feature selection",
-          "url": "https://www.nature.com/articles/s41598-026-67305-3?error=cookies_not_supported&code=bee30b5c-a6d8-4ad7-9db8-dcbdd82182f5",
-          "source": "Nature",
-          "image": "https://www.nature.com/oscar-static/images/favicons/nature/favicon-48x48-b52890008c.png",
-          "publishedAt": "2026-08-20T04:06:33Z",
-          "description": "This research introduces the Binary Dhole Optimization Algorithm (BDOA), a novel binary optimization method for feature selection problems inspired by the cooperative hunting behavior of dholes. Feature selection is an important task in machine learning because it can reduce computational cost, improve classification performance, and eliminate irrelevant and redundant features. However, selecting an optimal subset of features remains a challenging combinatorial optimization problem, especially for high-dimensional datasets. To address this issue, this study extends the original Dhole Optimization Algorithm into the binary domain through the use of novel Bell-shaped transfer functions. These transfer functions map continuous search dynamics into binary decisions while maintaining a balance between exploration and exploitation. Unlike traditional transfer functions, the proposed Bell-shaped transfer functions help reduce excessive bit flipping, preserve population diversity, and avoid premature convergence. The proposed BDOA was evaluated using multiple benchmark datasets and compared with several well-known binary optimization algorithms. The experimental results show that BDOA achieved competitive classification accuracy, lower fitness values, and fewer selected features across different datasets. In particular, BDOA achieved strong performance on datasets such as Ionosphere, Breast Cancer WD, Iris, Lung Cancer, and Human Activity Recognition. The results demonstrate that the proposed Bell-shaped transfer functions improve convergence behavior, computational efficiency, and solution quality. Quantitatively, BDOA improved the average classification accuracy from 0.8282 for the original DOA to 0.8718, representing an absolute improvement of 4.36% points. In terms of mean fitness value, BDOA achieved the lowest average value of 0.0786 across all datasets, compared with 0.0896 for the closest competing method, representing an absolute reduction of 0.0110. Therefore, BDOA can be considered an effective and robust approach for binary optimization and feature selection problems. The source code of the proposed BDOA is publicly available at: https://github.com/bnyad95/Binary-Dhole-Optimization-Algorithm-BDOA."
+          "id": "https://www.rnz.co.nz/news/world/1068373/bird-flu-suspected-after-more-than-1000-birds-found-dead-in-south-australia",
+          "title": "Bird flu suspected after more than 1000 birds found dead in South Australia",
+          "url": "https://www.rnz.co.nz/news/world/1068373/bird-flu-suspected-after-more-than-1000-birds-found-dead-in-south-australia",
+          "source": "rnz.co.nz",
+          "image": "https://media.rnztools.nz/rnz/image/upload/s--hnQ_5B6q--/t_tohu-badge-facebook/f_auto/q_auto/4JJL2WB_a182b1c79dec4291f2d02830e1cf4ac9_avif",
+          "publishedAt": "2026-08-20T08:08:04Z",
+          "description": "South (SA) authorities have identified three mass bird mortality events involving more than 1000 crested terns, which are \"presumed\" to have died from H5N1 bird flu.",
+          "place": {
+            "id": "country:australia",
+            "name": "Australia",
+            "kind": "country",
+            "country": "",
+            "lat": -24.13,
+            "lon": 134.05
+          }
         },
         {
-          "id": "https://www.eurekalert.org/news-releases/1140718",
-          "title": "AI tool could help heart attack survivors receive tailored care, say experts",
-          "url": "https://www.eurekalert.org/news-releases/1140718",
-          "source": "EurekAlert!",
-          "image": "https://www.eurekalert.org/images/EurekAlert-bluebg_Twitter_601X601.png",
-          "publishedAt": "2026-08-20T04:12:45Z",
-          "description": "The health of heart attack survivors follows three distinct paths in the five years after their health event, say researchers from the University of Surrey. The research used an AI tool to find patterns that could not only help clinicians predict which patients could follow which path – but it could also allow them to tailor care sooner through their recovery."
+          "id": "https://www.astronomy.com/observing/the-sky-today-thursday-august-20-2026/",
+          "title": "The Sky Today on Thursday, August 20: Dark, flat Plato",
+          "url": "https://www.astronomy.com/observing/the-sky-today-thursday-august-20-2026/",
+          "source": "Astronomy Magazine",
+          "image": "https://www.astronomy.com/wp-content/uploads/2026/08/CLA-a8.jpg?resize=1200,630",
+          "publishedAt": "2026-08-20T08:00:22Z",
+          "description": "Set your sights on the Moon tonight to explore the crater Plato, as our satellite closes in on the bright red giant Antares."
+        },
+        {
+          "id": "https://www.emjreviews.com/reproductive-health/news/gut-and-seminal-microbiomes-may-influence-reproductive-outcomes/",
+          "title": "Gut and Seminal Microbiomes Tied to Pregnancy Outcomes",
+          "url": "https://www.emjreviews.com/reproductive-health/news/gut-and-seminal-microbiomes-may-influence-reproductive-outcomes/",
+          "source": "EMJ",
+          "image": "https://www.emjreviews.com/wp-content/uploads/2026/08/Repro-9AM.jpg",
+          "publishedAt": "2026-08-20T08:05:56Z",
+          "description": "A new study links gut microbiome imbalance and seminal microbiome profiles with infertility and pregnancy loss. Read more."
+        },
+        {
+          "id": "https://www.newswire.ca/news-releases/children-s-hospital-launches-canada-s-first-paediatric-olink-lab-advancing-precision-medicine-for-children-834264331.html",
+          "title": "Children's Hospital launches Canada's first paediatric Olink lab, advancing precision medicine for children",
+          "url": "https://www.newswire.ca/news-releases/children-s-hospital-launches-canada-s-first-paediatric-olink-lab-advancing-precision-medicine-for-children-834264331.html",
+          "source": "PR Newswire Canada",
+          "image": "https://www.newswire.ca/content/dam/prnewswire/icons/2019-Q4-PRN-Icon-32-32.png",
+          "publishedAt": "2026-08-20T08:00:00Z",
+          "description": "/CNW/ -- Children's Health Research Institute (CHRI), part of London Health Sciences Centre Research Institute (LHSCRI) is now home to Canada's first...",
+          "place": {
+            "id": "country:canada",
+            "name": "Canada",
+            "kind": "country",
+            "country": "",
+            "lat": 60.324,
+            "lon": -101.911
+          }
+        },
+        {
+          "id": "https://www.cancerhealth.com/article/lung-tumor-signals-may-tamp-food-intake",
+          "title": "Lung Tumor Signals May Tamp Down Food Intake",
+          "url": "https://www.cancerhealth.com/article/lung-tumor-signals-may-tamp-food-intake",
+          "source": "Cancer Health",
+          "image": "https://cdn3.poz.com/169482_iStock-985082410.jpg_6af0417d-1499-4b96-9e0c-8c7e0d597c75_x2.jpeg",
+          "publishedAt": "2026-08-20T08:05:25Z",
+          "description": "Mouse study findings could inform strategies to improve nutrition and survival in certain patients with cancer."
+        },
+        {
+          "id": "https://www.indy100.com/science-tech/asteroid-apophis-god-of-chaos-how-to-see-2677731553",
+          "title": "'God of Chaos' asteroid is coming sooner than you think - and 7.6 billion people will see it",
+          "url": "https://www.indy100.com/science-tech/asteroid-apophis-god-of-chaos-how-to-see-2677731553",
+          "source": "Indy100",
+          "image": "https://www.indy100.com/media-library/god-of-chaos-asteroid-is-coming-sooner-than-you-think-and-7-6-billion-people-will-see-it.jpg?id=67502157&width=1200&height=600&coordinates=0%2C140%2C0%2C141",
+          "publishedAt": "2026-08-20T07:39:49Z",
+          "description": "'God of Chaos' asteroid Apophis is set to fly by the Earth sooner than we think - and it could be visible to 90% of people. Here's what you need to know."
+        },
+        {
+          "id": "https://english.aawsat.com/varieties/5309070-fastest-known-star-zooms-under-milky-way-black-holes-influence",
+          "title": "known Star Zooms Under Milky Way Black Hole's Influence",
+          "url": "https://english.aawsat.com/varieties/5309070-fastest-known-star-zooms-under-milky-way-black-holes-influence",
+          "source": "ASHARQ AL-AWSAT English",
+          "image": "https://static.srpcdigital.com/styles/1200x600/public/2026-08/1728815_0.jpeg.webp?VersionId=6anGyrh9K8AO5hMOzLi9JI2Bg8SIELIW",
+          "publishedAt": "2026-08-20T07:36:59Z",
+          "description": "Scientists have detected the fastest-known star, a stellar speedster that is zooming around the supermassive black hole residing at the center of our galaxy and might hold the key to measuring the spin of this celestial beast for the first time."
         }
       ],
-      "fetchedAt": 1787242930368
+      "fetchedAt": 1787257022696
     },
     "technology": {
       "stories": [
         {
-          "id": "https://www.yugatech.com/news/asus-launches-tuf-gaming-t700-and-t700-mini-in-ph/",
-          "title": "ASUS launches TUF Gaming T700 and T700 Mini in PH",
-          "url": "https://www.yugatech.com/news/asus-launches-tuf-gaming-t700-and-t700-mini-in-ph/",
-          "source": "YugaTech",
-          "image": "https://www.yugatech.com/wp-content/uploads/2026/08/asus-ph-launches-tuf-gaming-t700-desktop-series.webp",
-          "publishedAt": "2026-08-20T04:18:44Z",
-          "description": "ASUS Philippines has launched the new TUF Gaming T700 desktop series, led by the full-sized T700 and the more compact...",
-          "place": {
-            "id": "country:philippines",
-            "name": "Philippines",
-            "kind": "country",
-            "country": "",
-            "lat": 11.198,
-            "lon": 122.465
-          }
-        },
-        {
-          "id": "https://www.androidauthority.com/google-pixel-11-custom-vibration-3700805/",
-          "title": "Google lets Pixel 11 owners customize how their phones buzz",
-          "url": "https://www.androidauthority.com/google-pixel-11-custom-vibration-3700805/",
+          "id": "https://www.androidauthority.com/android-17-pause-point-digital-wellbeing-pixel-11-exclusive-3700872/",
+          "title": "Android 17's new distraction-killer is a Pixel 11 exclusive, Google confirms",
+          "url": "https://www.androidauthority.com/android-17-pause-point-digital-wellbeing-pixel-11-exclusive-3700872/",
           "source": "Android Authority",
-          "image": "https://www.androidauthority.com/wp-content/uploads/2026/08/google-pixel-11-pro-xl-hands-on-8-scaled.jpg",
-          "publishedAt": "2026-08-20T04:17:00Z",
-          "description": "The Pixel 11 series debuts custom vibration features we first uncovered in APK teardowns, letting users pick their own buzz."
+          "image": "https://www.androidauthority.com/wp-content/uploads/2026/07/digital-wellbeing-tools.jpg",
+          "publishedAt": "2026-08-20T08:17:00Z",
+          "description": "Google has confirmed Android 17's Digital Wellbeing feature is exclusive to Pixel 11 devices for now, leaving other Android phones waiting."
         },
         {
-          "id": "https://www.storyboard18.com/digital/google-adds-new-ai-study-tools-to-search-and-gemini-108201.htm",
-          "title": "Google adds new AI study tools to Search and Gemini",
-          "url": "https://www.storyboard18.com/digital/google-adds-new-ai-study-tools-to-search-and-gemini-108201.htm",
-          "source": "Storyboard18",
-          "image": "https://images.storyboard18.com/storyboard18/2026/08/Visuals-Page-2026-08-20T094344.640-2026-08-294d8dc36e2ac44792e5531f2fa72228-1019x573.jpg",
-          "publishedAt": "2026-08-20T04:15:37Z",
-          "description": "Students can now use Google's AI tools to generate quizzes, explore 3D concepts, analyse study material through Lens, organise notebooks and create customised study documents."
+          "id": "https://www.notebookcheck.net/Affordable-Cuktech-mini-charger-launches-with-67W-fast-charging-and-dual-port-design.1373763.0.html",
+          "title": "Affordable Cuktech mini charger launches with 67W fast charging and dual-port design",
+          "url": "https://www.notebookcheck.net/Affordable-Cuktech-mini-charger-launches-with-67W-fast-charging-and-dual-port-design.1373763.0.html",
+          "source": "Notebookcheck",
+          "image": "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/Cuktech-CP6-mini-charger-released.jpg",
+          "publishedAt": "2026-08-20T08:17:00Z",
+          "description": "Cuktech has launched a new charger in China, the CP6 Mini. It's a small power adapter that supports 67W fast charging. The launch price is CNY 79, about $12, and it sports a dual-port design with two Type-C ports.",
+          "place": {
+            "id": "country:china",
+            "name": "China",
+            "kind": "country",
+            "country": "",
+            "lat": 32.498,
+            "lon": 106.337
+          }
         },
         {
-          "id": "https://www.huaweicentral.com/huawei-wide-phone-camera-setup/",
-          "title": "Upcoming Huawei wide phone can sport Pura X Max-like camera setup",
-          "url": "https://www.huaweicentral.com/huawei-wide-phone-camera-setup/",
+          "id": "https://www.gamespress.com/Paint-Your-Way-to-Paradise-in-the-Palettopia-Puzzle-Playtest",
+          "title": "Paint Your Way to Paradise in the Palettopia Puzzle Playtest",
+          "url": "https://www.gamespress.com/Paint-Your-Way-to-Paradise-in-the-Palettopia-Puzzle-Playtest",
+          "source": "Games Press",
+          "image": "https://www.gamespress.com/Content/Themes/Games Press/img/favicon.ico",
+          "publishedAt": "2026-08-20T08:15:00Z",
+          "description": "Press releases and assets from across the games industry - screenshots, videos, logos, packshots, artwork, PR contacts, release dates"
+        },
+        {
+          "id": "https://www.shanethegamer.com/video-gaming/black-myth-zhong-kui-15-min-gameplay-trailer-reveals-sword-hero-new-parry-system/",
+          "title": "Min Gameplay Trailer Reveals Sword Hero, New Parry System",
+          "url": "https://www.shanethegamer.com/video-gaming/black-myth-zhong-kui-15-min-gameplay-trailer-reveals-sword-hero-new-parry-system/",
+          "source": "Shane the Gamer",
+          "image": "https://www.shanethegamer.com/wp-content/uploads/2026/08/stg-black-myth-zhong-kui-86928.jpg",
+          "publishedAt": "2026-08-20T08:12:40Z",
+          "description": "Game Science's Black Myth: Zhong Kui gets a 15-minute gameplay trailer, showing a sword-wielding hero, fire attacks and a brand-new parry mechanic."
+        },
+        {
+          "id": "https://www.ghacks.net/2026/08/20/gta-6-leaks-show-vehicles-with-fuel-and-hp-meters-pointing-to-deeper-simulation-systems/",
+          "title": "GTA 6 Leaks Show Vehicles With Fuel and HP Meters, Pointing to Deeper Simulation Systems",
+          "url": "https://www.ghacks.net/2026/08/20/gta-6-leaks-show-vehicles-with-fuel-and-hp-meters-pointing-to-deeper-simulation-systems/",
+          "source": "gHacks",
+          "image": "https://www.ghacks.net/wp-content/uploads/2026/08/gHacks-articles-2026-08-20T110950.196.png",
+          "publishedAt": "2026-08-20T08:11:14Z",
+          "description": "Leaked GTA 6 gameplay clips show cars with gas and HP meters, plus greet, taunt, and wanted-level detail systems."
+        },
+        {
+          "id": "https://za.ign.com/subnautica-2/239295/subnautica-2-patch-adds-buddy-system-dev-reveals-glimpse-at-early-access-2-update",
+          "title": "Subnautica 2 Patch Adds Buddy System, Dev Reveals Glimpse at Early Access 2 Update",
+          "url": "https://za.ign.com/subnautica-2/239295/subnautica-2-patch-adds-buddy-system-dev-reveals-glimpse-at-early-access-2-update",
+          "source": "IGN Africa",
+          "image": "https://sm.ign.com/t/ign_za/news/s/subnautica/subnautica-2-patch-adds-buddy-system-dev-reveals-glimpse-at_fder.1200.jpg",
+          "publishedAt": "2026-08-20T08:08:26Z",
+          "description": "Wave hello."
+        },
+        {
+          "id": "https://www.infoq.com/news/2026/08/dotnet-aspire-13-5-release/",
+          "title": "Microsoft Releases Aspire 13.5 With a Refreshed Dashboard and Workflow Improvements",
+          "url": "https://www.infoq.com/news/2026/08/dotnet-aspire-13-5-release/",
+          "source": "infoq.com",
+          "image": "https://res.infoq.com/news/2026/08/dotnet-aspire-13-5-release/en/card_header_image/generatedCard-1787127164291.jpg",
+          "publishedAt": "2026-08-20T08:08:22Z",
+          "description": "Last week, Microsoft released Aspire 13.5, an update that refreshes the dashboard and the aspire.dev homepage and adds several quality-of-life features. The Interaction Service gains file imports and"
+        },
+        {
+          "id": "https://gamermatters.com/gangstar-mirage-city-launches-today-features-a-malaysian-radio-station-in-game/",
+          "title": "Gangstar Mirage City Launches Today, Features A Malaysian Radio Station In-Game",
+          "url": "https://gamermatters.com/gangstar-mirage-city-launches-today-features-a-malaysian-radio-station-in-game/",
+          "source": "Gamer Matters",
+          "image": "https://gamermatters.com/wp-content/uploads/2026/08/GangstarMirageCitycov.jpeg",
+          "publishedAt": "2026-08-20T08:06:21Z",
+          "description": "The team at Gameloft and Level Infinite has come together to release the latest entry in the long-running Mobile Open World series, Gangstar. With over 30",
+          "place": {
+            "id": "country:malaysia",
+            "name": "Malaysia",
+            "kind": "country",
+            "country": "",
+            "lat": 2.529,
+            "lon": 113.837
+          }
+        },
+        {
+          "id": "https://mezha.ua/en/news/airpods-iz-kamerami-ne-viydut-cogo-roku-314348/",
+          "title": "Apple has postponed the release of AirPods with cameras until 2027, despite a recent leak • Межа",
+          "url": "https://mezha.ua/en/news/airpods-iz-kamerami-ne-viydut-cogo-roku-314348/",
+          "source": "Mezha",
+          "image": "https://img.mezha.ua/mezha/images/doc/b/1/322562/b1c1a6d7f18e167e0f9b36295e070ec8.jpeg?w=1200&q=85&stamp=1787205843",
+          "publishedAt": "2026-08-20T08:06:00Z",
+          "description": "Apple is continuing to work on AirPods with built-in cameras, but their launch has been postponed until 2027. The company had originally planned to unveil the earphones in 2026 and had already been testing them amongst its staff in the spring, but issues with software and the supply chain have led to the release being postponed."
+        },
+        {
+          "id": "https://marketech-apac.com/volkswagen-showcases-van-versatility-in-latest-fit-more-life-in-your-life-campaign-via-bernbach/",
+          "title": "Volkswagen showcases van versatility in latest ‘Fit more life in your life’ campaign via Bernbach",
+          "url": "https://marketech-apac.com/volkswagen-showcases-van-versatility-in-latest-fit-more-life-in-your-life-campaign-via-bernbach/",
+          "source": "marketech apac",
+          "image": "https://marketech-apac.com/wp-content/uploads/2026/08/Volkswagen-showcases-van-versatility-in-‘Fit-more-life-in-your-life-campaign.webp",
+          "publishedAt": "2026-08-20T08:03:45Z",
+          "description": "Volkswagen’s latest campaign highlights the versatility of the ID. Buzz and Multivan, showing how their space adapts to everyday activities."
+        },
+        {
+          "id": "https://www.cined.com/eddie-ai-trains-editing-model-small-enough-to-run-locally-claims-47-win-rate-against-kimi-k3/",
+          "title": "Eddie AI Trains Editing Model Small Enough to Run Locally - Claims 47% Win Rate Against Kimi K3",
+          "url": "https://www.cined.com/eddie-ai-trains-editing-model-small-enough-to-run-locally-claims-47-win-rate-against-kimi-k3/",
+          "source": "CineD",
+          "image": "https://www.cined.com/content/uploads/2026/08/Eddie-AI_Processing.jpg",
+          "publishedAt": "2026-08-20T08:03:14Z",
+          "description": "Eddie AI says its 9B editing model reached a 47% win rate against Kimi K3, pointing toward smaller on-premises AI. Let's have a look."
+        },
+        {
+          "id": "https://za.ign.com/lego-batman-legacy-of-the-dark-knight/239307/new-lego-batman-dlc-trailer-to-debut-on-igns-gamescom-livestream",
+          "title": "New LEGO Batman DLC Trailer to Debut on IGN’s gamescom Livestream",
+          "url": "https://za.ign.com/lego-batman-legacy-of-the-dark-knight/239307/new-lego-batman-dlc-trailer-to-debut-on-igns-gamescom-livestream",
+          "source": "IGN Africa",
+          "image": "https://sm.ign.com/t/ign_za/news/n/new-lego-b/new-lego-batman-dlc-trailer-to-debut-on-igns-gamescom-livest_mpck.1200.jpg",
+          "publishedAt": "2026-08-20T08:02:54Z",
+          "description": "LEGO Batman: Legacy of the Dark Knight is the next game from longtime LEGO developer TT Games."
+        },
+        {
+          "id": "https://za.ign.com/redfall/239306/redfall-director-pleaded-with-microsoft-to-release-final-patch-despite-already-being-fired",
+          "title": "Redfall Director Pleaded With Microsoft to Release Final Patch, Despite Already Being 'Fired'",
+          "url": "https://za.ign.com/redfall/239306/redfall-director-pleaded-with-microsoft-to-release-final-patch-despite-already-being-fired",
+          "source": "IGN Africa",
+          "image": "https://sm.ign.com/t/ign_za/news/r/redfall-di/redfall-director-pleaded-with-microsoft-to-release-final-pat_m4n5.1200.jpg",
+          "publishedAt": "2026-08-20T08:02:54Z",
+          "description": "\"They let six or seven of us sign forms that we could come back in the building.\""
+        },
+        {
+          "id": "https://monochrome-watches.com/2026-new-glashutte-original-senator-chronograph-and-senator-chronograph-navigator-41mm-slimmer-review-price/",
+          "title": "Cleaner and More Compact, The new Glashütte Original Senator Chronograph",
+          "url": "https://monochrome-watches.com/2026-new-glashutte-original-senator-chronograph-and-senator-chronograph-navigator-41mm-slimmer-review-price/",
+          "source": "Monochrome Watches",
+          "image": "https://monochrome-watches.com/app/uploads/2026/08/2026-Glashutte-Original-Senator-Chronograph-and-Senator-Chronograph-Navigator-41mm-review-15.jpg",
+          "publishedAt": "2026-08-20T08:01:23Z",
+          "description": "A slimmer and sleeker generation of Glashütte Original’s Senator Chronograph for 2026, offered in two distinct executions."
+        },
+        {
+          "id": "https://www.ghacks.net/2026/08/20/nvidia-adds-firefox-to-geforce-nows-supported-browsers-for-cloud-gaming-on-windows/",
+          "title": "Nvidia Adds Firefox to GeForce NOW's Supported Browsers for Cloud Gaming on Windows",
+          "url": "https://www.ghacks.net/2026/08/20/nvidia-adds-firefox-to-geforce-nows-supported-browsers-for-cloud-gaming-on-windows/",
+          "source": "gHacks",
+          "image": "https://www.ghacks.net/wp-content/uploads/2026/08/gHacks-articles-2026-08-20T105810.596.png",
+          "publishedAt": "2026-08-20T08:01:17Z",
+          "description": "Nvidia has added Firefox on Windows to GeForce NOW's supported browsers, enabling cloud game streaming at up to 1440p and 120fps."
+        },
+        {
+          "id": "https://www.huaweicentral.com/huawei-wide-non-fold-phone-pre-order-could-begin-next-week/",
+          "title": "Huawei wide non-fold phone pre-order could begin next week",
+          "url": "https://www.huaweicentral.com/huawei-wide-non-fold-phone-pre-order-could-begin-next-week/",
           "source": "Huawei Central",
-          "image": "https://www.huaweicentral.com/wp-content/uploads/2026/06/Pura-X-Max.jpg",
-          "publishedAt": "2026-08-20T04:13:44Z",
-          "description": "Huawei wide non-foldable Pura phone might look different on the outside from other Pura X series, but it can be similar in camera setup to a"
+          "image": "https://www.huaweicentral.com/wp-content/uploads/2026/04/Pura-90-ProMax-screen.jpg",
+          "publishedAt": "2026-08-20T08:01:08Z",
+          "description": "News about the first Huawei wide non-foldable phone continue to flow in, and in the latest edition, we have some info about pre-order process"
         },
         {
-          "id": "https://unbox.ph/gadget/snapdragon-8-elite-gen-6-launch/",
-          "title": "Qualcomm is launching two Snapdragon 8 Elite Gen 6 variants",
-          "url": "https://unbox.ph/gadget/snapdragon-8-elite-gen-6-launch/",
-          "source": "unbox.ph",
-          "image": "https://unbox.ph/wp-content/uploads/2026/08/Snapdragon-8-Elite-Gen-6.jpg",
-          "publishedAt": "2026-08-20T04:13:05Z",
-          "description": "Qualcomm has confirmed that the upcoming Snapdragon 8 Elite Gen 6 will have two variants at launch."
+          "id": "https://www.gamespress.com/en-GB/Paint-Your-Way-to-Paradise-in-the-Palettopia-Puzzle-Playtest",
+          "title": "Paint Your Way to Paradise in the Palettopia Puzzle Playtest",
+          "url": "https://www.gamespress.com/en-GB/Paint-Your-Way-to-Paradise-in-the-Palettopia-Puzzle-Playtest",
+          "source": "Games Press",
+          "image": "https://www.gamespress.com/Content/Themes/Games Press/img/favicon.ico",
+          "publishedAt": "2026-08-20T08:00:08Z",
+          "description": "Press releases and assets from across the games industry - screenshots, videos, logos, packshots, artwork, PR contacts, release dates"
         },
         {
-          "id": "https://www.bosshunting.com.au/lifestyle/technology/jbl-live-780nc-fathers-day-sale",
-          "title": "JBL Just Made The Easiest Father's Day Gift $50 Easier",
-          "url": "https://www.bosshunting.com.au/lifestyle/technology/jbl-live-780nc-fathers-day-sale",
-          "source": "bosshunting.com.au",
-          "image": "https://cdn.sanity.io/images/qnw8a1wy/production/6e264fef66b8fcdb9509cd5c378c4a0d1370878b-2000x1334.jpg?rect=0,142,2000,1050&w=1200&h=630&fit=crop&auto=format",
-          "publishedAt": "2026-08-20T04:11:45Z",
-          "description": "The Live 780NC from JBL already embarrassed headphones costing twice as much. Now it's $249 for a limited time."
+          "id": "https://www.creativebloq.com/web-design/ux-ui/a-16-year-old-girls-iphone-xis-breaking-ui-designers-brains",
+          "title": "A 16-year-old girl's iPhone theme is breaking UI designers' brains",
+          "url": "https://www.creativebloq.com/web-design/ux-ui/a-16-year-old-girls-iphone-xis-breaking-ui-designers-brains",
+          "source": "Creative Bloq",
+          "image": "https://cdn.mos.cms.futurecdn.net/YPr8dQ4LVn8MhJEnjcm4jX-1920-80.jpg",
+          "publishedAt": "2026-08-20T08:00:00Z",
+          "description": "Is Gen Z's obsession with anti-design turning every UI rule on its head?"
         },
         {
-          "id": "https://manofmany.com/entertainment/gaming/tomb-raider-legacy-of-atlantis-combat-agility",
-          "title": "How 'Tomb Raider Legacy of Atlantis' Is Reimagining Lara Croft’s Combat & Agility",
-          "url": "https://manofmany.com/entertainment/gaming/tomb-raider-legacy-of-atlantis-combat-agility",
-          "source": "Man of Many",
-          "image": "https://manofmany.com/wp-content/uploads/2026/08/2.png",
-          "publishedAt": "2026-08-20T04:11:23Z",
-          "description": "Another mini doc episode has been released by the developers of Tomb Raider: Legacy of Atlantis featuring 'combat and progression'"
+          "id": "https://robbreport.com/style/watch-collector/glashutte-original-senator-chronograph-watches-1238568038/",
+          "title": "Glashütte Original Unveils a Pair of New Watches Inspired by the Past",
+          "url": "https://robbreport.com/style/watch-collector/glashutte-original-senator-chronograph-watches-1238568038/",
+          "source": "Robb Report",
+          "image": "https://robbreport.com/wp-content/uploads/2026/08/glashutte-original-senator-chronograph-navigator-senator-chronograph.jpg?w=681&h=383&crop=1",
+          "publishedAt": "2026-08-20T08:00:00Z",
+          "description": "Glashütte Original has just unveiled its new Senator Chronograph Navigator or the Senator Chronograph, inspired by pilot's and observation watches."
         },
         {
-          "id": "https://manilashaker.com/asus-tuf-gaming-t700-desktops-launched-in-ph/",
-          "title": "ASUS TUF Gaming T700 Desktops Launched in PH",
-          "url": "https://manilashaker.com/asus-tuf-gaming-t700-desktops-launched-in-ph/",
-          "source": "ManilaShaker Philippines",
-          "image": "https://i0.wp.com/manilashaker.com/wp-content/uploads/2026/08/asus-tuf-gaming-t700-desktops-launched-in-ph.jpg?fit=1200%2C640&ssl=1",
-          "publishedAt": "2026-08-20T04:11:15Z",
-          "description": "ASUS Philippines has launched its new TUF Gaming T700 desktop series, consisting of the TUF Gaming T700 (TM700TZ) and the smaller TUF Gaming T700 Mini (T700MF). The TUF Gaming T700 is powered by an AMD Ryzen 7 8700F processor and comes with up to an NVIDIA GeForce RTX 5060 Ti GPU. It also features 16GB…",
+          "id": "https://www.hodinkee.com/articles/the-glashutte-original-senator-chronograph-and-senator-chronograph-navigator",
+          "title": "Introducing The Glashütte Original Senator Chronograph And Senator Chronograph Navigator",
+          "url": "https://www.hodinkee.com/articles/the-glashutte-original-senator-chronograph-and-senator-chronograph-navigator",
+          "source": "Hodinkee",
+          "image": "https://hodinkee.imgix.net/uploads/images/3b5bad96-81bd-46a0-adf7-4cb4fb9180ec/gosenatorchronosheader.jpg?ixlib=rails-1.1.0&fm=jpg&q=55&auto=format&usm=12&w=1200&h=630&fit=crop",
+          "publishedAt": "2026-08-20T08:00:00Z",
+          "description": "The German brand streamlines its classic flyback chronograph by refining its dimensions and offering two very different dial executions.",
           "place": {
-            "id": "country:philippines",
-            "name": "Philippines",
+            "id": "country:germany",
+            "name": "Germany",
             "kind": "country",
             "country": "",
-            "lat": 11.198,
-            "lon": 122.465
-          }
-        },
-        {
-          "id": "https://www.space.com/space-exploration/launches-spacecraft/rocket-lab-launch-private-japanese-earth-observing-sar-satellite-lightning-god-defends",
-          "title": "Watch Rocket Lab launch a private Japanese Earth-observing satellite to orbit today",
-          "url": "https://www.space.com/space-exploration/launches-spacecraft/rocket-lab-launch-private-japanese-earth-observing-sar-satellite-lightning-god-defends",
-          "source": "Space",
-          "image": "https://cdn.mos.cms.futurecdn.net/L8gLoNGc6GGoDUBkTvDj27-2048-80.jpg",
-          "publishedAt": "2026-08-20T04:08:38Z",
-          "description": "Rocket Lab will launch its ninth mission for the Japanese Earth-imaging company iQPS this morning (Aug. 20), and you can watch the action live.",
-          "place": {
-            "id": "country:japan",
-            "name": "Japan",
-            "kind": "country",
-            "country": "",
-            "lat": 36.143,
-            "lon": 138.442
-          }
-        },
-        {
-          "id": "https://thedesignfiles.net/2026/08/architecture-camphor-siding-western-architecture-studio",
-          "title": "A Perth Family Home Built On Community + Connection",
-          "url": "https://thedesignfiles.net/2026/08/architecture-camphor-siding-western-architecture-studio",
-          "source": "The Design Files",
-          "image": "https://thedesignfiles.wpenginepowered.com/wp-content/uploads/2026/08/archi-camphor-siding-tdf-013-2200x2860.jpg",
-          "publishedAt": "2026-08-20T04:07:12Z",
-          "description": "It’s the important things in life that matter in this Shenton Park new-build by Western Architecture Studio.",
-          "place": {
-            "id": "city:australia-perth",
-            "name": "Perth",
-            "kind": "city",
-            "country": "Australia",
-            "lat": -31.953,
-            "lon": 115.838
-          }
-        },
-        {
-          "id": "https://www.miragenews.com/mit-engineers-enhance-digger-control-system-1730372/",
-          "title": "MIT Engineers Enhance Digger Control System",
-          "url": "https://www.miragenews.com/mit-engineers-enhance-digger-control-system-1730372/",
-          "source": "Mirage News",
-          "image": "https://news.mit.edu/sites/default/files/images/202608/MIT-DiggerTrainer-01-press.jpg",
-          "publishedAt": "2026-08-20T04:03:00Z",
-          "description": "Anyone who's ever wrestled with a claw machine at an arcade can appreciate the difficulty in pulling and pushing on joysticks, in just the right way"
-        },
-        {
-          "id": "https://newsbreaks.infotoday.com/Digest/Lucidea-Looks-at-How-the-Move-to-Hybrid-and-Remote-Affects-Knowledge-Work-176220.asp",
-          "title": "Lucidea Looks at How the Move to Hybrid and Remote Affects Knowledge Work",
-          "url": "https://newsbreaks.infotoday.com/Digest/Lucidea-Looks-at-How-the-Move-to-Hybrid-and-Remote-Affects-Knowledge-Work-176220.asp",
-          "source": "newsbreaks.infotoday.com",
-          "image": "http://itipix.com/Misc/Newsbreaks/digest-og.jpg",
-          "publishedAt": "2026-08-20T04:02:59Z",
-          "description": "Lauren Hays writes The Changing Location of Work: Hybrid Library Services for Lucidea's Think Clearly blog."
-        },
-        {
-          "id": "https://finance.biggo.com/news/40991c96-f82c-41e9-b881-2da130efe1fd",
-          "title": "KAIST Solves 3D Memory Challenge with 'Oxygen Tunnel' - Boosting AI Chip Performance While Cutting Power",
-          "url": "https://finance.biggo.com/news/40991c96-f82c-41e9-b881-2da130efe1fd",
-          "source": "finance.biggo.com",
-          "image": "https://img.biggo.com/SsJkCOIgbjcEIlYdpvQlHrYCvJ6GTvaA3GJBzwEn71s/fit/1200/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2FpX2dlbmVyYXRlZC8yMDI2LTA4LzQwOTkxYzk2LWY4MmMtNDFlOS1iODgxLTJkYTEzMGVmZTFmZF8xNzg3MTk4NTUwX2RlZmF1bHQuanBn.jpg",
-          "publishedAt": "2026-08-20T04:01:42Z",
-          "description": "A research team led by Professor Kwon Ji-min at KAIST, in collaboration with UNIST, Yonsei University, and other South Korean institutions, has…",
-          "place": {
-            "id": "country:south-korea",
-            "name": "South Korea",
-            "kind": "country",
-            "country": "",
-            "lat": 36.385,
-            "lon": 128.13
-          }
-        },
-        {
-          "id": "https://www.newswise.com/articles/a-trace-gas-impurity-can-ruin-a-chip-kriss-now-has-a-way-to-catch-it",
-          "title": "A Trace Gas Impurity Can Ruin a Chip. KRISS Now Has a Way to Catch It",
-          "url": "https://www.newswise.com/articles/a-trace-gas-impurity-can-ruin-a-chip-kriss-now-has-a-way-to-catch-it",
-          "source": "Newswise",
-          "image": "https://www.newswise.com/images/uploads/2026/08/19/6a8657e8bde87_image01.png",
-          "publishedAt": "2026-08-20T04:00:00Z",
-          "description": "The Korea Research Institute of Standards and Science (KRISS, President Dr. Lee Ho Seong) has established purity analysis techniques and testing procedures for 15 high-purity gases used in semiconductor processes, and has developed six certified reference materials (CRMs) that verify measurement accuracy. This provides a foundation for objectively evaluating the quality of semiconductor gases domestically, moving beyond a reliance on the certificates of analysis provided by suppliers themselves.",
-          "place": {
-            "id": "country:south-korea",
-            "name": "South Korea",
-            "kind": "country",
-            "country": "",
-            "lat": 36.385,
-            "lon": 128.13
-          }
-        },
-        {
-          "id": "https://9to5google.com/2026/08/19/gboard-emoji-size-setting/",
-          "title": "Gboard starts rolling out new ‘Emoji size’ setting",
-          "url": "https://9to5google.com/2026/08/19/gboard-emoji-size-setting/",
-          "source": "9to5Google",
-          "image": "https://i0.wp.com/9to5google.com/wp-content/uploads/sites/4/2026/08/android-17-emoji-pixel-11.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
-          "publishedAt": "2026-08-20T03:50:00Z",
-          "description": "As the Pixel 11 series gets Rambler and Google’s new 3D emoji, Gboard is rolling out a new “Emoji size” setting to beta users."
-        },
-        {
-          "id": "https://insideretail.com.au/sectors/retro-smartphone-accessories-are-trending-but-untethering-isnt-for-everyone-202608",
-          "title": "Retro smartphone accessories are trending, but ‘untethering’ isn’t for everyone",
-          "url": "https://insideretail.com.au/sectors/retro-smartphone-accessories-are-trending-but-untethering-isnt-for-everyone-202608",
-          "source": "Inside Retail Australia",
-          "image": "https://insideretail.com.au/wp-content/uploads/2026/08/pexels-guillermo-berlin-1524368912-34833470.jpg",
-          "publishedAt": "2026-08-20T03:48:50Z",
-          "description": "There’s a gadget doing well in Australian online stores at the moment that retrofits a smartphone into a landline.",
-          "place": {
-            "id": "country:australia",
-            "name": "Australia",
-            "kind": "country",
-            "country": "",
-            "lat": -24.13,
-            "lon": 134.05
-          }
-        },
-        {
-          "id": "https://www.nintendolife.com/news/2026/08/nintendo-today-app-updated-to-version-4-1-0-adds-some-new-features",
-          "title": "Nintendo Today! App Updated To Version 4.1.0, Adds Some New Features",
-          "url": "https://www.nintendolife.com/news/2026/08/nintendo-today-app-updated-to-version-4-1-0-adds-some-new-features",
-          "source": "Nintendo Life",
-          "image": "https://images.nintendolife.com/d68e364daacfa/large.jpg",
-          "publishedAt": "2026-08-20T03:46:47Z",
-          "description": "You can now select multiple themes - Following the Nintendo Today! mobile app receiving a Fire Emblem theme earlier this month, Nintendo has now rolled out V..."
-        },
-        {
-          "id": "https://www.brandinginasia.com/samsung-announces-partnership-with-call-of-duty-modern-warfare-4/",
-          "title": "Samsung Announces Partnership With Call of Duty: Modern Warfare 4",
-          "url": "https://www.brandinginasia.com/samsung-announces-partnership-with-call-of-duty-modern-warfare-4/",
-          "source": "Branding in Asia",
-          "image": "https://www.brandinginasia.com/wp-content/uploads/2026/08/Samsung-Call-of-Duty-.webp",
-          "publishedAt": "2026-08-20T03:44:46Z",
-          "description": "As part of the collaboration, Samsung Gaming Hub users will be able to watch Call of Duty: NEXT live through Samsung Gaming Hub on Aug. 21"
-        },
-        {
-          "id": "https://www.gosugamers.net/entertainment/news/79005-horizon-hunters-gathering-reportedly-being-rebooted-after-negative-feedback",
-          "title": "Horizon Hunters Gathering reportedly stripped of live service elements after negative feedback",
-          "url": "https://www.gosugamers.net/entertainment/news/79005-horizon-hunters-gathering-reportedly-being-rebooted-after-negative-feedback",
-          "source": "GosuGamers",
-          "image": "https://static.gosugamers.net/64/99/32/d859750cd1ffa3f73304ed7f5ea0b37f6b0da90f6b70cdc741af0372a3.webp",
-          "publishedAt": "2026-08-20T03:39:46Z",
-          "description": "Horizon Hunters Gathering seems to be going through a rough patch."
-        },
-        {
-          "id": "https://7news.com.au/7you/health-fitness/the-no-subscription-smart-ring-tracking-sleep-apnea-is-now-449-on-amazon-australia-c-22751049",
-          "title": "The ‘no subscription’ smart ring tracking sleep apnea is now $449 on Amazon Australia",
-          "url": "https://7news.com.au/7you/health-fitness/the-no-subscription-smart-ring-tracking-sleep-apnea-is-now-449-on-amazon-australia-c-22751049",
-          "source": "7NEWS",
-          "image": "https://images.7news.com.au/publication/C-22751049/8e144f34fa971654159c6b28fdb79d0db326a726-16x9-x0y0w1280h720.jpg?imwidth=1200",
-          "publishedAt": "2026-08-20T03:32:00Z",
-          "description": "Monitor everything from sleep and heart rate to stress",
-          "place": {
-            "id": "country:australia",
-            "name": "Australia",
-            "kind": "country",
-            "country": "",
-            "lat": -24.13,
-            "lon": 134.05
+            "lat": 50.962,
+            "lon": 9.678
           }
         }
       ],
-      "fetchedAt": 1787242935534
+      "fetchedAt": 1787257027792
     }
   }
 }
